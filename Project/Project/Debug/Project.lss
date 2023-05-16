@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000001c0  00000000  00000000  0000172c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006a0  00000000  00000000  000018ec  2**0
+ 10 .debug_str    000006d8  00000000  00000000  000018ec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000367  00000000  00000000  00001f8c  2**0
+ 11 .debug_loc    00000367  00000000  00000000  00001fc4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000068  00000000  00000000  000022f3  2**0
+ 12 .debug_ranges 00000068  00000000  00000000  0000232b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -96,12 +96,6 @@ Disassembly of section .text:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000092 <main>:
-
-#include <avr/io.h>
-
-
-int main(void)
-{
   92:	ff cf       	rjmp	.-2      	; 0x92 <main>
 
 00000094 <__vector_1>:

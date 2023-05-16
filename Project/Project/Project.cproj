@@ -120,97 +120,109 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="application\app\app.c">
+    <Compile Include="APPLICATION\app\app.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="application\app\apph.h">
+    <Compile Include="APPLICATION\app\apph.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="application\car_module\car_operations.c">
+    <Compile Include="APPLICATION\car_module\car_operations.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="application\car_module\car_operations.h">
+    <Compile Include="APPLICATION\car_module\car_operations.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="common\BIT_Math.h">
+    <Compile Include="COMMON\BIT_Math.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="common\STD_Types.h">
+    <Compile Include="COMMON\STD_Types.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu\keypad\keypad.h">
+    <Compile Include="ECUAL\keypad\keypad.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu\lcd\lcd.h">
+    <Compile Include="ECUAL\lcd\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu\motors\motor.h">
+    <Compile Include="ECUAL\motors\motor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu\push_button\push_button.h">
+    <Compile Include="ECUAL\push_button\push_button.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ecu\ultrasonic\ultrasonic.h">
+    <Compile Include="ECUAL\ultrasonic\ultrasonic.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\dio\dio_interface.h">
+    <Compile Include="MCAL\dio\Dio.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\exti\EXT_INTERRUPT_Config.c">
+    <Compile Include="MCAL\dio\dio.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\exti\EXT_INTERRUPT_Config.h">
+    <Compile Include="MCAL\dio\Dio_cfg.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\exti\EXT_INTERRUPT_Interface.h">
+    <Compile Include="MCAL\dio\dio_linking_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\exti\EXT_INTERRUPT_Private.h">
+    <Compile Include="MCAL\dio\dio_private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\exti\EXT_INTERRUPT_Prog.c">
+    <Compile Include="MCAL\exti\EXT_INTERRUPT_Config.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\icu\icu.h">
+    <Compile Include="MCAL\exti\EXT_INTERRUPT_Config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\mcu_cfg\MCU_Interface.h">
+    <Compile Include="MCAL\exti\EXT_INTERRUPT_Interface.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\mcu_cfg\MCU_Private.h">
+    <Compile Include="MCAL\exti\EXT_INTERRUPT_Private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\mcu_cfg\MCU_Prog.c">
+    <Compile Include="MCAL\exti\EXT_INTERRUPT_Prog.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\pwm\pwmh.h">
+    <Compile Include="MCAL\icu\icu.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="mcal\timer\timer.h">
+    <Compile Include="MCAL\mcu_cfg\MCU_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\mcu_cfg\MCU_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\mcu_cfg\MCU_Prog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\pwm\pwmh.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\timer\timer.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="application\app" />
-    <Folder Include="application\car_module" />
-    <Folder Include="common" />
-    <Folder Include="ecu\lcd" />
-    <Folder Include="ecu\keypad" />
-    <Folder Include="ecu\motors" />
-    <Folder Include="ecu\push_button" />
-    <Folder Include="ecu\ultrasonic" />
-    <Folder Include="mcal" />
-    <Folder Include="ecu" />
-    <Folder Include="mcal\dio" />
-    <Folder Include="mcal\exti" />
-    <Folder Include="mcal\icu" />
-    <Folder Include="mcal\mcu_cfg" />
-    <Folder Include="mcal\pwm" />
-    <Folder Include="mcal\timer" />
-    <Folder Include="application" />
+    <Folder Include="APPLICATION\app" />
+    <Folder Include="APPLICATION\car_module" />
+    <Folder Include="COMMON" />
+    <Folder Include="ECUAL\lcd" />
+    <Folder Include="ECUAL\keypad" />
+    <Folder Include="ECUAL\motors" />
+    <Folder Include="ECUAL\push_button" />
+    <Folder Include="ECUAL\ultrasonic" />
+    <Folder Include="MCAL" />
+    <Folder Include="ECUAL" />
+    <Folder Include="MCAL\dio" />
+    <Folder Include="MCAL\exti" />
+    <Folder Include="MCAL\icu" />
+    <Folder Include="MCAL\mcu_cfg" />
+    <Folder Include="MCAL\pwm" />
+    <Folder Include="MCAL\timer" />
+    <Folder Include="APPLICATION" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

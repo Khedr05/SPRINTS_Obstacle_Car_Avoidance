@@ -8,7 +8,6 @@
 
 #include "EXT_INTERRUPT_Interface.h"
 
-#include "../dio/DIO_interface.h"
 
 extern const ST_EXT_INTERRUPTS_CFG A_interruptConfig[EXT_INTERRUPT_PINS];
 

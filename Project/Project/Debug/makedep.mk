@@ -2,15 +2,17 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-application\app\app.c
+APPLICATION\app\app.c
 
-application\car_module\car_operations.c
+APPLICATION\car_module\car_operations.c
 
 main.c
 
-mcal\exti\EXT_INTERRUPT_Config.c
+MCAL\dio\Dio.c
 
-mcal\exti\EXT_INTERRUPT_Prog.c
+MCAL\exti\EXT_INTERRUPT_Config.c
 
-mcal\mcu_cfg\MCU_Prog.c
+MCAL\exti\EXT_INTERRUPT_Prog.c
+
+MCAL\mcu_cfg\MCU_Prog.c
 

@@ -1,30 +1,27 @@
-mcal/exti/EXT_INTERRUPT_Prog.d mcal/exti/EXT_INTERRUPT_Prog.o: \
- ../mcal/exti/EXT_INTERRUPT_Prog.c ../mcal/exti/EXT_INTERRUPT_Interface.h \
- ../mcal/exti/../../common/STD_Types.h \
- ../mcal/exti/../../common/BIT_Math.h ../mcal/exti/EXT_INTERRUPT_Config.h \
- ../mcal/exti/EXT_INTERRUPT_Private.h \
- ../mcal/exti/../mcu_cfg/MCU_Interface.h \
- ../mcal/exti/../mcu_cfg/MCU_Private.h \
- ../mcal/exti/../mcu_cfg/../../common/BIT_Math.h \
- ../mcal/exti/../mcu_cfg/../../common/STD_Types.h \
- ../mcal/exti/../dio/DIO_interface.h
+MCAL/exti/EXT_INTERRUPT_Prog.d MCAL/exti/EXT_INTERRUPT_Prog.o: \
+ ../MCAL/exti/EXT_INTERRUPT_Prog.c ../MCAL/exti/EXT_INTERRUPT_Interface.h \
+ ../MCAL/exti/../../common/STD_Types.h \
+ ../MCAL/exti/../../common/BIT_Math.h ../MCAL/exti/EXT_INTERRUPT_Config.h \
+ ../MCAL/exti/EXT_INTERRUPT_Private.h \
+ ../MCAL/exti/../mcu_cfg/MCU_Interface.h \
+ ../MCAL/exti/../mcu_cfg/MCU_Private.h \
+ ../MCAL/exti/../mcu_cfg/../../common/BIT_Math.h \
+ ../MCAL/exti/../mcu_cfg/../../common/STD_Types.h
 
-../mcal/exti/EXT_INTERRUPT_Interface.h:
+../MCAL/exti/EXT_INTERRUPT_Interface.h:
 
-../mcal/exti/../../common/STD_Types.h:
+../MCAL/exti/../../common/STD_Types.h:
 
-../mcal/exti/../../common/BIT_Math.h:
+../MCAL/exti/../../common/BIT_Math.h:
 
-../mcal/exti/EXT_INTERRUPT_Config.h:
+../MCAL/exti/EXT_INTERRUPT_Config.h:
 
-../mcal/exti/EXT_INTERRUPT_Private.h:
+../MCAL/exti/EXT_INTERRUPT_Private.h:
 
-../mcal/exti/../mcu_cfg/MCU_Interface.h:
+../MCAL/exti/../mcu_cfg/MCU_Interface.h:
 
-../mcal/exti/../mcu_cfg/MCU_Private.h:
+../MCAL/exti/../mcu_cfg/MCU_Private.h:
 
-../mcal/exti/../mcu_cfg/../../common/BIT_Math.h:
+../MCAL/exti/../mcu_cfg/../../common/BIT_Math.h:
 
-../mcal/exti/../mcu_cfg/../../common/STD_Types.h:
-
-../mcal/exti/../dio/DIO_interface.h:
+../MCAL/exti/../mcu_cfg/../../common/STD_Types.h:
