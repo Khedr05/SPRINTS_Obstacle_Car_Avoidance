@@ -56,8 +56,13 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APPLICATION/app/app.c \
 ../APPLICATION/car_module/car_operations.c \
+<<<<<<< HEAD
 ../ECUAL/motors/dcm_cfg.c \
 ../ECUAL/motors/dcm_program.c \
+=======
+../ECUAL/push_button/pb_config.c \
+../ECUAL/push_button/PB_prog.c \
+>>>>>>> main
 ../main.c \
 ../MCAL/dio/Dio.c \
 ../MCAL/exti/EXT_INTERRUPT_Config.c \
@@ -78,8 +83,13 @@ ASM_SRCS +=
 OBJS +=  \
 APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
+<<<<<<< HEAD
 ECUAL/motors/dcm_cfg.o \
 ECUAL/motors/dcm_program.o \
+=======
+ECUAL/push_button/pb_config.o \
+ECUAL/push_button/PB_prog.o \
+>>>>>>> main
 main.o \
 MCAL/dio/Dio.o \
 MCAL/exti/EXT_INTERRUPT_Config.o \
@@ -93,8 +103,13 @@ MCAL/timer/timer_config.o
 OBJS_AS_ARGS +=  \
 APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
+<<<<<<< HEAD
 ECUAL/motors/dcm_cfg.o \
 ECUAL/motors/dcm_program.o \
+=======
+ECUAL/push_button/pb_config.o \
+ECUAL/push_button/PB_prog.o \
+>>>>>>> main
 main.o \
 MCAL/dio/Dio.o \
 MCAL/exti/EXT_INTERRUPT_Config.o \
@@ -108,8 +123,13 @@ MCAL/timer/timer_config.o
 C_DEPS +=  \
 APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
+<<<<<<< HEAD
 ECUAL/motors/dcm_cfg.d \
 ECUAL/motors/dcm_program.d \
+=======
+ECUAL/push_button/pb_config.d \
+ECUAL/push_button/PB_prog.d \
+>>>>>>> main
 main.d \
 MCAL/dio/Dio.d \
 MCAL/exti/EXT_INTERRUPT_Config.d \
@@ -123,8 +143,13 @@ MCAL/timer/timer_config.d
 C_DEPS_AS_ARGS +=  \
 APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
+<<<<<<< HEAD
 ECUAL/motors/dcm_cfg.d \
 ECUAL/motors/dcm_program.d \
+=======
+ECUAL/push_button/pb_config.d \
+ECUAL/push_button/PB_prog.d \
+>>>>>>> main
 main.d \
 MCAL/dio/Dio.d \
 MCAL/exti/EXT_INTERRUPT_Config.d \
@@ -163,14 +188,22 @@ APPLICATION/car_module/car_operations.o: ../APPLICATION/car_module/car_operation
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ECUAL/motors/dcm_cfg.o: ../ECUAL/motors/dcm_cfg.c
+=======
+ECUAL/push_button/pb_config.o: ../ECUAL/push_button/pb_config.c
+>>>>>>> main
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ECUAL/motors/dcm_program.o: ../ECUAL/motors/dcm_program.c
+=======
+ECUAL/push_button/PB_prog.o: ../ECUAL/push_button/PB_prog.c
+>>>>>>> main
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

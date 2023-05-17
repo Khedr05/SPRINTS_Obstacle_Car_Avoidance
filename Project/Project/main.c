@@ -5,14 +5,9 @@
  * Author : 20101
  */ 
 
-#include <avr/io.h>
 
-
-int main(void)
+void main(void)
 {
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
+
 }
 
