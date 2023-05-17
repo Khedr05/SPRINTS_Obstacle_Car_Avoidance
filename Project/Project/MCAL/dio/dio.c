@@ -232,7 +232,7 @@ void DIO_Initpin(DIO_ConfigType *config_ptr)
 			default:			break;
 		}
 		
-		if (config_ptr->dio_initial_value == DIOOUTPUT_HIGH)
+		if (config_ptr->dio_initial_value == DIO_HIGH)
 		{
 			switch(config_ptr->dio_port)
 			{

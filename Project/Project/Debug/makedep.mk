@@ -6,6 +6,10 @@ APPLICATION\app\app.c
 
 APPLICATION\car_module\car_operations.c
 
+ECUAL\keypad\keypad_config.c
+
+ECUAL\keypad\keypad_program.c
+
 ECUAL\push_button\pb_config.c
 
 ECUAL\push_button\PB_prog.c
@@ -20,17 +24,21 @@ lcd_test\lcd_program.c
 
 main.c
 
-MCAL\dio\dio.c
+MCAL\dio\Dio.c
 
-MCAL\exti\ext_interrupt_config.c
+MCAL\exti\EXT_INTERRUPT_Config.c
 
-MCAL\exti\ext_interrupt_prog.c
+MCAL\exti\EXT_INTERRUPT_Prog.c
 
-MCAL\icu\icu.c
+MCAL\icu\ICU.c
 
-MCAL\icu\icu_cfg.c
+MCAL\icu\ICU_cfg.c
 
-MCAL\mcu_cfg\mcu_Prog.c
+MCAL\mcu_cfg\MCU_Prog.c
+
+MCAL\pwm\pwm_config.c
+
+MCAL\pwm\pwm_program.c
 
 MCAL\timer\timer.c
 

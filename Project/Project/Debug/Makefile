@@ -56,6 +56,8 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APPLICATION/app/app.c \
 ../APPLICATION/car_module/car_operations.c \
+../ECUAL/keypad/keypad_config.c \
+../ECUAL/keypad/keypad_program.c \
 ../ECUAL/push_button/pb_config.c \
 ../ECUAL/push_button/PB_prog.c \
 ../ECUAL/ultrasonic/ultrasonic_prog.c \
@@ -63,12 +65,14 @@ C_SRCS +=  \
 ../lcd_test/lcd_config.c \
 ../lcd_test/lcd_program.c \
 ../main.c \
-../MCAL/dio/dio.c \
-../MCAL/exti/ext_interrupt_config.c \
-../MCAL/exti/ext_interrupt_prog.c \
-../MCAL/icu/icu.c \
-../MCAL/icu/icu_cfg.c \
-../MCAL/mcu_cfg/mcu_Prog.c \
+../MCAL/dio/Dio.c \
+../MCAL/exti/EXT_INTERRUPT_Config.c \
+../MCAL/exti/EXT_INTERRUPT_Prog.c \
+../MCAL/icu/ICU.c \
+../MCAL/icu/ICU_cfg.c \
+../MCAL/mcu_cfg/MCU_Prog.c \
+../MCAL/pwm/pwm_config.c \
+../MCAL/pwm/pwm_program.c \
 ../MCAL/timer/timer.c \
 ../MCAL/timer/timer_config.c
 
@@ -82,6 +86,8 @@ ASM_SRCS +=
 OBJS +=  \
 APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
+ECUAL/keypad/keypad_config.o \
+ECUAL/keypad/keypad_program.o \
 ECUAL/push_button/pb_config.o \
 ECUAL/push_button/PB_prog.o \
 ECUAL/ultrasonic/ultrasonic_prog.o \
@@ -89,18 +95,22 @@ lcd_test/dio_prog.o \
 lcd_test/lcd_config.o \
 lcd_test/lcd_program.o \
 main.o \
-MCAL/dio/dio.o \
-MCAL/exti/ext_interrupt_config.o \
-MCAL/exti/ext_interrupt_prog.o \
-MCAL/icu/icu.o \
-MCAL/icu/icu_cfg.o \
-MCAL/mcu_cfg/mcu_Prog.o \
+MCAL/dio/Dio.o \
+MCAL/exti/EXT_INTERRUPT_Config.o \
+MCAL/exti/EXT_INTERRUPT_Prog.o \
+MCAL/icu/ICU.o \
+MCAL/icu/ICU_cfg.o \
+MCAL/mcu_cfg/MCU_Prog.o \
+MCAL/pwm/pwm_config.o \
+MCAL/pwm/pwm_program.o \
 MCAL/timer/timer.o \
 MCAL/timer/timer_config.o
 
 OBJS_AS_ARGS +=  \
 APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
+ECUAL/keypad/keypad_config.o \
+ECUAL/keypad/keypad_program.o \
 ECUAL/push_button/pb_config.o \
 ECUAL/push_button/PB_prog.o \
 ECUAL/ultrasonic/ultrasonic_prog.o \
@@ -108,18 +118,22 @@ lcd_test/dio_prog.o \
 lcd_test/lcd_config.o \
 lcd_test/lcd_program.o \
 main.o \
-MCAL/dio/dio.o \
-MCAL/exti/ext_interrupt_config.o \
-MCAL/exti/ext_interrupt_prog.o \
-MCAL/icu/icu.o \
-MCAL/icu/icu_cfg.o \
-MCAL/mcu_cfg/mcu_Prog.o \
+MCAL/dio/Dio.o \
+MCAL/exti/EXT_INTERRUPT_Config.o \
+MCAL/exti/EXT_INTERRUPT_Prog.o \
+MCAL/icu/ICU.o \
+MCAL/icu/ICU_cfg.o \
+MCAL/mcu_cfg/MCU_Prog.o \
+MCAL/pwm/pwm_config.o \
+MCAL/pwm/pwm_program.o \
 MCAL/timer/timer.o \
 MCAL/timer/timer_config.o
 
 C_DEPS +=  \
 APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
+ECUAL/keypad/keypad_config.d \
+ECUAL/keypad/keypad_program.d \
 ECUAL/push_button/pb_config.d \
 ECUAL/push_button/PB_prog.d \
 ECUAL/ultrasonic/ultrasonic_prog.d \
@@ -127,18 +141,22 @@ lcd_test/dio_prog.d \
 lcd_test/lcd_config.d \
 lcd_test/lcd_program.d \
 main.d \
-MCAL/dio/dio.d \
-MCAL/exti/ext_interrupt_config.d \
-MCAL/exti/ext_interrupt_prog.d \
-MCAL/icu/icu.d \
-MCAL/icu/icu_cfg.d \
-MCAL/mcu_cfg/mcu_Prog.d \
+MCAL/dio/Dio.d \
+MCAL/exti/EXT_INTERRUPT_Config.d \
+MCAL/exti/EXT_INTERRUPT_Prog.d \
+MCAL/icu/ICU.d \
+MCAL/icu/ICU_cfg.d \
+MCAL/mcu_cfg/MCU_Prog.d \
+MCAL/pwm/pwm_config.d \
+MCAL/pwm/pwm_program.d \
 MCAL/timer/timer.d \
 MCAL/timer/timer_config.d
 
 C_DEPS_AS_ARGS +=  \
 APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
+ECUAL/keypad/keypad_config.d \
+ECUAL/keypad/keypad_program.d \
 ECUAL/push_button/pb_config.d \
 ECUAL/push_button/PB_prog.d \
 ECUAL/ultrasonic/ultrasonic_prog.d \
@@ -146,12 +164,14 @@ lcd_test/dio_prog.d \
 lcd_test/lcd_config.d \
 lcd_test/lcd_program.d \
 main.d \
-MCAL/dio/dio.d \
-MCAL/exti/ext_interrupt_config.d \
-MCAL/exti/ext_interrupt_prog.d \
-MCAL/icu/icu.d \
-MCAL/icu/icu_cfg.d \
-MCAL/mcu_cfg/mcu_Prog.d \
+MCAL/dio/Dio.d \
+MCAL/exti/EXT_INTERRUPT_Config.d \
+MCAL/exti/EXT_INTERRUPT_Prog.d \
+MCAL/icu/ICU.d \
+MCAL/icu/ICU_cfg.d \
+MCAL/mcu_cfg/MCU_Prog.d \
+MCAL/pwm/pwm_config.d \
+MCAL/pwm/pwm_program.d \
 MCAL/timer/timer.d \
 MCAL/timer/timer_config.d
 
@@ -177,6 +197,20 @@ APPLICATION/app/app.o: ../APPLICATION/app/app.c
 	
 
 APPLICATION/car_module/car_operations.o: ../APPLICATION/car_module/car_operations.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+ECUAL/keypad/keypad_config.o: ../ECUAL/keypad/keypad_config.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+ECUAL/keypad/keypad_program.o: ../ECUAL/keypad/keypad_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -232,42 +266,56 @@ lcd_test/lcd_program.o: ../lcd_test/lcd_program.c
 	@echo Finished building: $<
 	
 
-MCAL/dio/dio.o: ../MCAL/dio/dio.c
+MCAL/dio/Dio.o: ../MCAL/dio/Dio.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/exti/ext_interrupt_config.o: ../MCAL/exti/ext_interrupt_config.c
+MCAL/exti/EXT_INTERRUPT_Config.o: ../MCAL/exti/EXT_INTERRUPT_Config.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/exti/ext_interrupt_prog.o: ../MCAL/exti/ext_interrupt_prog.c
+MCAL/exti/EXT_INTERRUPT_Prog.o: ../MCAL/exti/EXT_INTERRUPT_Prog.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/icu/icu.o: ../MCAL/icu/icu.c
+MCAL/icu/ICU.o: ../MCAL/icu/ICU.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/icu/icu_cfg.o: ../MCAL/icu/icu_cfg.c
+MCAL/icu/ICU_cfg.o: ../MCAL/icu/ICU_cfg.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-MCAL/mcu_cfg/mcu_Prog.o: ../MCAL/mcu_cfg/mcu_Prog.c
+MCAL/mcu_cfg/MCU_Prog.o: ../MCAL/mcu_cfg/MCU_Prog.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/pwm/pwm_config.o: ../MCAL/pwm/pwm_config.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/pwm/pwm_program.o: ../MCAL/pwm/pwm_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
