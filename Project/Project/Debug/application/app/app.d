@@ -1,1 +1,1 @@
-application/app/app.d application/app/app.o: ../application/app/app.c
+APPLICATION/app/app.d APPLICATION/app/app.o: ../APPLICATION/app/app.c

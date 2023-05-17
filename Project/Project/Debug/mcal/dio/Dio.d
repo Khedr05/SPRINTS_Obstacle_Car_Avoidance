@@ -1,16 +1,16 @@
-mcal/dio/Dio.d mcal/dio/Dio.o: ../mcal/dio/Dio.c ../mcal/dio/dio.h \
- ../mcal/dio/../../common/STD_Types.h ../mcal/dio/../../common/BIT_Math.h \
- ../mcal/dio/dio_cfg.h ../mcal/dio/dio_private.h \
- ../mcal/dio/dio_linking_config.h
+MCAL/dio/Dio.d MCAL/dio/Dio.o: ../MCAL/dio/Dio.c ../MCAL/dio/dio.h \
+ ../MCAL/dio/../../common/STD_Types.h ../MCAL/dio/../../common/BIT_Math.h \
+ ../MCAL/dio/dio_cfg.h ../MCAL/dio/dio_private.h \
+ ../MCAL/dio/dio_linking_config.h
 
-../mcal/dio/dio.h:
+../MCAL/dio/dio.h:
 
-../mcal/dio/../../common/STD_Types.h:
+../MCAL/dio/../../common/STD_Types.h:
 
-../mcal/dio/../../common/BIT_Math.h:
+../MCAL/dio/../../common/BIT_Math.h:
 
-../mcal/dio/dio_cfg.h:
+../MCAL/dio/dio_cfg.h:
 
-../mcal/dio/dio_private.h:
+../MCAL/dio/dio_private.h:
 
-../mcal/dio/dio_linking_config.h:
+../MCAL/dio/dio_linking_config.h:

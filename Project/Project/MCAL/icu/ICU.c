@@ -17,14 +17,14 @@
 // 	
 // void ( *pf_a_interruptAction ) ( void ) = ICU_FallingEdgeCapture();
 
-u32 TIMER_g_timer1RegValue = 0;
-u32 u32_g_timer1Overflow = 0;
+Uint32_t TIMER_g_timer1RegValue = 0;
+Uint32_t u32_g_timer1Overflow = 0;
 
-u32 ICU_g_ValueRising = 0;
-u32 ICU_g_ValueFalling = 0;
+Uint32_t ICU_g_ValueRising = 0;
+Uint32_t ICU_g_ValueFalling = 0;
 
-u8 ICU_g_flag = 0; 
-u32 ICU_g_Count = 0;
+Uchar8_t ICU_g_flag = 0; 
+Uint32_t ICU_g_Count = 0;
 EN_icuEdgeFlag ICU_g_edgeFlag;
 /**
  * @brief function enable timer1 in normal mode.
@@ -51,7 +51,7 @@ void ICU_RisingEdgeCapture(void)
 	TIMER_tmr1Stop();
 	EXI_enablePIE( ST_g_softwareICU->ICU_exti, ST_g_softwareICU->ICU_firstSenseControl );
 	ICU_g_edgeFlag = RISING;
-	TMR_tmr1Start(1);
+	TIMER_tmr1Start(1);
 }
  
  
@@ -86,7 +86,7 @@ void ICU_FallingEdgeCapture(void)
  * return STD_OK (0). If there is an error, it will return STD_NOK (1).
  */
 
-u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
+Uchar8_t EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl )
 {
     /* Define local variable to set the error state = OK */
     u8 u8_l_errorState = 0;
@@ -107,9 +107,9 @@ u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
                 /* Check 1.1.1: Required SenseControl */
                 switch ( u8_a_senseControl )
                 {
-                    case EXI_U8_SENSE_LOW_LEVEL		: CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
-                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
-                    case EXI_U8_SENSE_FALLING_EDGE	: CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                    case EXI_U8_SENSE_LOW_LEVEL		: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                    case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
                     case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
                 }
                 break;
@@ -121,9 +121,9 @@ u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
                 /* Check 1.1.2: Required SenseControl */
                 switch( u8_a_senseControl)
                 {
-                    case EXI_U8_SENSE_LOW_LEVEL		: CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-                    case EXI_U8_SENSE_FALLING_EDGE	: CLR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
+                    case EXI_U8_SENSE_LOW_LEVEL		: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
+                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
+                    case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
                     case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
 
                 }
@@ -136,7 +136,7 @@ u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
                 /* Check 1.1.3: Required SenseControl */
                 switch( u8_a_senseControl )
                 {
-                    case EXI_U8_SENSE_FALLING_EDGE: CLR_BIT( EXI_U8_MCUCSR_REG, EXI_U8_ISC2_BIT ); break;
+                    case EXI_U8_SENSE_FALLING_EDGE: CLEAR_BIT( EXI_U8_MCUCSR_REG, EXI_U8_ISC2_BIT ); break;
                     case EXI_U8_SENSE_RISING_EDGE :	SET_BIT( EXI_U8_MCUCSR_REG, EXI_U8_ISC2_BIT ); break;
                 }
                 break;
@@ -171,10 +171,10 @@ EN_TIMER_ERROR_T TIMER_tmr1NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEna
 	{
 	case ENABLED:
 		//* select the normal mode for the timer, timer is not start yet.*//*
-		CLR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM10_BIT);
-		CLR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM11_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM12_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM13_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM10_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM11_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM12_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM13_BIT);
 		//*must be set for the non_PWM mode*//*
 		SET_BIT(TMR_U8_TCCR1A_REG, TMR_U8_FOC1A_BIT);
 		SET_BIT(TMR_U8_TCCR1A_REG, TMR_U8_FOC1B_BIT);
@@ -185,10 +185,10 @@ EN_TIMER_ERROR_T TIMER_tmr1NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEna
 		break;
 	case DISABLED:
 		//* select the normal mode for the timer, timer is not start yet.*//*
-		CLR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM10_BIT);
-		CLR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM11_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM12_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM13_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM10_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1A_REG, TMR_U8_WGM11_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM12_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM13_BIT);
 		//*must be set for the non_PWM mode*//*
 		SET_BIT(TMR_U8_TCCR1A_REG, TMR_U8_FOC1A_BIT);
 		SET_BIT(TMR_U8_TCCR1A_REG, TMR_U8_FOC1B_BIT);
@@ -226,33 +226,33 @@ void TMR_tmr1CleareCompMatInit(void)
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_tmr1Start(u16 u16_a_prescaler)
+EN_TIMER_ERROR_T TIMER_tmr1Start(Uint16_t u16_a_prescaler)
 {
-	*//*select the required prescaler value*//*
-	switch (u16_a_prescaler)
+	//select the required prescaler value
+	switch(u16_a_prescaler)
 	{
 	case 1:
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
 		break;
 	case 8:
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
 		break;
 	case 64:
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
 		break;
 	case 256:
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 		break;
 	case 1024:
-		CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
+		CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 		SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
 		break;
@@ -267,9 +267,9 @@ void TIMER_tmr1Stop(void)
 {
  //Stop the timer by clearing the prescaler
 
-	CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
-	CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
-	CLR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
+	CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS10_BIT);
+	CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS11_BIT);
+	CLEAR_BIT(TMR_U8_TCCR1B_REG, TMR_U8_CS12_BIT);
 }
 
 

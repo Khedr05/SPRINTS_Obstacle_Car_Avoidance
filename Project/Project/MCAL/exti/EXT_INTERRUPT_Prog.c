@@ -195,10 +195,10 @@ void EXT_vINTERRUPT_Init()
 	EXT_INTERRUPT_SetInterruptHandler();
 }
 
-ISR(EXT_INT0)
+/*ISR(EXT_INT0)
 {
 	INT0_InterruptHandler();
-}
+}*/
 ISR(EXT_INT1)
 {
 	INT1_InterruptHandler();

@@ -15,6 +15,7 @@
 #include "dio_linking_config.h"
 
 void DIO_Init(void);
+void DIO_Initpin(DIO_ConfigType *config_ptr);
 void DIO_WritePin(en_dio_port_t port, en_dio_pin_t pin, en_dio_value_t value);
 void DIO_read(en_dio_port_t port, en_dio_pin_t pin, Uchar8_t *value);
 void DIO_toggle(en_dio_port_t port, en_dio_pin_t pin);

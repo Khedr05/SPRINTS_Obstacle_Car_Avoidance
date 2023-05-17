@@ -10,7 +10,7 @@ DIO_ConfigType DIO_ConfigArray[] = {
 	// Example configuration for Port A, Pin 0
 	{DIO_PORTA, DIO_PIN0, DIO_MODE_OUTPUT, DIOOUTPUT_LOW, DIO_PULLUP_DISABLED},
 	// Example configuration for Port B, Pin 3
-	{DIO_PORTB, DIO_PIN3, DIO_MODE_OUTPUT, DIOOUTPUT_LOW, DIO_PULLUP_DISABLED},
+	{DIO_PORTB, DIO_PIN3, DIO_MODE_OUTPUT, DIOOUTPUT_LOW, DIO_PULLUP_DISABLED}
 	// Add additional pin configurations as needed
 };
 
@@ -77,7 +77,7 @@ void DIO_Init(void)
 				default:			break;
 			}
 			
-			if (DIO_ConfigArray[i].dio_initial_value == DIOOUTPUT_HIGH)
+			if (DIO_ConfigArray[i].dio_initial_value == DIO_HIGH)
 			{
 				switch(DIO_ConfigArray[i].dio_port)
 				{
@@ -173,4 +173,92 @@ void DIO_toggle(en_dio_port_t port, en_dio_pin_t pin)
 		
 	
 	
+}
+
+void DIO_Initpin(DIO_ConfigType *config_ptr)
+{
+	if (config_ptr->dio_mode== DIO_MODE_INPUT)
+	{
+		
+		
+		switch(config_ptr->dio_port)
+		{
+			
+			
+			case DIO_PORTA:	CLEAR_BIT(DIO_PORTA_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTB:	CLEAR_BIT(DIO_PORTB_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTC:	CLEAR_BIT(DIO_PORTC_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTD:	CLEAR_BIT(DIO_PORTD_DDR_REG,config_ptr->dio_pin);	break;
+			default:			break;
+		}
+
+		if (config_ptr->dio_initial_value == DIOINPUT_PULLUP)
+		{
+			switch(config_ptr->dio_port)
+			{
+				
+				case DIO_PORTA:	SET_BIT(DIO_PORTA_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTB:	SET_BIT(DIO_PORTB_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTC:	SET_BIT(DIO_PORTC_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTD:	SET_BIT(DIO_PORTD_PORT_REG,config_ptr->dio_pin);	break;
+				default:			break;
+			}
+		}
+		else
+		{
+			switch(config_ptr->dio_port)
+			{
+				
+				case DIO_PORTA:	CLEAR_BIT(DIO_PORTA_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTB:	CLEAR_BIT(DIO_PORTB_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTC:	CLEAR_BIT(DIO_PORTC_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTD:	CLEAR_BIT(DIO_PORTD_PORT_REG,config_ptr->dio_pin);	break;
+				default:			break;
+			}
+			
+		}
+	}
+	else if (config_ptr->dio_mode == DIO_MODE_OUTPUT)
+	{
+		
+		switch(config_ptr->dio_port)
+		{
+			
+			
+			case DIO_PORTA:	SET_BIT(DIO_PORTA_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTB:	SET_BIT(DIO_PORTB_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTC:	SET_BIT(DIO_PORTC_DDR_REG,config_ptr->dio_pin);	break;
+			case DIO_PORTD:	SET_BIT(DIO_PORTD_DDR_REG,config_ptr->dio_pin);	break;
+			default:			break;
+		}
+		
+		if (config_ptr->dio_initial_value == DIOOUTPUT_HIGH)
+		{
+			switch(config_ptr->dio_port)
+			{
+				
+				case DIO_PORTA:	SET_BIT(DIO_PORTA_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTB:	SET_BIT(DIO_PORTB_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTC:	SET_BIT(DIO_PORTC_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTD:	SET_BIT(DIO_PORTD_PORT_REG,config_ptr->dio_pin);	break;
+				default:			break;
+			}
+			
+		}
+		else
+		{
+			switch(config_ptr->dio_port)
+			{
+				
+				case DIO_PORTA:	CLEAR_BIT(DIO_PORTA_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTB:	CLEAR_BIT(DIO_PORTB_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTC:	CLEAR_BIT(DIO_PORTC_PORT_REG,config_ptr->dio_pin);	break;
+				case DIO_PORTD:	CLEAR_BIT(DIO_PORTD_PORT_REG,config_ptr->dio_pin);	break;
+				default:			break;
+			}
+			
+		}
+		
+	}
+
 }

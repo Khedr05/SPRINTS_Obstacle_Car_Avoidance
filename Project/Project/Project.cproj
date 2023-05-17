@@ -132,31 +132,19 @@
     <Compile Include="APPLICATION\car_module\car_operations.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="COMMON\BIT_Math.h">
+    <Compile Include="COMMON\bit_math.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="COMMON\STD_Types.h">
+    <Compile Include="COMMON\std_types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="COMMON\vect_table.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ECUAL\keypad\keypad.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ECUAL\lcd\lcd.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\motors\dcm_cfg.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\motors\dcm_cfg.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\motors\dcm_interface.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\motors\dcm_private.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ECUAL\motors\dcm_program.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ECUAL\push_button\pb_config.c">
@@ -171,7 +159,34 @@
     <Compile Include="ECUAL\push_button\PB_prog.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\ultrasonic\ultrasonic.h">
+    <Compile Include="ECUAL\ultrasonic\ultrasonic_prog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\ultrasonic\ultrasonic_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\dio_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\dio_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\dio_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\dio_prog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\lcd_config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\lcd_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\lcd_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd_test\lcd_program.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -253,7 +268,6 @@
     <Folder Include="COMMON" />
     <Folder Include="ECUAL\lcd" />
     <Folder Include="ECUAL\keypad" />
-    <Folder Include="ECUAL\motors" />
     <Folder Include="ECUAL\push_button" />
     <Folder Include="ECUAL\ultrasonic" />
     <Folder Include="MCAL" />
@@ -265,6 +279,7 @@
     <Folder Include="MCAL\pwm" />
     <Folder Include="MCAL\timer" />
     <Folder Include="APPLICATION" />
+    <Folder Include="lcd_test" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

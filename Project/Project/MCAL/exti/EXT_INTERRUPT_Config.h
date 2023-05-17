@@ -8,7 +8,7 @@
 #ifndef MCAL_INTERRUPT_EXTERNAL_INTERRUPT_EXT_INTERRUPT_CONFIG_H_
 #define MCAL_INTERRUPT_EXTERNAL_INTERRUPT_EXT_INTERRUPT_CONFIG_H_
 
-#define EXT_INT0 __vector_1
+//#define EXT_INT0 __vector_1
 #define EXT_INT1 __vector_2
 #define EXT_INT2 __vector_3
 
