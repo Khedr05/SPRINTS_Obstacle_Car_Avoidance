@@ -12,9 +12,9 @@
 
 
  /* HAL */
-#include "dcm_config.h"
+#include "dcm_cfg.h"
 #include "dcm_interface.h"
-
+#include "dcm_private.h"
 /*******************************************************************************************************************************************************************/
 /* Declaration and Initialization */
 
@@ -32,19 +32,16 @@ EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
 		u8 u8_a_loopCounter;
 		for (u8_a_loopCounter = 0; u8_a_loopCounter < MOTORS_NUMBER; u8_a_loopCounter++)
 		{
-			DIO_init(DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPinNumber0,
+			DIO_Init(DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPinNumber0,
 				DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPortNumber,
-				DIO_OUT);
-			DIO_init(DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPinNumber1,
+				DIO_MODE_OUTPUT);
+			DIO_Init(DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPinNumber1,
 				DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPortNumber,
-				DIO_OUT);
-			DIO_init(DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motPWMPinNumber,
-				DCM_a_ptrToConfig[u8_a_loopCounter].DCM_g_motEnPortNumber,
-				DIO_OUT);
+				DIO_MODE_OUTPUT);
 		}
 
 	}
-	TMR_u8OVFSetCallBack(DCM_updateStopFlag);
+	//TIMER_u8OVFSetCallBack(DCM_updateStopFlag);
 }
 
 /*******************************************************************************************************************************************************************/
@@ -68,8 +65,8 @@ EN_DCM_ERROR_T DCM_changeDCMDirection(ST_DCM_g_Config_t* DCM_a_ptrToConfig, EN_D
 
 void DCM_vdStopDCM(void)
 {
-	DIO_write(0, PORT_C, DIO_U8_PIN_LOW);
-	DIO_write(1, PORT_C, DIO_U8_PIN_LOW);
+	DIO_WritePin(0, DIO_PORTC, DIO_LOW);
+	DIO_WritePin(1, DIO_PORTC, DIO_LOW);
 }
 
 /************************************************************************************************************************************/
@@ -85,13 +82,13 @@ EN_DCM_ERROR_T DCM_u8SetDutyCycleOfPWM(u8 DCM_a_dutyCycleValue)
 		u16 u16_onTime = DCM_a_mappedDuty;
 		u16 u16_offTime = 10 - DCM_a_mappedDuty;
 
-		while (DCM_g_stopFlag != TRUE)
-		{
-			DIO_write(0, PORT_B, DIO_U8_PIN_HIGH);
-			TMR_tmr2Delay(u16_onTime);
-			DIO_write(0, PORT_B, DIO_U8_PIN_LOW);
-			TMR_tmr2Delay(u16_offTime);
-		}
+// 		while (DCM_g_stopFlag != TRUE)
+// 		{
+// 			DIO_write(0, PORT_B, DIO_U8_PIN_HIGH);
+// 			TMR_tmr2Delay(u16_onTime);
+// 			DIO_write(0, PORT_B, DIO_U8_PIN_LOW);
+// 			TMR_tmr2Delay(u16_offTime);
+// 		}
 		DCM_g_stopFlag = FALSE;
 	}
 }

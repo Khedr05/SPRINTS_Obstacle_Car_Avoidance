@@ -85,10 +85,11 @@ void ICU_FallingEdgeCapture(void)
  * @return a u8 value which represents the error state. If the function executes successfully, it will
  * return STD_OK (0). If there is an error, it will return STD_NOK (1).
  */
+
 u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
 {
     /* Define local variable to set the error state = OK */
-    u8 u8_l_errorState = STD_OK;
+    u8 u8_l_errorState = 0;
 
     /* Check 1: InterruptId and the Sense Control are in the valid range */
     if ( ( u8_a_interruptId <= EXI_U8_INT2 ) && ( u8_a_senseControl <= EXI_U8_SENSE_RISING_EDGE ) )
@@ -145,7 +146,7 @@ u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl )
     else
     {
         /* Update error state = NOK, wrong InterruptId or Sense Control! */
-        u8_l_errorState = STD_NOK;
+        u8_l_errorState = 1;
     }
 
     return u8_l_errorState;
@@ -225,7 +226,7 @@ void TMR_tmr1CleareCompMatInit(void)
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TMR_tmr1Start(u16 u16_a_prescaler)
+EN_TIMER_ERROR_T TIMER_tmr1Start(u16 u16_a_prescaler)
 {
 	*//*select the required prescaler value*//*
 	switch (u16_a_prescaler)

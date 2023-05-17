@@ -27,14 +27,13 @@
   */
   /********************* Motor_0 Configurations ***********************/
 
-
+#include "../../COMMON/BIT_Math.h"
+#include "../../COMMON/STD_Types.h"
 
 typedef struct {
 	u8 DCM_g_motEnPinNumber0;
 	u8 DCM_g_motEnPinNumber1;
-	u8 DCM_g_motPWMPinNumber;
-	EN_DIO_PORT_T DCM_g_motEnPortNumber;
-	u8 DCM_g_motPWMPortNumber;
+	u8 DCM_g_motEnPortNumber;
 }ST_DCM_g_Config_t;
 
 

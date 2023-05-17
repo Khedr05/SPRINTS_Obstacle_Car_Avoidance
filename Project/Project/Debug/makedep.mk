@@ -6,15 +6,13 @@ APPLICATION\app\app.c
 
 APPLICATION\car_module\car_operations.c
 
-<<<<<<< HEAD
 ECUAL\motors\dcm_cfg.c
 
 ECUAL\motors\dcm_program.c
-=======
+
 ECUAL\push_button\pb_config.c
 
 ECUAL\push_button\PB_prog.c
->>>>>>> main
 
 main.c
 

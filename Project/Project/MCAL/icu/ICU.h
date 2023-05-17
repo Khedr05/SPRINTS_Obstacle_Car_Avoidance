@@ -16,6 +16,8 @@
 #include "ICU_cfg.h"
 #include "icu_private.h"
 #include "../TIMER/timer_private.h"
+#include "../../COMMON/BIT_Math.h"
+#include "../../COMMON/STD_Types.h"
 extern ST_ICU_g_Config_t ST_g_softwareICU[1];
 
 typedef enum {

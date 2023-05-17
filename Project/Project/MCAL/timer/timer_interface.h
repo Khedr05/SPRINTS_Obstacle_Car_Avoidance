@@ -17,10 +17,9 @@
 /* STD LIB */
 #include <math.h>
 
-/* LIB */
-#include "../../LIB/std.h"
-#include "../../LIB/bit_math.h"
-
+/* Common */
+#include "../../COMMON/BIT_Math.h"
+#include "../../COMMON/STD_Types.h"
 /* ****************************************************************/
 /* TIMER Macros */
 

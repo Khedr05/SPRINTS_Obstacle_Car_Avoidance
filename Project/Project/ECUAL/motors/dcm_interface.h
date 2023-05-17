@@ -14,12 +14,10 @@
 /* DCM Includes */
 
 /* LIB */
-#include "../../LIB/std.h"
-#include "../../LIB/bit_math.h"
+#include "../../COMMON/BIT_Math.h"
+#include "../../COMMON/STD_Types.h"
 
-/* MCAL */
-#include "../../MCAL/dio/dio_interface.h"
-#include "../../MCAL/timer/timer_interface.h"
+extern ST_DCM_g_Config_t ST_g_carMotors[2];
 
 /*******************************************************************************************************************************************************************/
 /* DCM Macros */

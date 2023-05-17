@@ -144,7 +144,7 @@ void __vector_1( void )		__attribute__((signal));
 /* ***********************************************************************************************/
 /* EXI Functions' Prototypes */
 
-u8 EXI_enablePIE	 ( u8 u8_a_interruptId, u8 u8_a_senseControl );
+u8 EXI_enablePIE( u8 u8_a_interruptId, u8 u8_a_senseControl );
 
 
 #endif /* ICU_PRIVATE_H_ */
