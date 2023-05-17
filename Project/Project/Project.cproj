@@ -147,7 +147,16 @@
     <Compile Include="ECUAL\motors\motor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\push_button\push_button.h">
+    <Compile Include="ECUAL\push_button\pb_config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\push_button\PB_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\push_button\PB_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\push_button\PB_prog.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ECUAL\ultrasonic\ultrasonic.h">
