@@ -23,6 +23,7 @@ u32 u32_g_timer1Overflow = 0;
 u32 ICU_g_ValueRising = 0;
 u32 ICU_g_ValueFalling = 0;
 
+u8 ICU_g_flag = 0; 
 u32 ICU_g_Count = 0;
 EN_icuEdgeFlag ICU_g_edgeFlag;
 /**
@@ -322,6 +323,7 @@ void __vector_1( void )
 		ICU_g_Count = TIMER_g_timer1RegValue + (65535 * u32_g_timer1Overflow);
 		/* Stop timer1 */
 		TIMER_tmr1Stop();
+		ICU_g_flag = 1;
 	}
 
 }	
