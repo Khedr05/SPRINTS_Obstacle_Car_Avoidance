@@ -144,7 +144,19 @@
     <Compile Include="ECUAL\lcd\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ECUAL\motors\motor.h">
+    <Compile Include="ECUAL\motors\dcm_cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\motors\dcm_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\motors\dcm_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\motors\dcm_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\motors\dcm_program.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ECUAL\push_button\push_button.h">
@@ -186,7 +198,19 @@
     <Compile Include="MCAL\exti\EXT_INTERRUPT_Prog.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\icu\icu.h">
+    <Compile Include="MCAL\icu\ICU.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\icu\ICU.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\icu\ICU_cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\icu\ICU_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\icu\icu_private.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="MCAL\mcu_cfg\MCU_Interface.h">
@@ -198,10 +222,19 @@
     <Compile Include="MCAL\mcu_cfg\MCU_Prog.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\pwm\pwmh.h">
+    <Compile Include="MCAL\timer\timer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MCAL\timer\timer.h">
+    <Compile Include="MCAL\timer\timer_config.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\timer\timer_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\timer\timer_interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\timer\timer_private.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
