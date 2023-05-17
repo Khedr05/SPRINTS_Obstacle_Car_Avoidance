@@ -2,7 +2,10 @@
  * icu_private.h
  *
  * Created: 5/17/2023 5:56:15 AM
- *  Author: Mahmoud
+ *         Author: Mahmoud Mowafey - https://github.com/Mahmoud-Mowafy
+ *  Description: This file contains all Direct Current Motor (DCM) functions' implementation.
+ *		MCU Datasheet: AVR ATmega32
+ *                  https://ww1.microchip.com/downloads/en/DeviceDoc/Atmega32A-DataSheet-Complete-DS40002072A.pdf
  */ 
 
 
