@@ -141,7 +141,7 @@
 /* ***********************************************************************************************/
 /* EXI Functions' Prototypes */
 
-Uchar8_t EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl );
+
 
 
 #endif /* ICU_PRIVATE_H_ */

@@ -10,12 +10,7 @@
 
 #include "ICU.h"
 
-/* Global Array of 3 Pointers to Functions ( because we have 3 External Interrupts ),
- * these functions ( in APP Layer ) which those 3 Pointers will hold their addresses;
- * are having void input arguments and void return type. */
-// static void ( *void_gs_apfInterrupstAction[3] ) ( void ) = { NULL, NULL, NULL };
-// 	
-// void ( *pf_a_interruptAction ) ( void ) = ICU_FallingEdgeCapture();
+
 
 Uint32_t TIMER_g_timer1RegValue = 0;
 Uint32_t u32_g_timer1Overflow = 0;
@@ -82,27 +77,15 @@ void ICU_FallingEdgeCapture(void)
  * @param[in] u8_a_senseControl This parameter is used to specify the sense control of the external interrupt.
  * 			  It can take one of the following values:
  *
- * @return a u8 value which represents the error state. If the function executes successfully, it will
- * return STD_OK (0). If there is an error, it will return STD_NOK (1).
+ * @return void
  */
 
-Uchar8_t EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl )
+void EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl )
 {
-    /* Define local variable to set the error state = OK */
-    u8 u8_l_errorState = 0;
 
-    /* Check 1: InterruptId and the Sense Control are in the valid range */
-    if ( ( u8_a_interruptId <= EXI_U8_INT2 ) && ( u8_a_senseControl <= EXI_U8_SENSE_RISING_EDGE ) )
-    {
-        /* 1.0 Enable Global Interrupt Flag */
         SET_BIT(TIMER_U8_SREG_REG, GLOBAL_INTERRUPT_ENABLE_BIT);
 
-        /* Check 1.1: Required InterruptId */
-        switch ( u8_a_interruptId )
-        {
-            case EXI_U8_INT0:
-                /* Enable Interrupt 0 */
-                SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT0_BIT );
+        SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT0_BIT );
 
                 /* Check 1.1.1: Required SenseControl */
                 switch ( u8_a_senseControl )
@@ -112,44 +95,6 @@ Uchar8_t EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl )
                     case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
                     case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
                 }
-                break;
-
-            case EXI_U8_INT1:
-                /* Enable Interrupt 1 */
-                SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT1_BIT );
-
-                /* Check 1.1.2: Required SenseControl */
-                switch( u8_a_senseControl)
-                {
-                    case EXI_U8_SENSE_LOW_LEVEL		: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-                    case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-                    case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC10_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC11_BIT ); break;
-
-                }
-                break;
-
-            case EXI_U8_INT2:
-                /* Enable Interrupt 2 */
-                SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT2_BIT );
-
-                /* Check 1.1.3: Required SenseControl */
-                switch( u8_a_senseControl )
-                {
-                    case EXI_U8_SENSE_FALLING_EDGE: CLEAR_BIT( EXI_U8_MCUCSR_REG, EXI_U8_ISC2_BIT ); break;
-                    case EXI_U8_SENSE_RISING_EDGE :	SET_BIT( EXI_U8_MCUCSR_REG, EXI_U8_ISC2_BIT ); break;
-                }
-                break;
-        }
-    }
-        /* Check 2: InterruptId or the Sense Control is not in the valid range */
-    else
-    {
-        /* Update error state = NOK, wrong InterruptId or Sense Control! */
-        u8_l_errorState = 1;
-    }
-
-    return u8_l_errorState;
 }
 
 
@@ -200,22 +145,7 @@ EN_TIMER_ERROR_T TIMER_tmr1NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEna
 }
 
 /* ********************************************************************************************************************/
-/**
- * @brief timer_1 compare match mode.
- *
- * This function initializes the compare match mode for timer_1.
- * @param[in] void.
- *
- * @return void
- */
-void TMR_tmr1CleareCompMatInit(void)
-{
-	//*Enable CTCA and CTCB interrupt  OCIE1A = 4, OCIE1B = 3*//*
-	SET_BIT(TMR_U8_TIMSK_REG, TMR_U8_OCIE1A_BIT);
-	SET_BIT(TMR_U8_TIMSK_REG, TMR_U8_OCIE1B_BIT);
-	//*CTC mode WGM12 = 3*//*
-	SET_BIT(TMR_U8_TCCR1B_REG, TMR_U8_WGM12_BIT);
-}
+
 /* *******************************************************************************************/
 /**
  * @brief Start the timer by setting the desired prescaler.
@@ -273,32 +203,7 @@ void TIMER_tmr1Stop(void)
 }
 
 
-/* ****************** Inside the DC Motor Module ***************************************/
-/*
-EN_TMR_ERROR_T TMR_tmr1CreatePWM(u8 u8_a_dutyCycle)
-{
-	if (u8_a_dutyCycle > MAX_COUNTS)
-	{
-		return TMR_ERROR;
-	}
-	else
-	{
-		TMR_tmr1CleareCompMatchInit();
-		TMR_tmr1Start(NO_PRESCALER);
-		if (u8_a_dutyCycle > 100)
-		{
-			u8_a_dutyCycle = 100;
-		}
-		*//*macros*//*
-		f64 val = (u8_a_dutyCycle / 100.0);
-		u16 max = (1 << 16) - 1;
-		f64 res = val * max;
-		TMR_U16_OCR1A_REG = res;
-		TMR_U16_OCR1B_REG = max;
-	}
-	return TMR_OK;
-}*/
-		
+
 	
 /**
  * ISR function implementation of INT0

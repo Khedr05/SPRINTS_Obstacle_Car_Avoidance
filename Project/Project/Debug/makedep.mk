@@ -10,6 +10,10 @@ ECUAL\keypad\keypad_config.c
 
 ECUAL\keypad\keypad_program.c
 
+ECUAL\motors\dcm_cfg.c
+
+ECUAL\motors\dcm_program.c
+
 ECUAL\push_button\pb_config.c
 
 ECUAL\push_button\PB_prog.c

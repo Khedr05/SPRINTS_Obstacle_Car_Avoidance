@@ -14,10 +14,12 @@
 /* DCM Includes */
 
 /* LIB */
-#include "../../COMMON/BIT_Math.h"
-#include "../../COMMON/STD_Types.h"
+#include "../../COMMON/bit_math.h"
+#include "../../COMMON/std_types.h"
 
-extern ST_DCM_g_Config_t ST_g_carMotors[2];
+/* MCAL */
+#include "../../MCAL/dio/dio.h"
+#include "../../MCAL/timer/timer_interface.h"
 
 /*******************************************************************************************************************************************************************/
 /* DCM Macros */
@@ -45,10 +47,14 @@ typedef enum {
 	FALSE,
 	TRUE
 }EN_DCM_FLAG;
+
+
+
+extern ST_DCM_g_Config_t ST_g_carMotors[2];
 /*******************************************************************************************************************************************************************/
 /* DCM Functions' Prototypes */
 
-EN_DCM_ERROR_T DCM_rotateDCM(u8 DCM_a_rotateDirection, u16 DCM_a_rotateSpeed);
+EN_DCM_ERROR_T DCM_rotateDCM(u8 DCM_l_motorNumber, u8 DCM_a_rotateDirection, u16 DCM_a_rotateSpeed);
 
 EN_DCM_ERROR_T DCM_changeDCMDirection(ST_DCM_g_Config_t* DCM_a_ptrToConfig, EN_DCM_MOTORSIDE DCM_a_motorNum);
 

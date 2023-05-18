@@ -10,6 +10,9 @@
 #ifndef DCM_CFG_H_
 #define DCM_CFG_H_
 
+#include "../../COMMON/bit_math.h"
+#include "../../COMMON/std_types.h"
+
 /*******************************************************************************************************************************************************************/
 /* DCM Includes */
 /*******************************************************************************************************************************************************************/
@@ -27,10 +30,9 @@
   */
   /********************* Motor_0 Configurations ***********************/
 
-#include "../../COMMON/BIT_Math.h"
-#include "../../COMMON/STD_Types.h"
 
-typedef struct {
+
+typedef struct ST_DCM_g_Config_t {
 	u8 DCM_g_motEnPinNumber0;
 	u8 DCM_g_motEnPinNumber1;
 	u8 DCM_g_motEnPortNumber;

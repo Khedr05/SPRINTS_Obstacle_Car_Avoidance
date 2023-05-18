@@ -262,3 +262,32 @@ void DIO_Initpin(DIO_ConfigType *config_ptr)
 	}
 
 }
+
+
+
+void DIO_InitDCM(u8 pin, u8 port,u8 mode)
+{
+	if ( mode == DIO_MODE_INPUT)
+	{
+		switch(port)
+		{
+			case DIO_PORTA:	CLEAR_BIT(DIO_PORTA_DDR_REG,pin);	break;
+			case DIO_PORTB:	CLEAR_BIT(DIO_PORTB_DDR_REG,pin);	break;
+			case DIO_PORTC:	CLEAR_BIT(DIO_PORTC_DDR_REG,pin);	break;
+			case DIO_PORTD:	CLEAR_BIT(DIO_PORTD_DDR_REG,pin);	break;
+			default:			break;
+		}
+	}
+	else if ( mode == DIO_MODE_OUTPUT)
+	{
+		switch( port )
+		{
+			case DIO_PORTA:	SET_BIT(DIO_PORTA_DDR_REG,pin);	break;
+			case DIO_PORTB:	SET_BIT(DIO_PORTB_DDR_REG,pin);	break;
+			case DIO_PORTC:	SET_BIT(DIO_PORTC_DDR_REG,pin);	break;
+			case DIO_PORTD:	SET_BIT(DIO_PORTD_DDR_REG,pin);	break;
+			default:			break;
+		}
+		
+	}
+}

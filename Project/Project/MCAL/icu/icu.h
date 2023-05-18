@@ -30,6 +30,8 @@ typedef enum {
 
 void ICU_RisingEdgeCapture(void);
 void ICU_getValue(Uint32_t *var);
+
+void EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl );
 /*void ICU_FallingEdgeCapture(void);*/
 EN_TIMER_ERROR_T TIMER_tmr1NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnable);
 void TIMER_tmr1CleareCompMatInit(void);
