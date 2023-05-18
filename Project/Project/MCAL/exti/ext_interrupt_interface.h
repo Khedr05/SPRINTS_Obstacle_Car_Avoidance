@@ -8,6 +8,7 @@
 #ifndef MCAL_INTERRUPT_EXTERNAL_INTERRUPT_EXT_INTERRUPT_INTERFACE_H_
 #define MCAL_INTERRUPT_EXTERNAL_INTERRUPT_EXT_INTERRUPT_INTERFACE_H_
 
+#include "../../COMMON/vect_table.h"
 #include "../../common/STD_Types.h"
 #include "../../common/BIT_Math.h"
 #include "EXT_INTERRUPT_Config.h"

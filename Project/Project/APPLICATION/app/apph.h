@@ -10,7 +10,11 @@
 #define APPH_H_
 
 
+#include "../car_module/car_operations.h"
 
 
+void app_init();
+
+void app_main();
 
 #endif /* APPH_H_ */

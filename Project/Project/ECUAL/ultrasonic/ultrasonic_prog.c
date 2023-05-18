@@ -51,5 +51,6 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
 	ICU_getValue(&val);
 	
 	*Copy_f64distance = val / 466.47;	
+	ICU_g_flag = 0;
 }
 

@@ -14,6 +14,7 @@
 
 #include "../../COMMON/BIT_Math.h"
 #include "../../COMMON/STD_Types.h"
+#include "../../COMMON/vect_table.h"
 #include "ICU_cfg.h"
 #include "icu_private.h"
 #include "../timer/timer_interface.h"

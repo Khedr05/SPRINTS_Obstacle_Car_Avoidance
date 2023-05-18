@@ -11,20 +11,11 @@ const ST_PUSH_BTN_t A_pbConfig[NUMBER_OF_PUSH_BUTTONS] =
 {
 	{
 		.PUSH_BTN_pin.dio_mode = DIO_MODE_INPUT,
-		.PUSH_BTN_pin.dio_pin = DIO_PIN5,
-		.PUSH_BTN_pin.dio_port = DIO_PORTA,
+		.PUSH_BTN_pin.dio_pin = DIO_PIN4,
+		.PUSH_BTN_pin.dio_port = DIO_PORTC,
 		.PUSH_BTN_pin.dio_initial_value = DIO_HIGH,
 		.PUSH_BTN_pin.dio_pullup_resistor = DIO_PULLUP_ENABLED,
 		.PUSH_BTN_connection = PUSH_BTN_PULL_UP,
-		.PUSH_BTN_state = PUSH_BTN_STATE_RELEASED
-	},
-	{
-		.PUSH_BTN_pin.dio_mode = DIO_MODE_INPUT,
-		.PUSH_BTN_pin.dio_pin = DIO_PIN6,
-		.PUSH_BTN_pin.dio_port = DIO_PORTA,
-		.PUSH_BTN_pin.dio_initial_value = DIO_LOW,
-		.PUSH_BTN_pin.dio_pullup_resistor = DIO_PULLUP_DISABLED,
-		.PUSH_BTN_connection = PUSH_BTN_PULL_DOWN,
 		.PUSH_BTN_state = PUSH_BTN_STATE_RELEASED
 	}
 };

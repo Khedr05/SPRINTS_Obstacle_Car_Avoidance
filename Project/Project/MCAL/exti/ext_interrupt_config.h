@@ -9,12 +9,6 @@
 #define MCAL_INTERRUPT_EXTERNAL_INTERRUPT_EXT_INTERRUPT_CONFIG_H_
 
 //#define EXT_INT0 __vector_1
-#define EXT_INT1 __vector_2
-#define EXT_INT2 __vector_3
-
-
-#define ISR(INT_VECT)void INT_VECT(void) __attribute__ ((signal,used));\
-void INT_VECT(void)
 
 #define EXT_INTERRUPT_PINS			3
 

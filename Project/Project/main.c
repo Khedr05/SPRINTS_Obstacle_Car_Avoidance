@@ -5,25 +5,20 @@
  * Author : 20101
  */ 
 
-#include "ECUAL/ultrasonic/ultrasonic_interface.h"
-#include "lcd_test/lcd_interface.h"
-#include "COMMON/STD_Types.h"
-#include <util/delay.h>
+#include "APPLICATION/app/apph.h"
 
 
 void main(void)
 {
-	float64_t dis = 0; 
-	HLCD_vidInit();
-	ultrasonic_vInit();
-	ultrasonic_vGetDistance(&dis);
-	HLCD_WriteInt(dis);
+	//float64_t val;
+	app_init();
 	while(1)
 	{
-		ultrasonic_vGetDistance(&dis);
-		HLCD_WriteInt(dis);
-		_delay_ms(2000);
-		HLCD_ClrDisplay();
+// 			ultrasonic_vGetDistance(&val);
+// 			HLCD_WriteInt(val);
+// 			_delay_ms(1000);
+// 			HLCD_ClrDisplay();
+		app_main();
 		
 	}
 }

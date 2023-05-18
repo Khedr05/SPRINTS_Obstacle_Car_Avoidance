@@ -49,7 +49,7 @@ void ICU_RisingEdgeCapture(void)
 {
 	TIMER_tmr1NormalModeInit(ST_g_softwareICU->timer1_ISR);
 	TIMER_tmr1Stop();
-	EXI_enablePIE( ST_g_softwareICU->ICU_exti, ST_g_softwareICU->ICU_firstSenseControl );
+	EXI_enablePIE( ST_g_softwareICU->ICU_exti, ST_g_softwareICU->ICU_firstSenseControl);
 	ICU_g_edgeFlag = RISING;
 	TIMER_tmr1Start(1);
 }
@@ -303,7 +303,7 @@ EN_TMR_ERROR_T TMR_tmr1CreatePWM(u8 u8_a_dutyCycle)
 /**
  * ISR function implementation of INT0
  * */
-void __vector_1( void )
+ISR(EXT_INT_0)
 {
     /* Save the current value of the timer/counter register  */
 	TIMER_g_timer1RegValue = TMR_U16_TCNT1_REG;
@@ -329,7 +329,7 @@ void __vector_1( void )
 
 }	
 		
-ISR( TIMER1_OVF_vect )
+ISR(TIM1_OVF_INT)
 {
 	u32_g_timer1Overflow++;
 }		

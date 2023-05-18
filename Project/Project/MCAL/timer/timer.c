@@ -89,8 +89,8 @@ EN_TIMER_ERROR_T TMR_TMR0NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnabl
     switch (en_a_interrputEnable) {
         case ENABLED:
             /* select the normal mode for the TMR, TMR is not start yet.*/
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
             /*Enable the global interrupt enable bit.*/
             SET_BIT(TMR_U8_SREG_REG, GLOBAL_INTERRUPT_ENABLE_BIT);
             /* Enable the interrupt for TMR0 overflow.*/
@@ -100,8 +100,8 @@ EN_TIMER_ERROR_T TMR_TMR0NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnabl
             break;
         case DISABLED:
             /* select the normal mode for the TMR, TMR is not start yet.*/
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
 			/*Set the interrupt flag*/
 			u8_l_mode = POLLING;
             break;
@@ -213,27 +213,27 @@ EN_TIMER_ERROR_T TIMER_delay_ms(u16 u16_a_interval) {
 EN_TIMER_ERROR_T TIMER_timer0Start(u16 u16_a_prescaler) {
     switch (u16_a_prescaler) {
         case 1:
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
             break;
         case 8:
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
             break;
         case 64:
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
             break;
         case 256:
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
             break;
         case 1024:
-            CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
+            CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
             SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
             break;
@@ -255,9 +255,9 @@ EN_TIMER_ERROR_T TIMER_timer0Start(u16 u16_a_prescaler) {
  */
 void TIMER_timer0Stop(void) {
     /* Stop the TMR by clearing the prescaler*/
-    CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
-    CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
-    CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
+    CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS00_BIT);
+    CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
+    CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
 }
 /* ***********************************************************************************************/
 /**
@@ -282,7 +282,7 @@ void TIMER_timer0Stop(void) {
 		*//*initial value for the TMR/counter register.*//*
 		TMR_U8_TCNT0_REG = 0x00;
 		*//* select the CTC mode for the TMR0.*//*
-		CLR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
+		CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
 		SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
 		*//*must be set for the non_PWM mode;*//*
 		SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_FOC0_BIT);
@@ -303,28 +303,28 @@ void TIMER_timer0Stop(void) {
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-// EN_TIMER_ERROR_T TIMER_TMR2NormalModeInit(EN_TMR_INTERRPUT_T en_a_interrputEnable) {
-// 
-//     switch (en_a_interrputEnable) {
-//         case ENABLED:
-//             /* select the normal mode for the TMR, TMR is not start yet.*/
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
-//             /*Enable the global interrupt enable bit.*/
-//             SET_BIT(TMR_U8_SREG_REG, GLOBAL_INTERRUPT_ENABLE_BIT);
-//             /* Enable the interrupt for TMR0 overflow.*/
-//             SET_BIT(TMR_U8_TIMSK_REG, TMR_U8_TOIE2_BIT);
-//             break;
-//         case DISABLED:
-//             /* select the normal mode for the TMR, TMR is not start yet.*/
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
-//             break;
-//         default:
-//             return TMR_ERROR;
-//     }
-//     return TMR_OK;
-// }
+EN_TIMER_ERROR_T TIMER_TMR2NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnable) {
+
+    switch (en_a_interrputEnable) {
+        case ENABLED:
+            /* select the normal mode for the TMR, TMR is not start yet.*/
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
+            /*Enable the global interrupt enable bit.*/
+            SET_BIT(TMR_U8_SREG_REG, GLOBAL_INTERRUPT_ENABLE_BIT);
+            /* Enable the interrupt for TMR0 overflow.*/
+            SET_BIT(TMR_U8_TIMSK_REG, TMR_U8_TOIE2_BIT);
+            break;
+        case DISABLED:
+            /* select the normal mode for the TMR, TMR is not start yet.*/
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
+            break;
+        default:
+            return TIMER_ERROR;
+    }
+    return TIMER_OK;
+}
 
 /* ***********************************************************************************************/
 
@@ -337,46 +337,46 @@ void TIMER_timer0Stop(void) {
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-// EN_TMR_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
-//     if ( ( u16_a_interval / SECOND_OPERATOR ) > ( MAX_TMR_DELAY ) ) {
-// 	 return TMR_ERROR;
-// 	}       
-//     else {
-//         /* Clear the TCCR Register*/
-//         TMR_U8_TCCR2_REG = 0x00;
-//         /*Get the time in second*/
-//         f64 d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
-//         /*Compare the desired delay by the maximum delay for each overflow*/
-//         if (d64_a_delay < MAX_DELAY) {
-//             /*just on overflow is required*/
-//             TMR_U8_TCNT2_REG = (u8) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
-//             u16_g_overflow2Numbers = 1;
-//         }
-// 		 else if (d64_a_delay == MAX_DELAY) {
-//             TMR_U8_TCNT2_REG = 0x00;
-//             u16_g_overflow2Numbers = 1;
-//         } else {
-//             u16_g_overflow2Numbers = ceil(d64_a_delay / MAX_DELAY);
-//             TMR_U8_TCNT2_REG = (u8) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflow2Numbers - 1.0))) /
-//                                                        TICK_TIME)); // in decimal  (0 - 255)
-// 			u16_g_tcnt2InitialVal = TMR_U8_TCNT2_REG;
-// 			
-// 		}
-//           u16_g_overflow2Ticks = 0;
-//           TMR_TMR2Start(1024);
-//           /*Polling the overflowNumbers and the overflow flag bit*/
-// //           while (u16_g_overflow2Numbers > u16_g_overflow2Ticks /*&& (u8_g_TMRShutdownFlag == NULL || *u8_g_TMRShutdownFlag == 0)*/)
-// //           {
-// // 	          while ((TMR_U8_TIFR_REG & (1 << 6)) == 0);
-// // 	          TMR_U8_TIFR_REG |= (1 << 6);
-// // 	          u16_g_overflow2Ticks++;
-// //           }				
-// 
-//     }
+EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
+    if ( ( u16_a_interval / SECOND_OPERATOR ) > ( MAX_TIMER_DELAY ) ) {
+	 return TIMER_ERROR;
+	}       
+    else {
+        /* Clear the TCCR Register*/
+        TMR_U8_TCCR2_REG = 0x00;
+        /*Get the time in second*/
+        f64 d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
+        /*Compare the desired delay by the maximum delay for each overflow*/
+        if (d64_a_delay < MAX_DELAY) {
+            /*just on overflow is required*/
+            TMR_U8_TCNT2_REG = (u8) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
+            u16_g_overflow2Numbers = 1;
+        }
+		 else if (d64_a_delay == MAX_DELAY) {
+            TMR_U8_TCNT2_REG = 0x00;
+            u16_g_overflow2Numbers = 1;
+        } else {
+            u16_g_overflow2Numbers = ceil(d64_a_delay / MAX_DELAY);
+            TMR_U8_TCNT2_REG = (u8) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflow2Numbers - 1.0))) /
+                                                       TICK_TIME)); // in decimal  (0 - 255)
+			u16_g_tcnt2InitialVal = TMR_U8_TCNT2_REG;
+			
+		}
+          u16_g_overflow2Ticks = 0;
+          TIMER_TMR2Start(1024);
+          /*Polling the overflowNumbers and the overflow flag bit*/
+//           while (u16_g_overflow2Numbers > u16_g_overflow2Ticks /*&& (u8_g_TMRShutdownFlag == NULL || *u8_g_TMRShutdownFlag == 0)*/)
+//           {
+// 	          while ((TMR_U8_TIFR_REG & (1 << 6)) == 0);
+// 	          TMR_U8_TIFR_REG |= (1 << 6);
+// 	          u16_g_overflow2Ticks++;
+//           }				
+
+    }
 	
-// 
-//     return TMR_OK;
-// }
+
+    return TIMER_OK;
+}
 
 /* *************************************************************************************************/
 /**
@@ -388,47 +388,47 @@ void TIMER_timer0Stop(void) {
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-// EN_TMR_ERROR_T TMR_TMR2Start(u16 u16_a_prescaler) {
-//     switch (u16_a_prescaler) {
-//         case 1:
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//             break;
-//         case 8:
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             break;
-//         case 32:
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//         case 64:
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//         case 128:
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//             break;
-//         case 256:
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             break;
-//         case 1024:
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-//             SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//             break;
-//         default:
-//             return TMR_ERROR;
-//     }
-//     return TMR_OK;
-// 
-// }
+EN_TIMER_ERROR_T TIMER_TMR2Start(u16 u16_a_prescaler) {
+    switch (u16_a_prescaler) {
+        case 1:
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+            break;
+        case 8:
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            break;
+        case 32:
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+        case 64:
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+        case 128:
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+            break;
+        case 256:
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            break;
+        case 1024:
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+            SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+            break;
+        default:
+            return TIMER_ERROR;
+    }
+    return TIMER_OK;
+
+}
 /* ************************************************************************************************/
 /**
  * @brief Stop the TMR by setting the prescaler to be 000--> TMR is stopped.
@@ -438,12 +438,12 @@ void TIMER_timer0Stop(void) {
  *
  * @return void
  */
-// void TMR_TMR2Stop(void) {
-//     /* Stop the TMR by clearing the prescaler*/
-//     CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
-//     CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
-//     CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
-// }
+void TMR_TMR2Stop(void) {
+    /* Stop the TMR by clearing the prescaler*/
+    CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS20_BIT);
+    CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
+    CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
+}
 /* ************************************************************************************************/
 /**
  * @brief TMR compare match mode.
@@ -467,7 +467,7 @@ void TIMER_timer0Stop(void) {
 		*//*initial value for the TMR/counter register.*//*
 		TMR_U8_TCNT2_REG = 0x00;
 		*//* select the CTC mode for the TMR0.*//*
-		CLR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
+		CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
 		SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
 		*//*must be set for the non_PWM mode;*//*
 		SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_FOC2_BIT);
@@ -485,16 +485,16 @@ void TIMER_timer0Stop(void) {
  * @param void_a_pfOvfInterruptAction Pointer to the function to be called on TMR overflow interrupt
  * @return EN_TMR_ERROR_T Returns TMR_OK if callback function is set successfully, else returns TMR_ERROR
  */
-// EN_TMR_ERROR_T TMR_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void)) {
-//     // Check if the Pointer to Function is not equal to NULL
-//     if (void_a_pfOvfInterruptAction != NULL) {
-//         // Store the passed address of function ( in APP Layer ) through pointer to function ( OVFInterruptAction ) into Global Array of Pointers to Functions ( OVFInterruptsAction ) in the passed index ( TMRId ).
-//         void_g_pfOvfInterruptAction = void_a_pfOvfInterruptAction;
-//         return TMR_OK;
-//     } else {
-//         return TMR_ERROR;
-//     }
-// }
+EN_TIMER_ERROR_T TMR_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void)) {
+    // Check if the Pointer to Function is not equal to NULL
+    if (void_a_pfOvfInterruptAction != NULL) {
+        // Store the passed address of function ( in APP Layer ) through pointer to function ( OVFInterruptAction ) into Global Array of Pointers to Functions ( OVFInterruptsAction ) in the passed index ( TMRId ).
+        void_g_pfOvfInterruptAction = void_a_pfOvfInterruptAction;
+        return TIMER_OK;
+    } else {
+        return TIMER_ERROR;
+    }
+}
 
 /**
  * @brief Interrupt Service Routine for TMR Overflow.
@@ -510,17 +510,17 @@ void TIMER_timer0Stop(void) {
 //__attribute__((optimize("O0")))
 //ISR(TMR_ovfVect)
 
-// ISR( TMR2_OVF_vect )
-// {
-// 	u16_g_overflow2Ticks++;
-// 	//TMR_U8_TCNT2_REG = u16_g_tcnt2InitialVal;
-// 	if (u16_g_overflow2Ticks >= u16_g_overflow2Numbers )
-// 	{
-// 		u16_g_overflow2Ticks = 0;
-// 		u8_g_timeOut = 1;
-// 		TMR_TMR2Stop();
-// 	}
-// }
+ISR(TIM2_OVF_INT)
+{
+	u16_g_overflow2Ticks++;
+	//TMR_U8_TCNT2_REG = u16_g_tcnt2InitialVal;
+	if (u16_g_overflow2Ticks >= u16_g_overflow2Numbers )
+	{
+		u16_g_overflow2Ticks = 0;
+		u8_g_timeOut = 1;
+		TMR_TMR2Stop();
+	}
+}
 
 
 // 
@@ -533,7 +533,7 @@ void TIMER_timer0Stop(void) {
 // 		u16_g_overflowTicks = 0;
 // 		u8_g_timeOut = 1;
 // 		TMR_TMR0Stop();
-// 		CLR_BIT(TMR_U8_TIMSK_REG, TMR_U8_TOIE0_BIT);
+// 		CLEAR_BIT(TMR_U8_TIMSK_REG, TMR_U8_TOIE0_BIT);
 // 		u8_l_mode == POLLING;
 // 	}
 // }

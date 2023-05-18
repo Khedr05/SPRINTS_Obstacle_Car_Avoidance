@@ -73,7 +73,6 @@
 /**
  * ISR function prototypes for External Interrupt Request 0 ( INT0 )
  * */
-void __vector_1( void )		__attribute__((signal));
 
 
 /* Global Interrutpt */

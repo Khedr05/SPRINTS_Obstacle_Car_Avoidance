@@ -20,6 +20,7 @@
 /* Common */
 #include "../../COMMON/BIT_Math.h"
 #include "../../COMMON/STD_Types.h"
+#include "../../COMMON/vect_table.h"
 /* ****************************************************************/
 /* TIMER Macros */
 
@@ -158,7 +159,7 @@ void TIMER_timer0Stop(void);
  * @return An EN_TIMER_ERROR_T value indicating the success or failure of the operation
  *         (TIMER_OK if the operation succeeded, TIMER_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_timer2NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnable);
+EN_TIMER_ERROR_T TIMER_TMR2NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnable);
 
 /**
  * @brief Stop the timer by setting the prescaler to be 000--> timer is stopped.
@@ -179,7 +180,7 @@ void TIMER_timer2Stop(void);
  * @return An EN_TIMER_ERROR_T value indicating the success or failure of the operation
  *         (TIMER_OK if the operation succeeded, TIMER_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_timer2Start(u16 u16_a_prescaler);
+EN_TIMER_ERROR_T TIMER_TMR2Start(u16 u16_a_prescaler);
 
 /**
  * @brief Creates a delay using timer_2 in overflow mode
@@ -190,9 +191,9 @@ EN_TIMER_ERROR_T TIMER_timer2Start(u16 u16_a_prescaler);
  * @return An EN_TIMER_ERROR_T value indicating the success or failure of the operation
  *         (TIMER_OK if the operation succeeded, TIMER_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_delay_us(u16 u16_a_interval);
+EN_TIMER_ERROR_T TMR_delay_us(u16 u16_a_interval);
 
-EN_TIMER_ERROR_T TIMER_intDelay_ms(u16 u16_a_interval);
+EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval);
 
 /**
  * @brief Set callback function for timer overflow interrupt
@@ -200,7 +201,7 @@ EN_TIMER_ERROR_T TIMER_intDelay_ms(u16 u16_a_interval);
  * @param void_a_pfOvfInterruptAction Pointer to the function to be called on timer overflow interrupt
  * @return EN_TIMER_ERROR_T Returns TIMER_OK if callback function is set successfully, else returns TIMER_ERROR
  */
-EN_TIMER_ERROR_T TIMER_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void));
+EN_TIMER_ERROR_T TMR_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void));
 
 //EN_TIMER_ERROR_T TIMER_timer2CleareCompMatInit(u8 u8_a_outCompValue );
 
