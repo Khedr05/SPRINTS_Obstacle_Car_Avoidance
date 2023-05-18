@@ -4,6 +4,7 @@ Project.elf:     file format elf32-avr
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
 <<<<<<< HEAD
+<<<<<<< HEAD
   0 .text         00001d4c  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .data         00000090  00800060  00001d4c  00001de0  2**0
@@ -56,12 +57,40 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_ranges 00000270  00000000  00000000  0000d6a9  2**0
 >>>>>>> main
+=======
+  0 .text         00001e64  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000008e  00800060  00001e64  00001ef8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000001e  008000ee  008000ee  00001f86  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001f86  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001fb8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000378  00000000  00000000  00001ff4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00003e6a  00000000  00000000  0000236c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000015de  00000000  00000000  000061d6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000235f  00000000  00000000  000077b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000724  00000000  00000000  00009b14  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000014db  00000000  00000000  0000a238  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001f96  00000000  00000000  0000b713  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000270  00000000  00000000  0000d6a9  2**0
+>>>>>>> main
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
        0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+<<<<<<< HEAD
 <<<<<<< HEAD
        4:	0c 94 aa 09 	jmp	0x1354	; 0x1354 <__vector_1>
        8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
@@ -75,6 +104,8 @@ Disassembly of section .text:
       28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       2c:	0c 94 57 0a 	jmp	0x14ae	; 0x14ae <__vector_11>
 =======
+=======
+>>>>>>> main
        4:	0c 94 36 0a 	jmp	0x146c	; 0x146c <__vector_1>
        8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
        c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
@@ -86,6 +117,9 @@ Disassembly of section .text:
       24:	0c 94 89 0a 	jmp	0x1512	; 0x1512 <__vector_9>
       28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       2c:	0c 94 e3 0a 	jmp	0x15c6	; 0x15c6 <__vector_11>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
       30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
@@ -110,9 +144,12 @@ Disassembly of section .text:
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       66:	ec e4       	ldi	r30, 0x4C	; 76
       68:	fd e1       	ldi	r31, 0x1D	; 29
 =======
+=======
+>>>>>>> main
       66:	e4 e6       	ldi	r30, 0x64	; 100
       68:	fe e1       	ldi	r31, 0x1E	; 30
 >>>>>>> main
@@ -137,8 +174,13 @@ Disassembly of section .text:
       82:	b2 07       	cpc	r27, r18
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
 <<<<<<< HEAD
+<<<<<<< HEAD
       86:	0e 94 1c 04 	call	0x838	; 0x838 <main>
       8a:	0c 94 a4 0e 	jmp	0x1d48	; 0x1d48 <_exit>
+=======
+      86:	0e 94 4e 04 	call	0x89c	; 0x89c <main>
+      8a:	0c 94 30 0f 	jmp	0x1e60	; 0x1e60 <_exit>
+>>>>>>> main
 =======
       86:	0e 94 4e 04 	call	0x89c	; 0x89c <main>
       8a:	0c 94 30 0f 	jmp	0x1e60	; 0x1e60 <_exit>
@@ -160,7 +202,11 @@ void app_init()
 	TIMER_TMR2NormalModeInit(ENABLED);
       9a:	80 e0       	ldi	r24, 0x00	; 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       9c:	0e 94 7b 0a 	call	0x14f6	; 0x14f6 <TIMER_TMR2NormalModeInit>
+=======
+      9c:	0e 94 07 0b 	call	0x160e	; 0x160e <TIMER_TMR2NormalModeInit>
+>>>>>>> main
 =======
       9c:	0e 94 07 0b 	call	0x160e	; 0x160e <TIMER_TMR2NormalModeInit>
 >>>>>>> main
@@ -206,6 +252,7 @@ void app_main()
       d2:	8f ee       	ldi	r24, 0xEF	; 239
       d4:	90 e0       	ldi	r25, 0x00	; 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       d6:	0e 94 eb 01 	call	0x3d6	; 0x3d6 <ultrasonic_vGetDistance>
 			HLCD_ClrDisplay();
       da:	0e 94 c0 03 	call	0x780	; 0x780 <HLCD_ClrDisplay>
@@ -234,6 +281,10 @@ void app_main()
 =======
       d6:	0e 94 2a 02 	call	0x454	; 0x454 <ultrasonic_vGetDistance>
 			if(obstcaleDistance > 70)
+=======
+      d6:	0e 94 2a 02 	call	0x454	; 0x454 <ultrasonic_vGetDistance>
+			if(obstcaleDistance > 70)
+>>>>>>> main
       da:	c0 90 ef 00 	lds	r12, 0x00EF	; 0x8000ef <obstcaleDistance>
       de:	d0 90 f0 00 	lds	r13, 0x00F0	; 0x8000f0 <obstcaleDistance+0x1>
       e2:	e0 90 f1 00 	lds	r14, 0x00F1	; 0x8000f1 <obstcaleDistance+0x2>
@@ -247,6 +298,9 @@ void app_main()
       f6:	0e 94 89 0e 	call	0x1d12	; 0x1d12 <__gesf2>
       fa:	18 16       	cp	r1, r24
       fc:	24 f4       	brge	.+8      	; 0x106 <app_main+0x60>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 			{
 				state = MORE_THAN_70_CM;
@@ -255,6 +309,7 @@ void app_main()
      104:	4b c0       	rjmp	.+150    	; 0x19c <app_main+0xf6>
 			}
 			else if(obstcaleDistance <= 70 && obstcaleDistance > 30)
+<<<<<<< HEAD
 <<<<<<< HEAD
      12c:	20 e0       	ldi	r18, 0x00	; 0
      12e:	30 e0       	ldi	r19, 0x00	; 0
@@ -275,6 +330,8 @@ void app_main()
      150:	18 16       	cp	r1, r24
      152:	24 f4       	brge	.+8      	; 0x15c <app_main+0xb6>
 =======
+=======
+>>>>>>> main
      106:	20 e0       	ldi	r18, 0x00	; 0
      108:	30 e0       	ldi	r19, 0x00	; 0
      10a:	4c e8       	ldi	r20, 0x8C	; 140
@@ -293,6 +350,9 @@ void app_main()
      126:	0e 94 89 0e 	call	0x1d12	; 0x1d12 <__gesf2>
      12a:	18 16       	cp	r1, r24
      12c:	24 f4       	brge	.+8      	; 0x136 <app_main+0x90>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 			{
 				state = MORE_THAN_30_CM;
@@ -301,6 +361,7 @@ void app_main()
      134:	33 c0       	rjmp	.+102    	; 0x19c <app_main+0xf6>
 			}
 			else if(obstcaleDistance <= 30 && obstcaleDistance > 20)
+<<<<<<< HEAD
 <<<<<<< HEAD
      15c:	20 e0       	ldi	r18, 0x00	; 0
      15e:	30 e0       	ldi	r19, 0x00	; 0
@@ -321,6 +382,8 @@ void app_main()
      180:	18 16       	cp	r1, r24
      182:	24 f4       	brge	.+8      	; 0x18c <app_main+0xe6>
 =======
+=======
+>>>>>>> main
      136:	20 e0       	ldi	r18, 0x00	; 0
      138:	30 e0       	ldi	r19, 0x00	; 0
      13a:	40 ef       	ldi	r20, 0xF0	; 240
@@ -339,6 +402,9 @@ void app_main()
      156:	0e 94 89 0e 	call	0x1d12	; 0x1d12 <__gesf2>
      15a:	18 16       	cp	r1, r24
      15c:	24 f4       	brge	.+8      	; 0x166 <app_main+0xc0>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 			{
 				state = MORE_THAN_20_CM;
@@ -347,6 +413,7 @@ void app_main()
      164:	1b c0       	rjmp	.+54     	; 0x19c <app_main+0xf6>
 			}
 			else if(obstcaleDistance < 20)
+<<<<<<< HEAD
 <<<<<<< HEAD
      18c:	20 e0       	ldi	r18, 0x00	; 0
      18e:	30 e0       	ldi	r19, 0x00	; 0
@@ -358,6 +425,8 @@ void app_main()
      19c:	88 23       	and	r24, r24
      19e:	44 f4       	brge	.+16     	; 0x1b0 <app_main+0x10a>
 =======
+=======
+>>>>>>> main
      166:	20 e0       	ldi	r18, 0x00	; 0
      168:	30 e0       	ldi	r19, 0x00	; 0
      16a:	40 ea       	ldi	r20, 0xA0	; 160
@@ -367,6 +436,7 @@ void app_main()
      172:	0e 94 f0 0c 	call	0x19e0	; 0x19e0 <__cmpsf2>
      176:	88 23       	and	r24, r24
      178:	8c f4       	brge	.+34     	; 0x19c <app_main+0xf6>
+<<<<<<< HEAD
 >>>>>>> main
 			{
 				state = LESS_THAN_20_CM;
@@ -386,10 +456,17 @@ void app_main()
      1be:	08 c0       	rjmp	.+16     	; 0x1d0 <app_main+0x12a>
 			}
 =======
+=======
+			{
+				state = LESS_THAN_20_CM;
+>>>>>>> main
      17a:	85 e0       	ldi	r24, 0x05	; 5
      17c:	80 93 f5 00 	sts	0x00F5, r24	; 0x8000f5 <state>
      180:	0d c0       	rjmp	.+26     	; 0x19c <app_main+0xf6>
 			
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 			break;
 		}
@@ -445,9 +522,15 @@ void setDefaultRotation()
      1c2:	0e 94 19 04 	call	0x832	; 0x832 <HLCD_WriteString>
 	TMR_intDelay_ms(5000);
 <<<<<<< HEAD
+<<<<<<< HEAD
      1fa:	88 e8       	ldi	r24, 0x88	; 136
      1fc:	93 e1       	ldi	r25, 0x13	; 19
      1fe:	0e 94 ff 0a 	call	0x15fe	; 0x15fe <TMR_intDelay_ms>
+=======
+     1c6:	88 e8       	ldi	r24, 0x88	; 136
+     1c8:	93 e1       	ldi	r25, 0x13	; 19
+     1ca:	0e 94 8b 0b 	call	0x1716	; 0x1716 <TMR_intDelay_ms>
+>>>>>>> main
 =======
      1c6:	88 e8       	ldi	r24, 0x88	; 136
      1c8:	93 e1       	ldi	r25, 0x13	; 19
@@ -543,9 +626,15 @@ void setDefaultRotation()
      242:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <u8_g_timeOut>
 	TMR_intDelay_ms(2000);
 <<<<<<< HEAD
+<<<<<<< HEAD
      27a:	80 ed       	ldi	r24, 0xD0	; 208
      27c:	97 e0       	ldi	r25, 0x07	; 7
      27e:	0e 94 ff 0a 	call	0x15fe	; 0x15fe <TMR_intDelay_ms>
+=======
+     246:	80 ed       	ldi	r24, 0xD0	; 208
+     248:	97 e0       	ldi	r25, 0x07	; 7
+     24a:	0e 94 8b 0b 	call	0x1716	; 0x1716 <TMR_intDelay_ms>
+>>>>>>> main
 =======
      246:	80 ed       	ldi	r24, 0xD0	; 208
      248:	97 e0       	ldi	r25, 0x07	; 7
@@ -674,6 +763,7 @@ void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_
      2fa:	0e 94 19 04 	call	0x832	; 0x832 <HLCD_WriteString>
 	HLCD_gotoXY(1,5);
 <<<<<<< HEAD
+<<<<<<< HEAD
      2c4:	65 e0       	ldi	r22, 0x05	; 5
      2c6:	81 e0       	ldi	r24, 0x01	; 1
      2c8:	0e 94 d3 03 	call	0x7a6	; 0x7a6 <HLCD_gotoXY>
@@ -686,6 +776,8 @@ void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_
      2e0:	cb 01       	movw	r24, r22
      2e2:	0e 94 ff 03 	call	0x7fe	; 0x7fe <HLCD_WriteInt>
 =======
+=======
+>>>>>>> main
      2fe:	65 e0       	ldi	r22, 0x05	; 5
      300:	81 e0       	ldi	r24, 0x01	; 1
      302:	0e 94 05 04 	call	0x80a	; 0x80a <HLCD_gotoXY>
@@ -695,6 +787,9 @@ void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_
      30a:	0e 94 67 0d 	call	0x1ace	; 0x1ace <__fixunssfsi>
      30e:	cb 01       	movw	r24, r22
      310:	0e 94 31 04 	call	0x862	; 0x862 <HLCD_WriteInt>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 	HLCD_WriteString(" Cm");
      314:	88 ed       	ldi	r24, 0xD8	; 216
@@ -733,16 +828,22 @@ void obstcaleMoreThan70()
      34a:	0e 94 2e 01 	call	0x25c	; 0x25c <LCD_update>
 		TMR_intDelay_ms(5000);
 <<<<<<< HEAD
+<<<<<<< HEAD
      30c:	88 e8       	ldi	r24, 0x88	; 136
      30e:	93 e1       	ldi	r25, 0x13	; 19
      310:	0e 94 ff 0a 	call	0x15fe	; 0x15fe <TMR_intDelay_ms>
      314:	08 95       	ret
 =======
+=======
+>>>>>>> main
      34e:	88 e8       	ldi	r24, 0x88	; 136
      350:	93 e1       	ldi	r25, 0x13	; 19
      352:	0e 94 8b 0b 	call	0x1716	; 0x1716 <TMR_intDelay_ms>
      356:	08 95       	ret
 		
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 	}
 	else if(moreThan70Flag == 1 && u8_g_timeOut == 1)
@@ -878,8 +979,13 @@ void ultrasonic_vInit()
      44a:	0e 94 9d 07 	call	0xf3a	; 0xf3a <DIO_Initpin>
 	MCU_vEnableInterrupt();
 <<<<<<< HEAD
+<<<<<<< HEAD
      3d0:	0e 94 14 0a 	call	0x1428	; 0x1428 <MCU_vEnableInterrupt>
      3d4:	08 95       	ret
+=======
+     44e:	0e 94 a0 0a 	call	0x1540	; 0x1540 <MCU_vEnableInterrupt>
+     452:	08 95       	ret
+>>>>>>> main
 =======
      44e:	0e 94 a0 0a 	call	0x1540	; 0x1540 <MCU_vEnableInterrupt>
      452:	08 95       	ret
@@ -926,7 +1032,11 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
      484:	0e 94 f8 06 	call	0xdf0	; 0xdf0 <DIO_WritePin>
 	ICU_RisingEdgeCapture();
 <<<<<<< HEAD
+<<<<<<< HEAD
      40a:	0e 94 94 09 	call	0x1328	; 0x1328 <ICU_RisingEdgeCapture>
+=======
+     488:	0e 94 20 0a 	call	0x1440	; 0x1440 <ICU_RisingEdgeCapture>
+>>>>>>> main
 =======
      488:	0e 94 20 0a 	call	0x1440	; 0x1440 <ICU_RisingEdgeCapture>
 >>>>>>> main
@@ -937,6 +1047,7 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
      490:	81 30       	cpi	r24, 0x01	; 1
      492:	e1 f7       	brne	.-8      	; 0x48c <ultrasonic_vGetDistance+0x38>
 	ICU_getValue(&val);
+<<<<<<< HEAD
 <<<<<<< HEAD
      416:	ce 01       	movw	r24, r28
      418:	01 96       	adiw	r24, 0x01	; 1
@@ -959,6 +1070,8 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
      43c:	82 83       	std	Z+2, r24	; 0x02
      43e:	93 83       	std	Z+3, r25	; 0x03
 =======
+=======
+>>>>>>> main
      494:	ce 01       	movw	r24, r28
      496:	01 96       	adiw	r24, 0x01	; 1
      498:	0e 94 0a 09 	call	0x1214	; 0x1214 <ICU_getValue>
@@ -984,6 +1097,9 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
      4c4:	71 83       	std	Z+1, r23	; 0x01
      4c6:	82 83       	std	Z+2, r24	; 0x02
      4c8:	93 83       	std	Z+3, r25	; 0x03
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 	ICU_g_flag = 0;
      4ca:	10 92 f8 00 	sts	0x00F8, r1	; 0x8000f8 <ICU_g_flag>
@@ -1499,17 +1615,23 @@ void HLCD_WriteInt(Uint32_t number)
 	extern char *__itoa_ncheck (int, char *, unsigned char);
 	return __itoa_ncheck (__val, __s, __radix);
 <<<<<<< HEAD
+<<<<<<< HEAD
      812:	4a e0       	ldi	r20, 0x0A	; 10
      814:	be 01       	movw	r22, r28
      816:	6f 5f       	subi	r22, 0xFF	; 255
      818:	7f 4f       	sbci	r23, 0xFF	; 255
      81a:	0e 94 6f 0e 	call	0x1cde	; 0x1cde <__itoa_ncheck>
 =======
+=======
+>>>>>>> main
      876:	4a e0       	ldi	r20, 0x0A	; 10
      878:	be 01       	movw	r22, r28
      87a:	6f 5f       	subi	r22, 0xFF	; 255
      87c:	7f 4f       	sbci	r23, 0xFF	; 255
      87e:	0e 94 fb 0e 	call	0x1df6	; 0x1df6 <__itoa_ncheck>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 	Uchar8_t STR[INDEX];
 	itoa(number, STR, 10);
@@ -2560,6 +2682,7 @@ void main(void)
     1082:	88 0f       	add	r24, r24
     1084:	99 1f       	adc	r25, r25
     1086:	0a 94       	dec	r0
+<<<<<<< HEAD
 <<<<<<< HEAD
     1088:	e2 f7       	brpl	.-8      	; 0x1082 <DIO_Initpin+0x1ac>
     108a:	82 2b       	or	r24, r18
@@ -4473,6 +4596,8 @@ ISR(TIM2_OVF_INT)
 00001d4a <__stop_program>:
     1d4a:	ff cf       	rjmp	.-2      	; 0x1d4a <__stop_program>
 =======
+=======
+>>>>>>> main
     1088:	e2 f7       	brpl	.-8      	; 0x1082 <DIO_Initpin+0x148>
     108a:	80 95       	com	r24
     108c:	82 23       	and	r24, r18
@@ -6234,4 +6359,7 @@ ISR(TIM2_OVF_INT)
 
 00001e62 <__stop_program>:
     1e62:	ff cf       	rjmp	.-2      	; 0x1e62 <__stop_program>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
