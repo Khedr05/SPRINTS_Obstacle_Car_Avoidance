@@ -30,8 +30,8 @@ main.d main.o: .././main.c .././APPLICATION/app/apph.h \
  .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/dio/dio.h \
  .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/MCU_Interface.h \
  .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/MCU_Private.h \
- .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/../../common/BIT_Math.h \
- .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/../../common/STD_Types.h
+ c:\users\sharpel\documents\github\sprints_obstacle_car_avoidance\project\project\common\bit_math.h \
+ c:\users\sharpel\documents\github\sprints_obstacle_car_avoidance\project\project\common\std_types.h
 
 .././APPLICATION/app/apph.h:
 
@@ -97,6 +97,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/MCU_Private.h:
 
-.././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/../../common/BIT_Math.h:
+c:\users\sharpel\documents\github\sprints_obstacle_car_avoidance\project\project\common\bit_math.h:
 
-.././APPLICATION/app/../car_module/../../ECUAL/ultrasonic/../../MCAL/mcu_cfg/../../common/STD_Types.h:
+c:\users\sharpel\documents\github\sprints_obstacle_car_avoidance\project\project\common\std_types.h:

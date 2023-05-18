@@ -83,12 +83,14 @@ void HLCD_vidInit(void)
 #endif
 	HLCD_vidWritecmd(HLCD_CLEAR_DISPLAY);
 	_delay_ms(4);
-
 	HLCD_vidWritecmd(HLCD_ENTRY_MODE_CURSOR_INCREMENT);
 	_delay_ms(1);
-
-	HLCD_vidWritecmd(HLCD_DISPLAY_ON_CURSOR_ON_NO_BLINK);
+   
+	HLCD_vidWritecmd(HLCD_DISPLAY_ON_CURSOR_OFF);
 	_delay_ms(1);
+
+
+	
 }
 
 
