@@ -6,6 +6,7 @@
  */ 
 
 #include "ultrasonic_interface.h"
+
 #include <util/delay.h>
 
 extern Uchar8_t ICU_g_flag;
@@ -49,8 +50,8 @@ void ultrasonic_vGetDistance(float64_t *Copy_f64distance)
 	
 	while(ICU_g_flag != 1);
 	ICU_getValue(&val);
-	
-	*Copy_f64distance = val / 466.47;	
+   
+	*Copy_f64distance = (float)val / 466.47*8;	
 	ICU_g_flag = 0;
 }
 

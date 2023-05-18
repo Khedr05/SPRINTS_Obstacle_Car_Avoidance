@@ -33,11 +33,8 @@ void app_main()
 		case CAR_SCANING :
 		{
 			ultrasonic_vGetDistance(&obstcaleDistance);
-			HLCD_ClrDisplay();
-			HLCD_WriteInt(obstcaleDistance);
 			if(obstcaleDistance > 70)
 			{
-				HLCD_WriteString("akatr 70");
 				state = MORE_THAN_70_CM;
 			}
 			else if(obstcaleDistance <= 70 && obstcaleDistance > 30)
@@ -50,13 +47,9 @@ void app_main()
 			}
 			else if(obstcaleDistance < 20)
 			{
-				HLCD_WriteString("less 20");
 				state = LESS_THAN_20_CM;
 			}
-			else
-			{
-				HLCD_WriteInt(obstcaleDistance);
-			}
+			
 			break;
 		}
 		case MORE_THAN_70_CM :
@@ -68,6 +61,8 @@ void app_main()
 		case MORE_THAN_30_CM:
 		{
 			moreThan70Flag = 0;
+			obstcaleMoreThan30();
+			state = CAR_SCANING;
 			break;
 		}
 	}

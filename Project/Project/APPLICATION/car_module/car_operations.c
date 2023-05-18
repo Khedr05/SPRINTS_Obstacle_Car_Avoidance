@@ -19,6 +19,7 @@ float64_t obstcaleDistance = 0;
 Uchar8_t moreThan70Flag = 0;
 
 
+
 void setDefaultRotation()
 {
 	
@@ -63,29 +64,73 @@ void setDefaultRotation()
 
 void obstcaleMoreThan70()
 {
-	HLCD_ClrDisplay();
-	HLCD_gotoXY(0,0);
-	HLCD_WriteString("Speed:");
-	HLCD_gotoXY(0,10);
-	HLCD_WriteString("Dir:F");
-	HLCD_gotoXY(1,0);
-	HLCD_WriteString("Dist:");
-	HLCD_gotoXY(1,5);
-	HLCD_WriteInt(obstcaleDistance);
-	HLCD_WriteString(" Cm");
+	
 	if(moreThan70Flag == 0)
 	{
 		moreThan70Flag = 1;
 		//start motor 30;
-		HLCD_gotoXY(0,7);
-		HLCD_WriteString("30%");
+		LCD_update(SPEED_30,DIRECTION_F,obstcaleDistance);
 		TMR_intDelay_ms(5000);
+		
 	}
 	else if(moreThan70Flag == 1 && u8_g_timeOut == 1)
 	{
 		//motor 50
-		HLCD_gotoXY(0,7);
-		HLCD_WriteString("50%");
-		u8_g_timeOut = 0;
+		LCD_update(SPEED_50,DIRECTION_F,obstcaleDistance);
+		u8_g_timeOut =0;
 	}
+ 
+      else LCD_update(SPEED_50,DIRECTION_F,obstcaleDistance);
+}
+
+void obstcaleMoreThan30()
+{
+	// motor 30
+	LCD_update(SPEED_30,DIRECTION_F,obstcaleDistance);
+}
+void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_distance)
+{
+	
+	
+	HLCD_gotoXY(0,0);
+	HLCD_WriteString("Speed:");
+	HLCD_gotoXY(0,7);
+	if(en_a_speed == SPEED_0 )
+	{
+		HLCD_WriteString("00% ");
+	}
+	else if (en_a_speed == SPEED_30)
+	{
+		HLCD_WriteString("30% ");
+	}
+	else 
+	{
+		HLCD_WriteString("50% ");
+	}
+	HLCD_gotoXY(0,11);
+	HLCD_WriteString("Dir: ");
+	
+	if(en_a_direction == DIRECTION_F)
+	{
+		HLCD_WriteString("F");
+	}
+	else if(en_a_direction == DIRECTION_B)
+	{
+		HLCD_WriteString("B");
+	}
+	else if(en_a_direction == DIRECTION_R)
+	{
+		HLCD_WriteString("R");
+	}
+    else
+	{
+		HLCD_WriteString("L");
+	}
+	
+	HLCD_gotoXY(1,0);
+	HLCD_WriteString("Dist:");
+	HLCD_gotoXY(1,5);
+	HLCD_WriteInt(f64_a_distance);
+	HLCD_WriteString(" Cm");
+	
 }
