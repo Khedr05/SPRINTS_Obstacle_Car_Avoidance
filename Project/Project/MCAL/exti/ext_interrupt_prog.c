@@ -199,12 +199,12 @@ void EXT_vINTERRUPT_Init()
 {
 	INT0_InterruptHandler();
 }*/
-ISR(EXT_INT1)
-{
-	INT1_InterruptHandler();
-}
-ISR(EXT_INT2)
-{
-	INT2_InterruptHandler();
-}
+//ISR(EXT_INT1)
+//{
+	//INT1_InterruptHandler();
+//}
+//ISR(EXT_INT2)
+//{
+	//INT2_InterruptHandler();
+//}
 

@@ -12,7 +12,8 @@ ECUAL/motors/dcm_program.d ECUAL/motors/dcm_program.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../ECUAL/motors/../../MCAL/timer/../../COMMON/BIT_Math.h \
  ../ECUAL/motors/../../MCAL/timer/../../COMMON/STD_Types.h \
- ../ECUAL/motors/../../MCAL/timer/../../COMMON/vect_table.h
+ ../ECUAL/motors/../../MCAL/timer/../../COMMON/vect_table.h \
+ ../ECUAL/motors/../../MCAL/pwm/pwm_interface.h
 
 ../ECUAL/motors/dcm_cfg.h:
 
@@ -43,3 +44,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../ECUAL/motors/../../MCAL/timer/../../COMMON/STD_Types.h:
 
 ../ECUAL/motors/../../MCAL/timer/../../COMMON/vect_table.h:
+
+../ECUAL/motors/../../MCAL/pwm/pwm_interface.h:

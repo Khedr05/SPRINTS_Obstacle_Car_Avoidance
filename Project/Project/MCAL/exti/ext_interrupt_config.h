@@ -10,7 +10,7 @@
 
 //#define EXT_INT0 __vector_1
 
-#define EXT_INTERRUPT_PINS			3
+#define EXT_INTERRUPT_PINS			1
 
 /*
 Enum: EN_MCUCR_REG_BITS

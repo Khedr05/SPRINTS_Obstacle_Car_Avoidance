@@ -20,6 +20,7 @@
 /* MCAL */
 #include "../../MCAL/dio/dio.h"
 #include "../../MCAL/timer/timer_interface.h"
+#include "dcm_cfg.h"
 
 /*******************************************************************************************************************************************************************/
 /* DCM Macros */
@@ -54,7 +55,7 @@ extern ST_DCM_g_Config_t ST_g_carMotors[2];
 /*******************************************************************************************************************************************************************/
 /* DCM Functions' Prototypes */
 
-EN_DCM_ERROR_T DCM_rotateDCM(u8 DCM_l_motorNumber, u8 DCM_a_rotateDirection, u16 DCM_a_rotateSpeed);
+EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, u16 DCM_a_rotateSpeed);
 
 EN_DCM_ERROR_T DCM_changeDCMDirection(ST_DCM_g_Config_t* DCM_a_ptrToConfig, EN_DCM_MOTORSIDE DCM_a_motorNum);
 
@@ -65,6 +66,8 @@ void DCM_vdStopDCM(void);
 EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig);
 
 void DCM_updateStopFlag(void);
+void DCM_MoveForward(u8 u8_a_speed);
+void DCM_MoveBackward(u8 u8_a_speed);
 
 //u8 DCM_u8GetDutyCycleOfPWM(u8* Cpy_pu8ReturnedDutyCycleValue);
 /**************************************************************************************************************************************************************************/

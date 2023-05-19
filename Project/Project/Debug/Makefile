@@ -59,6 +59,7 @@ C_SRCS +=  \
 ../APPLICATION/car_module/car_operations.c \
 ../ECUAL/keypad/keypad_config.c \
 ../ECUAL/keypad/keypad_program.c \
+../ECUAL/lcd/lcd_program.c \
 ../ECUAL/motors/dcm_cfg.c \
 ../ECUAL/motors/dcm_program.c \
 ../ECUAL/push_button/pb_config.c \
@@ -91,6 +92,7 @@ APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
 ECUAL/keypad/keypad_config.o \
 ECUAL/keypad/keypad_program.o \
+ECUAL/lcd/lcd_program.o \
 ECUAL/motors/dcm_cfg.o \
 ECUAL/motors/dcm_program.o \
 ECUAL/push_button/pb_config.o \
@@ -116,6 +118,7 @@ APPLICATION/app/app.o \
 APPLICATION/car_module/car_operations.o \
 ECUAL/keypad/keypad_config.o \
 ECUAL/keypad/keypad_program.o \
+ECUAL/lcd/lcd_program.o \
 ECUAL/motors/dcm_cfg.o \
 ECUAL/motors/dcm_program.o \
 ECUAL/push_button/pb_config.o \
@@ -141,6 +144,7 @@ APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
 ECUAL/keypad/keypad_config.d \
 ECUAL/keypad/keypad_program.d \
+ECUAL/lcd/lcd_program.d \
 ECUAL/motors/dcm_cfg.d \
 ECUAL/motors/dcm_program.d \
 ECUAL/push_button/pb_config.d \
@@ -166,6 +170,7 @@ APPLICATION/app/app.d \
 APPLICATION/car_module/car_operations.d \
 ECUAL/keypad/keypad_config.d \
 ECUAL/keypad/keypad_program.d \
+ECUAL/lcd/lcd_program.d \
 ECUAL/motors/dcm_cfg.d \
 ECUAL/motors/dcm_program.d \
 ECUAL/push_button/pb_config.d \
@@ -222,6 +227,13 @@ ECUAL/keypad/keypad_config.o: ../ECUAL/keypad/keypad_config.c
 	
 
 ECUAL/keypad/keypad_program.o: ../ECUAL/keypad/keypad_program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+ECUAL/lcd/lcd_program.o: ../ECUAL/lcd/lcd_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

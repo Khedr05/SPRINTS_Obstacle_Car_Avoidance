@@ -11,7 +11,7 @@ extern const ST_PUSH_BTN_t A_pbConfig[NUMBER_OF_PUSH_BUTTONS];
 
 void PUSH_BTN_intialize()
 {
-	DIO_Init(); 
+	DIO_initpinn(PINC4,INPULL);
 }
 
 void PUSH_BTN_read_state(Uchar8_t btnNumber, EN_PUSH_BTN_state_t *btn_state)

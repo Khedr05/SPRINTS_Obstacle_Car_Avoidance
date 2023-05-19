@@ -10,6 +10,8 @@ ECUAL\keypad\keypad_config.c
 
 ECUAL\keypad\keypad_program.c
 
+ECUAL\lcd\lcd_program.c
+
 ECUAL\motors\dcm_cfg.c
 
 ECUAL\motors\dcm_program.c

@@ -17,5 +17,4 @@
 #define DIOPULLUP_DISABLED 0
 #define DIOPULLUP_ENABLED  1
 
-
 #endif /* DIO_CONFIG_H */

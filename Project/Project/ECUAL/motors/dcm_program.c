@@ -14,13 +14,15 @@
  /* HAL */
 #include "dcm_cfg.h"
 #include "dcm_interface.h"
+#include "../../MCAL/pwm/pwm_interface.h"
+#include "../../MCAL/timer/timer_interface.h"
 
 /*******************************************************************************************************************************************************************/
 /* Declaration and Initialization */
 
 EN_DCM_FLAG DCM_g_stopFlag = FALSE;
 
-
+extern u8 u8_g_timeOut;
 /*******************************************************************************************************************************************************************/
 
 EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
@@ -43,6 +45,7 @@ EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
 
 	}
 	//TMR_u8OVFSetCallBack(DCM_updateStopFlag);
+	TIMER0_initPWM();
 }
 
 /*******************************************************************************************************************************************************************/
@@ -56,9 +59,8 @@ EN_DCM_ERROR_T DCM_changeDCMDirection(ST_DCM_g_Config_t* DCM_a_ptrToConfig, EN_D
 		DIO_toggle( DCM_a_ptrToConfig[DCM_a_motorNum].DCM_g_motEnPortNumber,
 					DCM_a_ptrToConfig[DCM_a_motorNum].DCM_g_motEnPinNumber0
 		);
-		DIO_toggle( DCM_a_ptrToConfig[DCM_a_motorNum].DCM_g_motEnPortNumber,
-					DCM_a_ptrToConfig[DCM_a_motorNum].DCM_g_motEnPinNumber1
-		);
+		
+		
 	}
 	return DCM_OK;
 }
@@ -68,6 +70,7 @@ void DCM_vdStopDCM(void)
 {
 	DIO_WritePin( DIO_PORTC, 0 , DIO_LOW);
 	DIO_WritePin( DIO_PORTC, 1 , DIO_LOW);
+	TIMER0_stop();
 }
 
 /************************************************************************************************************************************/
@@ -79,18 +82,7 @@ EN_DCM_ERROR_T DCM_u8SetDutyCycleOfPWM(u8 DCM_a_dutyCycleValue)
 		return DCM_ERROR;
 	else
 	{
-		u8 DCM_a_mappedDuty = DCM_a_dutyCycleValue / PERIOD_TIME;
-		u16 u16_onTime = DCM_a_mappedDuty;
-		u16 u16_offTime = 10 - DCM_a_mappedDuty;
-
-		while (DCM_g_stopFlag != TRUE)
-		{
-// 			DIO_write(0, PORT_B, DIO_U8_PIN_HIGH);
-// 			TMR_tmr2Delay(u16_onTime);
-// 			DIO_write(0, PORT_B, DIO_U8_PIN_LOW);
-// 			TMR_tmr2Delay(u16_offTime);
-		}
-		DCM_g_stopFlag = FALSE;
+		TIMER0_setPwm(DCM_a_dutyCycleValue);
 	}
 }
 
@@ -101,20 +93,50 @@ void DCM_updateStopFlag(void)
 }
 /****************************************************************************************************************************************/
 /* you need to specify which motor you want to rotate*/
-EN_DCM_ERROR_T DCM_rotateDCM(u8 DCM_l_motorNumber, u8 DCM_a_rotateDirection, u16 DCM_a_rotateSpeed)
+EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, u16 DCM_a_rotateSpeed)
 {
+	
 	if(DCM_l_motorNumber == MOTOR_RIGHT)
 	{
 		DCM_changeDCMDirection(ST_g_carMotors, MOTOR_RIGHT);
+		// High delay to see it on simulation
+		TMR_intDelay_ms(4000);
 		DCM_u8SetDutyCycleOfPWM(ROTATION_DUTY_CYCLE);
+		while(u8_g_timeOut == 0);
+		TIMER0_stop();
+		u8_g_timeOut = 0;
 		DCM_changeDCMDirection(ST_g_carMotors, MOTOR_RIGHT);	
 	}
 	else
 	{
 		DCM_changeDCMDirection(ST_g_carMotors, MOTOR_LEFT);
+		TMR_intDelay_ms(620);
 		DCM_u8SetDutyCycleOfPWM(ROTATION_DUTY_CYCLE);
+		while(u8_g_timeOut == 0);
+		TIMER0_stop();
+		u8_g_timeOut = 0;
 		DCM_changeDCMDirection(ST_g_carMotors, MOTOR_LEFT);		
 	}
 
 }
+
 /****************************************************************************************************************************************/
+
+void DCM_MoveForward(u8 u8_a_speed)
+{
+	DCM_u8SetDutyCycleOfPWM(u8_a_speed);
+	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber0,DIO_HIGH);
+	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber1,DIO_LOW);
+	DIO_WritePin(ST_g_carMotors[1].DCM_g_motEnPortNumber,ST_g_carMotors[1].DCM_g_motEnPinNumber0,DIO_HIGH);
+	DIO_WritePin(ST_g_carMotors[1].DCM_g_motEnPortNumber,ST_g_carMotors[1].DCM_g_motEnPinNumber1,DIO_LOW);
+}
+
+
+void DCM_MoveBackward(u8 u8_a_speed)
+{
+	DCM_u8SetDutyCycleOfPWM(u8_a_speed);
+	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber0,DIO_LOW);
+	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber1,DIO_HIGH);
+	DIO_WritePin(ST_g_carMotors[1].DCM_g_motEnPortNumber,ST_g_carMotors[1].DCM_g_motEnPinNumber0,DIO_LOW);
+	DIO_WritePin(ST_g_carMotors[1].DCM_g_motEnPortNumber,ST_g_carMotors[1].DCM_g_motEnPinNumber1,DIO_HIGH);
+}

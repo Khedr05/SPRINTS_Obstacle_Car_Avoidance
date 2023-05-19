@@ -14,7 +14,7 @@
 
 /* according to number of rows you need to define Rx pins here we have just one row so we define R1 only*/
 #define NUMBER_OF_ROWS 1
-#define KEPAD_PORT  DIO_PORTA
+#define KEPAD_PORT  DIO_PORTC
 #define R1    2
 //#define R2 DIO_PINA_1
 //#define R3 DIO_PINA_2

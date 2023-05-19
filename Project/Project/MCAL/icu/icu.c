@@ -44,6 +44,7 @@ void ICU_RisingEdgeCapture(void)
 {
 	TIMER_tmr1NormalModeInit(ST_g_softwareICU->timer1_ISR);
 	TIMER_tmr1Stop();
+	
 	EXI_enablePIE( ST_g_softwareICU->ICU_exti, ST_g_softwareICU->ICU_firstSenseControl);
 	ICU_g_edgeFlag = RISING;
 	TIMER_tmr1Start(1);
@@ -85,15 +86,15 @@ void EXI_enablePIE( Uchar8_t u8_a_interruptId, Uchar8_t u8_a_senseControl )
 
         SET_BIT(TIMER_U8_SREG_REG, GLOBAL_INTERRUPT_ENABLE_BIT);
 
-        SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT0_BIT );
+        SET_BIT( EXI_U8_GICR_REG, EXI_U8_INT2_BIT );
 
                 /* Check 1.1.1: Required SenseControl */
                 switch ( u8_a_senseControl )
                 {
-                    case EXI_U8_SENSE_LOW_LEVEL		: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
-                    case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
-                    case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
-                    case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                    //case EXI_U8_SENSE_LOW_LEVEL		: CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                   // case EXI_U8_SENSE_LOGICAL_CHANGE: SET_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC00_BIT ); CLEAR_BIT( EXI_U8_MCUCR_REG, EXI_U8_ISC01_BIT ); break;
+                    case EXI_U8_SENSE_FALLING_EDGE	: CLEAR_BIT( EXI_U8_MCUCSR_REG, 6 ); break;
+                    case EXI_U8_SENSE_RISING_EDGE	: SET_BIT( EXI_U8_MCUCSR_REG, 6 );  break;
                 }
 }
 
@@ -206,9 +207,9 @@ void TIMER_tmr1Stop(void)
 
 	
 /**
- * ISR function implementation of INT0
+ * ISR function implementation of INT2
  * */
-ISR(EXT_INT_0)
+ISR(EXT_INT_2)
 {
     /* Save the current value of the timer/counter register  */
 	TIMER_g_timer1RegValue = TMR_U16_TCNT1_REG;

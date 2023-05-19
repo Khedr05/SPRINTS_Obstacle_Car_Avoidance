@@ -145,8 +145,8 @@ void TIMER0_initPWM(void)
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 {
 	
-	u8_g_OnTime =  ((u8_a_dutyCycle * HALF_REG_SIZE)/100)-ERROR_HANDLER;
-	u8_g_OffTime = (((100 -u8_a_dutyCycle) * HALF_REG_SIZE)/100)-ERROR_HANDLER;
+	u8_g_OnTime =  ((u8_a_dutyCycle * REG_SIZE)/100);
+	u8_g_OffTime = (((100 -u8_a_dutyCycle) * REG_SIZE)/100);
 	TCNT0 = REG_SIZE - u8_g_OnTime ;
 	TIMER0_start();
 	

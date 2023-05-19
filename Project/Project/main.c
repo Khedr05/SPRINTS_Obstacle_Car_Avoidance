@@ -7,16 +7,12 @@
 
 #include "APPLICATION/app/apph.h"
 
-
 void main(void)
 {
-	//float64_t val;
 	app_init();
-	
 	while(1)
 	{
-	
-		app_main();
+	app_main();
 		
 	}
 }
