@@ -75,12 +75,17 @@
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Layered Architecture & System Modules
+![obs_avoi_rob_LAyered Arch](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/assets/60091384/edaed449-654b-4064-a0b6-c296ab5995cc)
 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Circuit Schematic
-> - `Simulation_proteus version 8.15` 
-
-> - `clip file for older version` 
-> 
+> - `For lower versions you need to import the Clip_file inside your project, then update the elf/hex file`
+> - `Simulation_proteus version 8.13`[Proteus Link](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Simulation/Obstacle_Avoidance_Robot.pdsprj)
+> - ` Clip_file`[Clip_file](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Simulation/lowerVersionsClip.pdsclip)
+        
+        
 ![Proteus Simulation](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/assets/60091384/c9fdff62-2666-4dff-b9b9-d028ab184020)
 
 
