@@ -23,15 +23,14 @@
 
 
 #### System Requirement Specifications
-One __Ultrasonic__ sensor.
     1. AC Components:
         1. one LCD to show the data.
         2. One 3*3 keypad to enter the desired temperature and control the curren temp.
         3. One button for stop (PB1)
-        4. One __Ultrasonic__ sensor.
+        4. One Ultrasonic sensor.
     
     2. System Requirements:
-        1. 
+        1. The car starts initially from 0 speed.
         2. 
         3. 
         4. 
