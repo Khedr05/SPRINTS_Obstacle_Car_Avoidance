@@ -19,7 +19,6 @@ void TIMER0_start(void);
 /*Timer0 Stop Counting (clear prescaller)*/
 void TIMER0_stop(void);
 
-void TIMER0_setDelay(Uint32_t u32_a_delayMs);
 
 void TIMER0_initPWM(void);
 

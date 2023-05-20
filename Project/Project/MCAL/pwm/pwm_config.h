@@ -10,6 +10,18 @@
 #define PWM_CONFIG_H_
 
 
+#define TIMER_STOPPED                             0
+#define TIMER_NO_PRESCALER                        1
+#define TIMER_8_PRESCALER                         2
+#define TIMER_64_PRESCALER                        3
+#define TIMER_256_PRESCALER                       4
+#define TIMER_1024_PRESCALER                      5
+#define TIMER_EXTERNAL_CLOCK_SOURCE_FALLING_EDGE  6
+#define TIMER_EXTERNAL_CLOCK_SOURCE_RISING_EDGE   7
+
+
+
+
 
 /*Timer Prescaler Options:
  * 0- TIMER_STOPPED
@@ -23,36 +35,7 @@
  */
 #define TIMER_SET_PRESCALER   TIMER_1024_PRESCALER
 
-/*TIMER0 Modes Options:
- * 1- TIMER0_NORMAL_MODE
- * 2- TIMER0_CTC_MODE
- * 3- TIMER0_PHASECORRECT_PWM_MODE
- * 4- TIMER0_FAST_PWM_MODE
- */
-
-#define TIMER0_SET_MODE   TIMER0_NORMAL_MODE
-
-/*Timer0 CTC Interrupt Options:
- * 1- TIMER0_CTC_INTERRUPT_ENABLED
- * 2- TIMER0_CTC_INTERRUPT_DISABLED
- */
-
-#define TIMER0_SET_CTC_INTERRUPT   TIMER0_CTC_INTERRUPT_ENABLED
-
-/*Timer0 CTC OC0 PIN Options:
- * 1- TIMER0_OC0_PIN_DISCONNECTED
- * 2- TIMER0_OC0_PIN_TOGGLE
- * 3- TIMER0_OC0_PIN_SET
- * 4- TIMER0_OC0_PIN_CLEAR
- */
-#define TIMER0_SET_OC0_PIN_MODE  TIMER0_OC0_PIN_DISCONNECTED
-
-/*Timer0 PWM MODE Options:
- * 1-TIMER0_NON_INVERTING_PWM
- * 2- TIMER0_INVERTING_PWM
- */
-#define TIMER0_SET_PWM_MODE  TIMER0_NON_INVERTING_PWM
-
+#define  REG_SIZE                                 256
 
 /*configuration of pwm pins*/
 #define PWM_PINS_NUMBER     2
@@ -60,7 +43,7 @@
 
 typedef struct ST_PWM_PINS_CONFIGS{
 	
-	DIO_ConfigType pwm_pin ;
+	DIO_Pin_type pwm_pin ;
 	
 }ST_PWM_PINS_CONFIGS;
 

@@ -18,6 +18,7 @@ float64_t obstcaleDistance = 0;
 
 Uchar8_t moreThan70Flag = 0;
 Uchar8_t lessThan20Flag = 0;
+Uchar8_t moreThan30Flag = 0;
 
 
 
@@ -91,9 +92,13 @@ void obstcaleMoreThan70()
 
 void obstcaleMoreThan30()
 {
-	DCM_MoveForward(30);
-	speed = SPEED_30;
-	direction = DIRECTION_F;
+	if(moreThan30Flag == 0 )
+	{
+		DCM_MoveForward(30);
+		speed = SPEED_30;
+		direction = DIRECTION_F;
+		moreThan30Flag = 1;
+	}
 	LCD_update(speed,direction,obstcaleDistance);
 }
 
@@ -182,5 +187,5 @@ void Car_Stop()
 {
 	DCM_vdStopDCM();
 	LCD_SetCursor(0,0);
-	LCD_WriteString("ROBOT STOPED");
+	LCD_WriteString((Uchar8_t*)"ROBOT STOPED");
 }

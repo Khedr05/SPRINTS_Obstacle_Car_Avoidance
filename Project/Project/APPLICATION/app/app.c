@@ -13,6 +13,7 @@ extern EN_carState state;
 extern float64_t obstcaleDistance;
 extern Uchar8_t moreThan70Flag;
 extern Uchar8_t lessThan20Flag;
+extern Uchar8_t moreThan30Flag;
 EN_KEYPAD_KEYS keyState = KEY_NOTHING;
 Uchar8_t u8_g_startFlag = 0;
 Uchar8_t u8_g_stopFlag = 0;
@@ -36,7 +37,7 @@ void app_main()
 	     state = SET_DEFAULT_ROTATION;
 		 u8_g_startFlag = 1;
 	}
-	else if(keyState == KEY_2)
+	else if(keyState == KEY_2 && u8_g_startFlag == 1)
 	{ 
 		state = STOP;
 	}
@@ -81,6 +82,7 @@ void app_main()
 		case MORE_THAN_70_CM :
 		{
 			lessThan20Flag = 0;
+			moreThan30Flag = 0;
 			obstcaleMoreThan70();
 			state = CAR_SCANING;
 			break;
@@ -98,6 +100,7 @@ void app_main()
 		{
 			moreThan70Flag = 0;
 			lessThan20Flag = 0;
+			moreThan30Flag = 0;
 			obstcaleMoreThan20();
 			state = CAR_SCANING;
 			break;
@@ -106,6 +109,7 @@ void app_main()
 		
 		case LESS_THAN_20_CM:
 		{
+			moreThan30Flag = 0;
 			moreThan70Flag = 0;
 			obstcaleLessThan20();
 			state = CAR_SCANING;
@@ -115,6 +119,9 @@ void app_main()
 		
 		case STOP:
 		{
+			moreThan70Flag = 0;
+			lessThan20Flag = 0;
+			moreThan30Flag = 0;
 			Car_Stop();
 			break;
 		}
@@ -122,9 +129,9 @@ void app_main()
 		case STATE_IDLE:
 		{
 			LCD_SetCursor(0,0);
-			LCD_WriteString("Press Key 1");
+			LCD_WriteString((Uchar8_t*)"Press Key 1");
 			LCD_SetCursor(1,0);
-			LCD_WriteString("to start");
+			LCD_WriteString((Uchar8_t*)"to start");
 			break;
 		}
 	}

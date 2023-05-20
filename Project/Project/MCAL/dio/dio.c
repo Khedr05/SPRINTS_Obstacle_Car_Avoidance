@@ -439,7 +439,7 @@ void  DIO_readpin(DIO_Pin_type pin,DIO_PinVoltage_type *volt)
 		{
 			case PA:
 
-			*volt=GET_BIT(DIO_PORTA_PORT_REG,pin_num);
+			*volt=GET_BIT(DIO_PORTA_PIN_REG,pin_num);
 			break;
 			case PB:
 

@@ -22,12 +22,6 @@ ECUAL\push_button\PB_prog.c
 
 ECUAL\ultrasonic\ultrasonic_prog.c
 
-lcd_test\dio_prog.c
-
-lcd_test\lcd_config.c
-
-lcd_test\lcd_program.c
-
 main.c
 
 MCAL\dio\Dio.c

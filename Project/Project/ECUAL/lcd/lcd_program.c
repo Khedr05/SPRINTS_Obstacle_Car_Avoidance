@@ -171,42 +171,6 @@ void LCD_WriteNumber(Sint32_t num)
 	}
 
 }
-void LCD_WriteBinary(Uchar8_t num)
-{
-	Schar8_t i;
-	for (i=7;i>=0;i--)
-	{
-		LCD_WriteChar(GET_BIT(num,i)+'0');
-	}
-	
-}
-void LCD_ClearLoc(Uchar8_t line ,Uchar8_t cell,Uchar8_t num)
-{
-	Uchar8_t i;
-	LCD_SetCursor(line,cell);
-	for (i=0;i<num;i++)
-	{
-		LCD_WriteChar(' ');
-	}
-	
-}
-void LCD_WriteNumber_3D(Uint16_t num)
-{
-	//LCD_WriteChar(((num%100000)/10000)+'0');
-	LCD_WriteChar(((num%10000)/1000)+'0');
-	LCD_WriteChar(((num%1000)/100)+'0');
-	LCD_WriteChar(((num%100)/10)+'0');
-	LCD_WriteChar(((num%10)/1)+'0');
-}
-void LCD_CustomChar(Uchar8_t loc,Uchar8_t*pattern)
-{
-	WriteIns(0x40+loc*8);
-	for(Uchar8_t i=0;i<8;i++)
-	{
-		WriteData(pattern[i]);
-	}
-	WriteIns(0x80);
-}
 void LCD_PinsInit ()
 {
 	DIO_initpinn(RS,OUTPUT);
