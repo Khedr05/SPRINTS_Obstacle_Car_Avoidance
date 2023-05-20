@@ -1,11 +1,12 @@
 # Obstacle_Avoidance_Robot
 #### Static Design Project
 #### Author: Team_5 
--  Members:
-  - 
-    -
-    -
-    -
+| Members | 
+|---------| 
+| Sherif  |
+| Sharpel | 
+| Moamen  | 
+| Mowafey | 
 
 ## Brief
 > Embedded C application controlling a robot to avoid obstacles and take a suitable actions.
