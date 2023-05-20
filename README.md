@@ -23,6 +23,7 @@
 
 
 #### System Requirement Specifications
+One __Ultrasonic__ sensor.
     1. AC Components:
         1. one LCD to show the data.
         2. One 3*3 keypad to enter the desired temperature and control the curren temp.
