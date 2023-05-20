@@ -81,7 +81,7 @@
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Circuit Schematic
-> - `For lower versions you need to import the Clip_file inside your project, then update the elf/hex file`
+> `For lower versions you need to import the Clip_file inside your project, then update the hex file`
 > - `Simulation_proteus version 8.13`[Proteus Link](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Simulation/Obstacle_Avoidance_Robot.pdsprj)
 > - ` Clip_file`[Clip_file](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Simulation/lowerVersionsClip.pdsclip)
         
