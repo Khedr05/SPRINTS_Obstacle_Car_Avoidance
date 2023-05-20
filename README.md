@@ -1,6 +1,8 @@
 # Obstacle_Avoidance_Robot
 #### Static Design Project
 #### Author: Team_5 
+| Members             | Tasks                                                                |
+| ----------------- | ------------------------------------------------------------------ |
 -  Members:
   - 
     -
