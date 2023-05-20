@@ -12,7 +12,6 @@ EN_Rotation rotation = ROTATION_R;
 EN_direction direction = DIRECTION_F;
 EN_carState state = STATE_IDLE;
 extern u8 u8_g_timeOut;
-Uchar8_t timeOutFlag = 0 , rotationFlag = 0;
 EN_PUSH_BTN_state_t rotationBtnState = PUSH_BTN_STATE_PRESSED;
 float64_t obstcaleDistance = 0;
 
@@ -41,17 +40,15 @@ void setDefaultRotation()
 			{
 				PUSH_BTN_read_state(0,&rotationBtnState);
 			}
-			if(rotationFlag == 0)
+			if(rotation == ROTATION_R)
 			{
-				rotationFlag = 1;
 				rotation = ROTATION_L;
 				LCD_SetCursor(1,0);
 				LCD_WriteString((Uchar8_t*)"Left ");
 				
 			}
-			else if(rotationFlag == 1)
+			else if(rotation == ROTATION_L)
 			{
-				rotationFlag = 0;
 				rotation = ROTATION_R;
 				LCD_SetCursor(1,0);
 				LCD_WriteString((Uchar8_t*)"Right ");
