@@ -19,49 +19,26 @@
  /*******************************************************************************************************************************************************************/
  /* TMR Registers' Locations */
 
-#define	TMR_U8_TIMSK_REG		* ( ( volatile  u8 * ) 0x59 )
-#define	TMR_U8_TIFR_REG			* ( ( volatile  u8 * ) 0x58 )
-#define	TMR_U8_SFIOR_REG		* ( ( volatile  u8 * ) 0x50 )
+#define	TMR_U8_TIMSK_REG		* ( ( volatile  Uchar8_t * ) 0x59 )
+#define	TMR_U8_TIFR_REG			* ( ( volatile  Uchar8_t * ) 0x58 )
+#define	TMR_U8_SFIOR_REG		* ( ( volatile  Uchar8_t * ) 0x50 )
 
 /*
  * 8-bit Timer/Counter0
  */
 
-#define	TMR_U8_TCCR0_REG		* ( ( volatile  u8 * ) 0x53 )
-#define	TMR_U8_TCNT0_REG		* ( ( volatile  u8 * ) 0x52 )
-#define	TMR_U8_OCR0_REG			* ( ( volatile  u8 * ) 0x5C )
-
-//  /*
-//   * 16-bit Timer/Counter1
-//   */
-// 
-// #define	TMR_U8_TCCR1A_REG		*( ( volatile  u8 * ) 0x4F )
-// #define	TMR_U8_TCCR1B_REG		*( ( volatile  u8 * ) 0x4E )
-// #define	TMR_U8_TCNT1H_REG		*( ( volatile  u8 * ) 0x4D )
-// #define	TMR_U8_TCNT1L_REG		*( ( volatile  u8 * ) 0x4C )
-//   /* DataType is u16 * in order to get both registers ( i.e. TCNT1L and TCNT1H respectively ) locations in memory */
-// #define TMR_U16_TCNT1_REG		*( ( volatile  u16 * ) 0x4C )
-// #define	TMR_U8_OCR1AH_REG		*( ( volatile  u8 * ) 0x4B )
-// #define	TMR_U8_OCR1AL_REG		*( ( volatile  u8 * ) 0x4A )
-// /* DataType is u16 * in order to get both registers ( i.e. OCR1AL and OCR1AH respectively ) locations in memory */
-// #define TMR_U16_OCR1A_REG		*( ( volatile  u16 * ) 0x4A )
-// #define	TMR_U8_OCR1BH_REG		*( ( volatile  u8 * ) 0x49 )
-// #define	TMR_U8_OCR1BL_REG		*( ( volatile  u8 * ) 0x48 )
-// /* DataType is u16 * in order to get both registers ( i.e. OCR1BL and OCR1BH respectively ) locations in memory */
-// #define TMR_U16_OCR1B_REG		*( ( volatile  u16 * ) 0x48 )
-// #define	TMR_U8_ICR1H_REG		*( ( volatile  u8 * ) 0x47 )
-// #define	TMR_U8_ICR1L_REG		*( ( volatile  u8 * ) 0x46 )
-// /* DataType is u16 * in order to get both registers ( i.e. ICR1L and ICR1H respectively ) locations in memory */
-// #define TMR_U16_ICR1_REG		*( ( volatile  u16 * ) 0x46 )
+#define	TMR_U8_TCCR0_REG		* ( ( volatile  Uchar8_t * ) 0x53 )
+#define	TMR_U8_TCNT0_REG		* ( ( volatile  Uchar8_t * ) 0x52 )
+#define	TMR_U8_OCR0_REG			* ( ( volatile  Uchar8_t * ) 0x5C )
 
 /*
  * 8-bit Timer/Counter2
  */
 
-#define	TMR_U8_TCCR2_REG		*( ( volatile  u8 * ) 0x45 )
-#define	TMR_U8_TCNT2_REG		*( ( volatile  u8 * ) 0x44 )
-#define	TMR_U8_OCR2_REG			*( ( volatile  u8 * ) 0x43 )
-#define	TMR_U8_ASSR_REG			*( ( volatile  u8 * ) 0x42 )
+#define	TMR_U8_TCCR2_REG		*( ( volatile  Uchar8_t * ) 0x45 )
+#define	TMR_U8_TCNT2_REG		*( ( volatile  Uchar8_t * ) 0x44 )
+#define	TMR_U8_OCR2_REG			*( ( volatile  Uchar8_t * ) 0x43 )
+#define	TMR_U8_ASSR_REG			*( ( volatile  Uchar8_t * ) 0x42 )
 
  /*******************************************************************************************************************************************************************/
  /* TMR Registers' Description */
@@ -130,40 +107,6 @@
 #define TMR_U8_CS00_BIT			0
 /* End of TCCR0 Register */
 
-// /*
-//  * 16-bit Timer/Counter1 Registers' Description
-//  */
-// 
-//  /* Timer/Counter1 Control Register A - TCCR1A */
-//  /* Bit 7:6 - COM1A1:0: Compare Output Mode for Channel A */
-// #define TMR_U8_COM1A1_BIT		7
-// #define TMR_U8_COM1A0_BIT		6
-// /* Bit 5:4 - COM1B1:0: Compare Output Mode for Channel B */
-// #define TMR_U8_COM1B1_BIT		5
-// #define TMR_U8_COM1B0_BIT		4
-// /* Bit 3 - FOC1A: Force Output Compare for Channel A */
-// #define TMR_U8_FOC1A_BIT		3
-// /* Bit 2 - FOC1B: Force Output Compare for Channel B */
-// #define TMR_U8_FOC1B_BIT		2
-// /* Bit 1:0 - WGM11:0: Waveform Generation Mode */
-// #define TMR_U8_WGM11_BIT		1
-// #define TMR_U8_WGM10_BIT		0
-// /* End of TCCR1A Register */
-// 
-// /* Timer/Counter1 Control Register B - TCCR1B */
-// /* Bit 7 - ICNC1: Input Capture Noise Canceler */
-// #define TMR_U8_ICNC1_BIT		7
-// /* Bit 6 - ICES1: Input Capture Edge Select */
-// #define TMR_U8_ICES1_BIT		6
-// /* Bit 4:3 - WGM13:2: Waveform Generation Mode */
-// #define TMR_U8_WGM13_BIT		4
-// #define TMR_U8_WGM12_BIT		3
-// /* Bit 2:0 - CS12:0: Clock Select */
-// #define TMR_U8_CS12_BIT			2
-// #define TMR_U8_CS11_BIT			1
-// #define TMR_U8_CS10_BIT			0
-// /* End of TCCR1B Register */
-
 /*
  * 8-bit Timer/Counter2 Registers' Description
  */
@@ -195,7 +138,7 @@
 /* End of ASSR Register */
 
 /* S-REG */
-#define TMR_U8_SREG_REG		    *( ( volatile u8 * ) 0x5F )
+#define TMR_U8_SREG_REG		    *( ( volatile Uchar8_t * ) 0x5F )
 
 /*******************************************************************************************************************************************************************/
 

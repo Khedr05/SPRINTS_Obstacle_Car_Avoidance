@@ -18,8 +18,8 @@
 
 typedef struct 
 {
-	DIO_ConfigType triggerpin;
-	DIO_ConfigType echopin;
+	ST_DIO_ConfigType triggerpin;
+	ST_DIO_ConfigType echopin;
 }ST_ultrasonicPins;
 
 

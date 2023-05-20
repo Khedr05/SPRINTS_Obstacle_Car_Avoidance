@@ -28,7 +28,7 @@ void KEYPAD_init(void)
 	/* loop from 0 to number of rows defined in config file*/
 	for(u8_loc_rowsCounter=0;u8_loc_rowsCounter<NUMBER_OF_ROWS;u8_loc_rowsCounter++)
 	{
-		///* set current row pin direction as output */
+		///* set current row pin en_g_direction as output */
 		//DIO_s8SETPinDir(st_keypad_conf.u8_arr_rows[u8_loc_rowsCounter],OUTPUT);
 		///* set current row pin value as high */
 		//DIO_s8SETPinVal(st_keypad_conf.u8_arr_rows[u8_loc_rowsCounter],HIGH);
@@ -39,7 +39,7 @@ void KEYPAD_init(void)
 	/* loop from 0 to number of cols defined in config file*/
 	for(u8_loc_colsCounter=0;u8_loc_colsCounter<NUMBER_OF_COLS;u8_loc_colsCounter++)
 	{
-		///* set current col pin direction as input */
+		///* set current col pin en_g_direction as input */
 		//DIO_s8SETPinDir(st_keypad_conf.u8_arr_cols[u8_loc_colsCounter],INPUT);
 		///* set current col pin value as high */
 		//DIO_s8SETPinVal(st_keypad_conf.u8_arr_cols[u8_loc_colsCounter],HIGH);
@@ -66,7 +66,7 @@ EN_KEYPAD_KEYS KEYPAD_getButton()
 	/* declare two local counters for row and col*/
 	Uchar8_t u8_loc_colsCounter,u8_loc_rowsCounter;
 	
-	/* initialize pinValue variable to holds pin state*/
+	/* initialize pinValue variable to holds pin en_g_state*/
 	Uchar8_t pinValue = 1;
 	
 	

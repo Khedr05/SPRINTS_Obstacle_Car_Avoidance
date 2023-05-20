@@ -15,7 +15,7 @@ typedef enum{
 	DIO_PORTB,
 	DIO_PORTC,
 	DIO_PORTD
-}en_dio_port_t;
+}EN_dio_port_t;
 
 
 /************* Available Pins ****************/
@@ -28,41 +28,41 @@ typedef enum{
 	DIO_PIN5,
 	DIO_PIN6,
 	DIO_PIN7
-}en_dio_pin_t;
+}EN_dio_pin_t;
 
 /************* Available Modes ****************/
 typedef enum{
 	DIO_MODE_INPUT,
 	DIO_MODE_OUTPUT
-}en_dio_mode_t;
+}EN_dio_mode_t;
 
 
 /************* Available Values ****************/
 typedef enum{
 	DIO_HIGH,
 	DIO_LOW
-}en_dio_value_t;
+}EN_dio_value_t;
 
 
 /************* Available Pull-up Resistor Settings ****************/
 typedef enum{
 	DIO_PULLUP_DISABLED,
 	DIO_PULLUP_ENABLED
-}en_dio_pullup_t;
+}EN_dio_pullup_t;
 
 
 /************* DIO Configuration ****************/
 typedef struct{
-	en_dio_port_t   dio_port;
-	en_dio_pin_t    dio_pin;
-	en_dio_mode_t   dio_mode;
-	en_dio_value_t  dio_initial_value;
-	en_dio_pullup_t dio_pullup_resistor;
-}DIO_ConfigType;
+	EN_dio_port_t   dio_port;
+	EN_dio_pin_t    dio_pin;
+	EN_dio_mode_t   dio_mode;
+	EN_dio_value_t  dio_initial_value;
+	EN_dio_pullup_t dio_pullup_resistor;
+}ST_DIO_ConfigType;
 
 
 
-extern DIO_ConfigType DIO_ConfigArray[];
+extern ST_DIO_ConfigType DIO_ConfigArray[];
 
 
 
@@ -71,18 +71,18 @@ typedef enum{
 	PB,
 	PC,
 	PD
-}DIO_Port_type;
+}EN_DIO_Port_type;
 
 typedef enum{
 	OUTPUT,
 	INFREE,
 	INPULL
-}DIO_PinStatus_type;
+}EN_DIO_PinStatus_type;
 
 typedef enum{
 	LOW=0,
 	HIGH,
-}DIO_PinVoltage_type;
+}EN_DIO_PinVoltage_type;
 
 
 typedef enum{
@@ -119,7 +119,7 @@ typedef enum{
 	PIND6,
 	PIND7,
 	TOTAL_PINS
-}DIO_Pin_type;
+}EN_DIO_Pin_type;
 
 
 

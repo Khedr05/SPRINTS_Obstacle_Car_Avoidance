@@ -22,7 +22,7 @@
 
 EN_DCM_FLAG DCM_g_stopFlag = FALSE;
 
-extern u8 u8_g_timeOut;
+extern Uchar8_t u8_g_timeOut;
 /*******************************************************************************************************************************************************************/
 
 EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
@@ -31,7 +31,7 @@ EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
 		return DCM_ERROR;
 	else
 	{
-		u8 u8_a_loopCounter;
+		Uchar8_t u8_a_loopCounter;
 		for (u8_a_loopCounter = 0; u8_a_loopCounter < MOTORS_NUMBER; u8_a_loopCounter++)
 		{
 		
@@ -44,7 +44,6 @@ EN_DCM_ERROR_T DCM_motorInit(ST_DCM_g_Config_t* DCM_a_ptrToConfig)
 		}
 
 	}
-	//TMR_u8OVFSetCallBack(DCM_updateStopFlag);
 	TIMER0_initPWM();
 }
 
@@ -75,7 +74,7 @@ void DCM_vdStopDCM(void)
 
 /************************************************************************************************************************************/
 
-EN_DCM_ERROR_T DCM_u8SetDutyCycleOfPWM(u8 DCM_a_dutyCycleValue)
+EN_DCM_ERROR_T DCM_u8SetDutyCycleOfPWM(Uchar8_t DCM_a_dutyCycleValue)
 {
 
 	if (DCM_a_dutyCycleValue > MAX_DUTY_CYCLE)
@@ -93,7 +92,7 @@ void DCM_updateStopFlag(void)
 }
 /****************************************************************************************************************************************/
 /* you need to specify which motor you want to rotate*/
-EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, u16 DCM_a_rotateSpeed)
+EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, Uint16_t DCM_a_rotateSpeed)
 {
 	
 	if(DCM_l_motorNumber == MOTOR_RIGHT)
@@ -122,7 +121,7 @@ EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, u16 DCM_a_rotat
 
 /****************************************************************************************************************************************/
 
-void DCM_MoveForward(u8 u8_a_speed)
+void DCM_MoveForward(Uchar8_t u8_a_speed)
 {
 	DCM_u8SetDutyCycleOfPWM(u8_a_speed);
 	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber0,DIO_HIGH);
@@ -132,7 +131,7 @@ void DCM_MoveForward(u8 u8_a_speed)
 }
 
 
-void DCM_MoveBackward(u8 u8_a_speed)
+void DCM_MoveBackward(Uchar8_t u8_a_speed)
 {
 	DCM_u8SetDutyCycleOfPWM(u8_a_speed);
 	DIO_WritePin(ST_g_carMotors[0].DCM_g_motEnPortNumber,ST_g_carMotors[0].DCM_g_motEnPinNumber0,DIO_LOW);

@@ -2,12 +2,12 @@
  * Dio.c
  *
  * Created: 5/15/2023 5:42:04 PM
- *    Author: Speed
+ *    Author: en_g_speed
  */ 
 #include "dio.h"
 
 
-DIO_ConfigType DIO_ConfigArray[] = {
+ST_DIO_ConfigType DIO_ConfigArray[] = {
 	// Example configuration for Port A, Pin 0
 
 	// Add additional pin configurations as needed
@@ -18,7 +18,7 @@ DIO_ConfigType DIO_ConfigArray[] = {
 void DIO_Init(void)
 {
 	Uchar8_t i;
-	for (i = 0; i < sizeof(DIO_ConfigArray) / sizeof(DIO_ConfigType); i++)
+	for (i = 0; i < sizeof(DIO_ConfigArray) / sizeof(ST_DIO_ConfigType); i++)
 	{
 		
 
@@ -112,7 +112,7 @@ void DIO_Init(void)
 		}
 	}
 }
-void DIO_WritePin(en_dio_port_t port, en_dio_pin_t pin, en_dio_value_t value)
+void DIO_WritePin(EN_dio_port_t port, EN_dio_pin_t pin, EN_dio_value_t value)
 {
 	
 	
@@ -149,7 +149,7 @@ void DIO_WritePin(en_dio_port_t port, en_dio_pin_t pin, en_dio_value_t value)
 		break;
 	}
 }
-void DIO_read(en_dio_port_t port, en_dio_pin_t pin, Uchar8_t *value)
+void DIO_read(EN_dio_port_t port, EN_dio_pin_t pin, Uchar8_t *value)
 {
 	
 	switch(port)
@@ -164,7 +164,7 @@ void DIO_read(en_dio_port_t port, en_dio_pin_t pin, Uchar8_t *value)
 
 }
 
-void DIO_toggle(en_dio_port_t port, en_dio_pin_t pin)
+void DIO_toggle(EN_dio_port_t port, EN_dio_pin_t pin)
 {
 	
 	
@@ -181,7 +181,7 @@ void DIO_toggle(en_dio_port_t port, en_dio_pin_t pin)
 	
 }
 
-void DIO_Initpin(DIO_ConfigType *config_ptr)
+void DIO_Initpin(ST_DIO_ConfigType *config_ptr)
 {
 	if (config_ptr->dio_mode== DIO_MODE_INPUT)
 	{
@@ -269,9 +269,9 @@ void DIO_Initpin(DIO_ConfigType *config_ptr)
 
 }
 
-void  DIO_initpinn  (DIO_Pin_type pin,DIO_PinStatus_type status)
+void  DIO_initpinn  (EN_DIO_Pin_type pin,EN_DIO_PinStatus_type status)
 {
-	DIO_Port_type port = pin/8 ;
+	EN_DIO_Port_type port = pin/8 ;
 	Uchar8_t pin_num =pin % 8;
 	
 	if (pin_num < 8)
@@ -359,9 +359,9 @@ void  DIO_initpinn  (DIO_Pin_type pin,DIO_PinStatus_type status)
 
 }
 
-void  DIO_writepinn (DIO_Pin_type pin,DIO_PinVoltage_type volt)
+void  DIO_writepinn (EN_DIO_Pin_type pin,EN_DIO_PinVoltage_type volt)
 {
-	DIO_Port_type port = pin/8 ;
+	EN_DIO_Port_type port = pin/8 ;
 	Uchar8_t pin_num =pin % 8;
 	if (pin_num<8)
 	{
@@ -428,9 +428,9 @@ void  DIO_writepinn (DIO_Pin_type pin,DIO_PinVoltage_type volt)
 	}
 
 }
-void  DIO_readpin(DIO_Pin_type pin,DIO_PinVoltage_type *volt)
+void  DIO_readpin(EN_DIO_Pin_type pin,EN_DIO_PinVoltage_type *volt)
 {
-	DIO_Port_type port = pin/8 ;
+	EN_DIO_Port_type port = pin/8 ;
 	Uchar8_t pin_num =pin % 8;
 	if (pin_num < 8)
 	{
@@ -462,9 +462,9 @@ void  DIO_readpin(DIO_Pin_type pin,DIO_PinVoltage_type *volt)
 	{
 	}
 }
-void  DIO_togglepin(DIO_Pin_type pin)
+void  DIO_togglepin(EN_DIO_Pin_type pin)
 {
-	DIO_Port_type port = pin/8 ;
+	EN_DIO_Port_type port = pin/8 ;
 	Uchar8_t pin_num =pin % 8;
 	if (pin_num< 8)
 	{
@@ -493,7 +493,7 @@ void  DIO_togglepin(DIO_Pin_type pin)
 
 
 
-void DIO_InitDCM(u8 pin, u8 port,u8 mode)
+void DIO_InitDCM(Uchar8_t pin, Uchar8_t port,Uchar8_t mode)
 {
 		if ( mode == DIO_MODE_INPUT)
 		{

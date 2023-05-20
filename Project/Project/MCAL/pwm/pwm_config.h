@@ -60,7 +60,7 @@
 
 typedef struct ST_PWM_PINS_CONFIGS{
 	
-	DIO_ConfigType pwm_pin ;
+	ST_DIO_ConfigType pwm_pin ;
 	
 }ST_PWM_PINS_CONFIGS;
 

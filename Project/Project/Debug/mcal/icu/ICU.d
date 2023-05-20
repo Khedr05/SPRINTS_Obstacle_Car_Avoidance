@@ -1,4 +1,4 @@
-MCAL/icu/ICU.d MCAL/icu/ICU.o: ../MCAL/icu/ICU.c ../MCAL/icu/ICU.h \
+MCAL/icu/icu.d MCAL/icu/icu.o: ../MCAL/icu/icu.c ../MCAL/icu/ICU.h \
  ../MCAL/icu/../../COMMON/BIT_Math.h ../MCAL/icu/../../COMMON/STD_Types.h \
  ../MCAL/icu/../../COMMON/vect_table.h ../MCAL/icu/ICU_cfg.h \
  ../MCAL/icu/icu_private.h ../MCAL/icu/../timer/timer_interface.h \

@@ -15,63 +15,23 @@
 /* ***********************************************************************************************/
 /* Declaration and Initialization */
 
-u8 u8_g_timeOut = 0;
-u8 u8_l_mode = POLLING;
+Uchar8_t u8_g_timeOut = 0;
+Uchar8_t u8_l_mode = POLLING;
 
-u16 u16_g_TMR1Overflow = 0;
-u16 u16_g_overflowNumbers = 0;
-u16 u16_g_overflowTicks = 0;
-u16 u16_g_tcnt0InitialVal = 0;
+Uint16_t u16_g_TMR1Overflow = 0;
+Uint16_t u16_g_overflowNumbers = 0;
+Uint16_t u16_g_overflowTicks = 0;
+Uint16_t u16_g_tcnt0InitialVal = 0;
 
-u16 u16_g_overflow2Ticks = 0;
-u16 u16_g_overflow2Numbers = 0;
-u16 u16_g_tcnt2InitialVal = 0;
+Uint16_t u16_g_overflow2Ticks = 0;
+Uint16_t u16_g_overflow2Numbers = 0;
+Uint16_t u16_g_tcnt2InitialVal = 0;
 
-u8 * u8_g_TMRShutdownFlag = NULL;
+Uchar8_t * u8_g_TMRShutdownFlag = NULL;
 
 void (*void_g_pfOvfInterruptAction)(void) = NULL;
 
 /*************************************************************************************************/
-/*************************************************************************************************/
-
-/*************************************************************************************************/
-
-// void TMR_init(const TMRConfig_t *Config)
-// {
-//     uint8_t i;
-//     uint32_t OVFsNumber;
-//     double TickTime;
-//     for(i=0; i< MAX_TMRS; i++)
-//     {
-//         //TickTime = ( Config[i].ClockPrescaler / CPU_FREQ );
-//         // Loop through the configuration table and set each register
-//          // choose TMR mode
-//         if(Config[i].TMREnable == TMR_ENABLED)
-//         {
-// 
-//             if( Config[i].TMRMode == TMR_OVERFLOW_MODE )
-//             {
-//                 /* select the normal mode for the TMR, TMR is not start yet.*/
-//                 if(Config[i].TMRChannel == TMR0)
-//                 {
-//                     EN_TMR_ERROR_T TMR_tmr0NormalModeInit(Config[i].ISREnable);
-//                 }
-//                 if(Config[i].TMRChannel == TMR1)
-//                 {
-//                     TMR_tmr1NormalModeInit(Config[i].ISREnable);
-//                 }
-//                 if(Config[i].TMRChannel == TMR2)
-//                 {
-//                     EN_TMR_ERROR_T TMR_tmr2NormalModeInit(Config[i].ISREnable);
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
-/****************************************************************************/
-
 
 
 /**
@@ -116,35 +76,30 @@ EN_TIMER_ERROR_T TMR_TMR0NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEnabl
  * @brief Creates a delay using TMR_0 in overflow mode
  *
  * This function Creates the desired delay on TMR_0 normal mode.
- * @param[in] u16 u16_a_interval value to set the desired delay.
+ * @param[in] Uint16_t u16_a_interval value to set the desired delay.
  *
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_delay_ms(u16 u16_a_interval) {
+EN_TIMER_ERROR_T TIMER_delay_ms(Uint16_t u16_a_interval) {
     if((u8_g_TMRShutdownFlag != NULL && *u8_g_TMRShutdownFlag == 1)) return TIMER_ERROR; // sudden break flag
-   /* if ( ( u16_a_interval / SECOND_OPERATOR ) > ( MAX_TMR_DELAY ) ) {
-	    return TMR_ERROR;
-    }*/
     else {
         /* Clear the TCCR Register*/
         TMR_U8_TCCR0_REG = 0x00;
         /*Get the time in second*/
-        f64 d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
+        float64_t d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
         /*Compare the desired delay by the maximum delay for each overflow*/
         if (d64_a_delay < MAX_DELAY) {
             /*just on overflow is required*/
-            TMR_U8_TCNT0_REG = (u8) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
+            TMR_U8_TCNT0_REG = (Uchar8_t) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
             u16_g_overflowNumbers = 1;
         } else if (d64_a_delay == MAX_DELAY) {
             TMR_U8_TCNT0_REG = 0x00;
             u16_g_overflowNumbers = 1;
         } else {
             u16_g_overflowNumbers = ceil(d64_a_delay / MAX_DELAY);
-//            u8_g_TMR0InitialVal = (u8)(MAX_COUNTS - ((d64_a_delay / TICK_TIME) / u16_g_overflowNumbers));
-            TMR_U8_TCNT0_REG = (u8) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflowNumbers - 1.0))) /
+            TMR_U8_TCNT0_REG = (Uchar8_t) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflowNumbers - 1.0))) /
                                                        TICK_TIME)); // in decimal  (0 - 255)
-//			u16_g_tcnt0InitialVal = TMR_U8_TCNT0_REG;									   
         }
         u16_g_overflowTicks = 0;
         TIMER_timer0Start(1024);
@@ -164,9 +119,7 @@ EN_TIMER_ERROR_T TIMER_delay_ms(u16 u16_a_interval) {
     return TIMER_OK;
 }
   /******************************************************************************************/
-  EN_TIMER_ERROR_T TIMER_delay_us(u16 u16_a_interval) {
-//       if((u8_g_TMRShutdownFlag != NULL && *u8_g_TMRShutdownFlag == 1)) return TMR_ERROR; // sudden break flag
-//       else {
+  EN_TIMER_ERROR_T TIMER_delay_us(Uint16_t u16_a_interval) {
 		            /* Clear the TCCR Register*/
 		  TMR_U8_TCCR0_REG = 0x00;
 		  switch(u16_a_interval)
@@ -183,12 +136,11 @@ EN_TIMER_ERROR_T TIMER_delay_ms(u16 u16_a_interval) {
 			  case 200:
 				  TMR_U8_TCNT0_REG = 55;
 			  break;			  
-		//  }
 		  u16_g_overflowNumbers = 1;
           u16_g_overflowTicks = 0;
           TIMER_timer0Start(1024);
           /*Polling the overflowNumbers and the overflow flag bit*/
-          while (u16_g_overflowNumbers > u16_g_overflowTicks /*&& (u8_g_TMRShutdownFlag == NULL || *u8_g_TMRShutdownFlag == 0)*/)
+          while (u16_g_overflowNumbers > u16_g_overflowTicks)
           {
               while ((TMR_U8_TIFR_REG & (1 << 0)) == 0);
               TMR_U8_TIFR_REG |= (1 << 0);
@@ -205,12 +157,12 @@ EN_TIMER_ERROR_T TIMER_delay_ms(u16 u16_a_interval) {
  * @brief Start the TMR by setting the desired prescaler.
  *
  * This function set the prescaler for TMR_0.
- * @param[in] u16 u16_a_prescaler value to set the desired prescaler.
+ * @param[in] Uint16_t u16_a_prescaler value to set the desired prescaler.
  *
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_timer0Start(u16 u16_a_prescaler) {
+EN_TIMER_ERROR_T TIMER_timer0Start(Uint16_t u16_a_prescaler) {
     switch (u16_a_prescaler) {
         case 1:
             CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
@@ -259,37 +211,6 @@ void TIMER_timer0Stop(void) {
     CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS01_BIT);
     CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_CS02_BIT);
 }
-/* ***********************************************************************************************/
-/**
- * @brief TMR compare match mode.
- *
- * This function set the compare value for TMR_0.
- * @param[in] u8 u8_a_outCompValue value at which the matching will occur.
- *
- * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
- *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
- */
-/*EN_TMR_ERROR_T TMR_TMR0CleareCompMatInit(u8 u8_a_outCompValue)
-{
-	if (u8_a_outCompValue > MAX_COUNTS)
-	{
-		return TMR_ERROR;
-	}
-	else
-	{
-		*//*load the out compare value with the OCR0*//*
-		TMR_U8_OCR0_REG = u8_a_outCompValue;
-		*//*initial value for the TMR/counter register.*//*
-		TMR_U8_TCNT0_REG = 0x00;
-		*//* select the CTC mode for the TMR0.*//*
-		CLEAR_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM00_BIT);
-		SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_WGM01_BIT);
-		*//*must be set for the non_PWM mode;*//*
-		SET_BIT(TMR_U8_TCCR0_REG, TMR_U8_FOC0_BIT);
-	}
-	return TMR_OK;
-
-}*/
 
 /* ***********************************************************************************************/
 
@@ -332,12 +253,12 @@ EN_TIMER_ERROR_T TIMER_TMR2NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEna
  * @brief Creates a delay using TMR_2 in overflow mode
  *
  * This function Creates the desired delay on TMR_2 normal mode using inteerupt.
- * @param[in] u16 u16_a_interval value to set the desired delay.
+ * @param[in] Uint16_t u16_a_interval value to set the desired delay.
  *
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
+EN_TIMER_ERROR_T TMR_intDelay_ms(Uint16_t u16_a_interval) {
     if ( ( u16_a_interval / SECOND_OPERATOR ) > ( MAX_TIMER_DELAY ) ) {
 	 return TIMER_ERROR;
 	}       
@@ -345,11 +266,11 @@ EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
         /* Clear the TCCR Register*/
         TMR_U8_TCCR2_REG = 0x00;
         /*Get the time in second*/
-        f64 d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
+        float64_t d64_a_delay = (u16_a_interval / SECOND_OPERATOR);
         /*Compare the desired delay by the maximum delay for each overflow*/
         if (d64_a_delay < MAX_DELAY) {
             /*just on overflow is required*/
-            TMR_U8_TCNT2_REG = (u8) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
+            TMR_U8_TCNT2_REG = (Uchar8_t) ((MAX_DELAY - d64_a_delay) / TICK_TIME);
             u16_g_overflow2Numbers = 1;
         }
 		 else if (d64_a_delay == MAX_DELAY) {
@@ -357,21 +278,13 @@ EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
             u16_g_overflow2Numbers = 1;
         } else {
             u16_g_overflow2Numbers = ceil(d64_a_delay / MAX_DELAY);
-            TMR_U8_TCNT2_REG = (u8) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflow2Numbers - 1.0))) /
+            TMR_U8_TCNT2_REG = (Uchar8_t) ((MAX_COUNTS) - ((d64_a_delay - (MAX_DELAY * (u16_g_overflow2Numbers - 1.0))) /
                                                        TICK_TIME)); // in decimal  (0 - 255)
 			u16_g_tcnt2InitialVal = TMR_U8_TCNT2_REG;
 			
 		}
           u16_g_overflow2Ticks = 0;
           TIMER_TMR2Start(1024);
-          /*Polling the overflowNumbers and the overflow flag bit*/
-//           while (u16_g_overflow2Numbers > u16_g_overflow2Ticks /*&& (u8_g_TMRShutdownFlag == NULL || *u8_g_TMRShutdownFlag == 0)*/)
-//           {
-// 	          while ((TMR_U8_TIFR_REG & (1 << 6)) == 0);
-// 	          TMR_U8_TIFR_REG |= (1 << 6);
-// 	          u16_g_overflow2Ticks++;
-//           }				
-
     }
 	
 
@@ -383,12 +296,12 @@ EN_TIMER_ERROR_T TMR_intDelay_ms(u16 u16_a_interval) {
  * @brief Start the TMR by setting the desired prescaler.
  *
  * This function set the prescaler for TMR_2.
- * @param[in] u16 u16_a_prescaler value to set the desired prescaler.
+ * @param[in] Uint16_t u16_a_prescaler value to set the desired prescaler.
  *
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
  */
-EN_TIMER_ERROR_T TIMER_TMR2Start(u16 u16_a_prescaler) {
+EN_TIMER_ERROR_T TIMER_TMR2Start(Uint16_t u16_a_prescaler) {
     switch (u16_a_prescaler) {
         case 1:
             CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
@@ -444,39 +357,6 @@ void TMR_TMR2Stop(void) {
     CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS21_BIT);
     CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_CS22_BIT);
 }
-/* ************************************************************************************************/
-/**
- * @brief TMR compare match mode.
- *
- * This function set the compare value for TMR_2.
- * @param[in] u8 u8_a_outCompValue value at which the matching will occur.
- *
- * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
- *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)
- */
-/*EN_TMR_ERROR_T TMR_TMR2CleareCompMatInit(u8 u8_a_outCompValue)
-{
-	if (u8_a_outCompValue > MAX_COUNTS)
-	{
-		return TMR_ERROR;
-	}
-	else
-	{
-		*//*load the out compare value with the OCR0*//*
-		TMR_U8_OCR2_REG = u8_a_outCompValue;
-		*//*initial value for the TMR/counter register.*//*
-		TMR_U8_TCNT2_REG = 0x00;
-		*//* select the CTC mode for the TMR0.*//*
-		CLEAR_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM20_BIT);
-		SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_WGM21_BIT);
-		*//*must be set for the non_PWM mode;*//*
-		SET_BIT(TMR_U8_TCCR2_REG, TMR_U8_FOC2_BIT);
-	}
-	return TMR_OK;
-
-}*/
-
-
 
 
 /**
@@ -488,7 +368,6 @@ void TMR_TMR2Stop(void) {
 EN_TIMER_ERROR_T TMR_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void)) {
     // Check if the Pointer to Function is not equal to NULL
     if (void_a_pfOvfInterruptAction != NULL) {
-        // Store the passed address of function ( in APP Layer ) through pointer to function ( OVFInterruptAction ) into Global Array of Pointers to Functions ( OVFInterruptsAction ) in the passed index ( TMRId ).
         void_g_pfOvfInterruptAction = void_a_pfOvfInterruptAction;
         return TIMER_OK;
     } else {
@@ -496,24 +375,10 @@ EN_TIMER_ERROR_T TMR_ovfSetCallback(void (*void_a_pfOvfInterruptAction)(void)) {
     }
 }
 
-/**
- * @brief Interrupt Service Routine for TMR Overflow.
- *        This function is executed when TMR2 Overflows.
- *        It increments u16_g_overflow2Ticks counter and checks whether
- *        u16_g_overflow2Numbers is greater than u16_g_overflow2Ticks.
- *        If true, it resets u16_g_overflow2Ticks and stops TMR2.
- *        It then checks whether void_g_pfOvfInterruptAction is not null.
- *        If true, it calls the function pointed to by void_g_pfOvfInterruptAction.
- *
- * @return void
- */
-//__attribute__((optimize("O0")))
-//ISR(TMR_ovfVect)
 
 ISR(TIM2_OVF_INT)
 {
 	u16_g_overflow2Ticks++;
-	//TMR_U8_TCNT2_REG = u16_g_tcnt2InitialVal;
 	if (u16_g_overflow2Ticks >= u16_g_overflow2Numbers )
 	{
 		u16_g_overflow2Ticks = 0;
@@ -521,20 +386,4 @@ ISR(TIM2_OVF_INT)
 		TMR_TMR2Stop();
 	}
 }
-
-
-// 
-// ISR( TMR0_OVF_vect )
-// {
-// 	u16_g_overflowTicks++;
-// 	//TMR_U8_TCNT0_REG = u16_g_tcnt0InitialVal;
-// 	if (u16_g_overflowTicks >= u16_g_overflowNumbers )
-// 	{
-// 		u16_g_overflowTicks = 0;
-// 		u8_g_timeOut = 1;
-// 		TMR_TMR0Stop();
-// 		CLEAR_BIT(TMR_U8_TIMSK_REG, TMR_U8_TOIE0_BIT);
-// 		u8_l_mode == POLLING;
-// 	}
-// }
 

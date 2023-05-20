@@ -57,10 +57,10 @@ typedef enum EN_KEYPAD_KEYS{
 typedef struct ST_KEYPAD_CONFIG{
 	
 	/* array that holds all cols pins */
-	DIO_ConfigType u8_arr_cols[NUMBER_OF_COLS];
+	ST_DIO_ConfigType u8_arr_cols[NUMBER_OF_COLS];
 	
 	/* array that holds all rows pins */
-	DIO_ConfigType u8_arr_rows[NUMBER_OF_ROWS];
+	ST_DIO_ConfigType u8_arr_rows[NUMBER_OF_ROWS];
 	
 	/* 2D array that holds all keys values according to it's position [row][col] */
 	EN_KEYPAD_KEYS u8_arr_keys[NUMBER_OF_ROWS][NUMBER_OF_COLS];

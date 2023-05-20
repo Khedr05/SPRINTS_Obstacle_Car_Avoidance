@@ -51,7 +51,7 @@ void ICU_RisingEdgeCapture(void)
 }
  
  
-void ICU_getValue(u32 *u32_l_ICR_value)
+void ICU_getValue(Uint32_t *u32_l_ICR_value)
 {
 	*u32_l_ICR_value = ICU_g_Count;
 }
@@ -73,7 +73,7 @@ void ICU_FallingEdgeCapture(void)
 /**
  * @brief The function enables a specific external interrupt with a specified sense control.
  *
- * @param[in] u8_a_interruptId This is an input parameter of type u8 (unsigned 8-bit integer) that specifies the interrupt ID.
+ * @param[in] u8_a_interruptId This is an input parameter of type Uchar8_t (unsigned 8-bit integer) that specifies the interrupt ID.
  * 			  It can have one of three values: EXI_U8_INT0, EXI_U8_INT1, or EXI_U8_INT2, which correspond to external interrupt,
  * @param[in] u8_a_senseControl This parameter is used to specify the sense control of the external interrupt.
  * 			  It can take one of the following values:
@@ -152,7 +152,7 @@ EN_TIMER_ERROR_T TIMER_tmr1NormalModeInit(EN_TIMER_INTERRPUT_T en_a_interrputEna
  * @brief Start the timer by setting the desired prescaler.
  *
  * This function set the prescaler for timer_1.
- * @param[in] u16 u16_a_prescaler value to set the desired prescaler.
+ * @param[in] Uint16_t u16_a_prescaler value to set the desired prescaler.
  *
  * @return An EN_TMR_ERROR_T value indicating the success or failure of the operation
  *         (TMR_OK if the operation succeeded, TMR_ERROR otherwise)

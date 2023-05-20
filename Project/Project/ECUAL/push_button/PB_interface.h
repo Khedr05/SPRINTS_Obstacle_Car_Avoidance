@@ -36,12 +36,12 @@ void PUSH_BTN_intialize();
 /*
 Function	 : PUSH_BTN_read_state
 
-Description  : Reads the current state of a push button and returns its value.
+Description  : Reads the current en_g_state of a push button and returns its value.
 
 Parameters:
--  btn		 : A pointer to an ST_PUSH_BTN_t struct that contains the configuration settings and current state 
+-  btn		 : A pointer to an ST_PUSH_BTN_t struct that contains the configuration settings and current en_g_state 
 			   information for the push button.
--  btn_state : A pointer to an EN_PUSH_BTN_state_t enum where the current state of the push button 
+-  btn_state : A pointer to an EN_PUSH_BTN_state_t enum where the current en_g_state of the push button 
 			   will be stored.
 
 Return Type	 : Std_ReturnType. This is a standard type used in AUTOSAR (Automotive Open System Architecture) 
@@ -51,9 +51,9 @@ The possible return values for this function are:
 -  E_NOT_OK  : The function has encountered an error and could not complete successfully.
 
 
-Overall, the PUSH_BTN_read_state function provides a way to read the current state of a push button and return
+Overall, the PUSH_BTN_read_state function provides a way to read the current en_g_state of a push button and return
 its value. By using this function, the software can determine whether the push button is currently pressed or
-released and take appropriate action based on its state.
+released and take appropriate action based on its en_g_state.
 */
 void PUSH_BTN_read_state(Uchar8_t btnNumber, EN_PUSH_BTN_state_t *btn_state);
 

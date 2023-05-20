@@ -33,9 +33,9 @@
 
 
 typedef struct ST_DCM_g_Config_t {
-	u8 DCM_g_motEnPinNumber0;
-	u8 DCM_g_motEnPinNumber1;
-	u8 DCM_g_motEnPortNumber;
+	Uchar8_t DCM_g_motEnPinNumber0;
+	Uchar8_t DCM_g_motEnPinNumber1;
+	Uchar8_t DCM_g_motEnPortNumber;
 }ST_DCM_g_Config_t;
 
 

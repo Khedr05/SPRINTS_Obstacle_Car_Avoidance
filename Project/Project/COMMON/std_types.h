@@ -33,12 +33,6 @@ typedef volatile unsigned int 				VUint32_t;
 typedef volatile signed long long int  		VSint64_t;
 typedef volatile unsigned long long int  	VUint64_t;
 
-
-typedef unsigned char 						u8;
-typedef unsigned short int 					u16;
-typedef unsigned  int 					    u32;
-typedef float 							    f64;
-
 typedef float								float32_t;
 typedef double								float64_t;
 typedef long double 						float96_t;

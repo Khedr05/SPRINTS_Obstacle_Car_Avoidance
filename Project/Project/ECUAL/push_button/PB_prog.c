@@ -17,7 +17,7 @@ void PUSH_BTN_intialize()
 void PUSH_BTN_read_state(Uchar8_t btnNumber, EN_PUSH_BTN_state_t *btn_state)
 {
 
-		en_dio_value_t pin_logic_status = DIO_LOW;
+		EN_dio_value_t pin_logic_status = DIO_LOW;
 		DIO_read(A_pbConfig[btnNumber].PUSH_BTN_pin.dio_port,A_pbConfig[btnNumber].PUSH_BTN_pin.dio_pin,&pin_logic_status);
 		
 		if(PUSH_BTN_PULL_UP == A_pbConfig[btnNumber].PUSH_BTN_connection)

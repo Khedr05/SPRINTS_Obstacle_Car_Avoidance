@@ -22,25 +22,19 @@ ECUAL\push_button\PB_prog.c
 
 ECUAL\ultrasonic\ultrasonic_prog.c
 
-lcd_test\dio_prog.c
-
-lcd_test\lcd_config.c
-
-lcd_test\lcd_program.c
-
 main.c
 
-MCAL\dio\Dio.c
+MCAL\dio\dio.c
 
-MCAL\exti\EXT_INTERRUPT_Config.c
+MCAL\exti\ext_interrupt_config.c
 
 MCAL\exti\EXT_INTERRUPT_Prog.c
 
-MCAL\icu\ICU.c
+MCAL\icu\icu.c
 
-MCAL\icu\ICU_cfg.c
+MCAL\icu\icu_cfg.c
 
-MCAL\mcu_cfg\MCU_Prog.c
+MCAL\mcu_cfg\mcu_Prog.c
 
 MCAL\pwm\pwm_config.c
 

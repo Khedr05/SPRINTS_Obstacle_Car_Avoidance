@@ -57,11 +57,11 @@ typedef enum
 void setDefaultRotation(void);
 
 void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_distance);
+void LCD_update_stop(void);
 
 void obstcaleMoreThan70(void);
 void obstcaleMoreThan30(void);
 void obstcaleMoreThan20(void);
 void obstcaleLessThan20(void);
-
 void Car_Stop(void);
 #endif /* CAR_OPERATIONS_H_ */

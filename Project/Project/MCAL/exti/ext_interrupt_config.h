@@ -117,7 +117,7 @@ Members:
 - LOW_LEVEL_SENSE_CONTROL    : Represents the sense control mode where the interrupt is triggered when 
 							   the input signal is at a low level.
 - ANY_LOGICAL_SENSE_CONTROL  : Represents the sense control mode where the interrupt is triggered when 
-							   there is any change in the logical state of the input signal.
+							   there is any change in the logical en_g_state of the input signal.
 - FALLING_EDGE_SENSE_CONTROL : Represents the sense control mode where the interrupt is triggered when 
 							   the input signal changes from a high level to a low level.
 - RISING_EDGE_SENSE_CONTROL  : Represents the sense control mode where the interrupt is triggered when
