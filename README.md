@@ -20,10 +20,10 @@
         [Documentation](https://docs.google.com/document/d/1IRe-8jyH7wxBTIzXYDLSMfOx0oQpCD-H/edit)
 > - `Team Backlog` 
         [Google Sheets](https://docs.google.com/spreadsheets/d/1XW7B8uJXqhWbA-ssNdg-yLGVKJ6-zs-nqy5UxN3s-8I/edit#gid=0) 
-        [Excel]()
+        [PDF](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Documents/Team_5_Backlog.pdf)
 > - `Test Protocol` 
       [Google Sheets](https://docs.google.com/spreadsheets/d/1XW7B8uJXqhWbA-ssNdg-yLGVKJ6-zs-nqy5UxN3s-8I/edit#gid=742696996) 
-      [Excel ]()
+      [PDF](https://github.com/sherifkhadr/SPRINTS_Obstacle_Car_Avoidance/blob/main/Documents/Team_5_Test%20Protocol.pdf)
 > - ---
 
 
