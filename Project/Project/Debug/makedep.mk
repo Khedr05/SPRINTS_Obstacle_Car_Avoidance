@@ -30,11 +30,11 @@ MCAL\exti\ext_interrupt_config.c
 
 MCAL\exti\EXT_INTERRUPT_Prog.c
 
-MCAL\icu\icu.c
+MCAL\icu\ICU.c
 
-MCAL\icu\icu_cfg.c
+MCAL\icu\ICU_cfg.c
 
-MCAL\mcu_cfg\mcu_Prog.c
+MCAL\mcu_cfg\MCU_Prog.c
 
 MCAL\pwm\pwm_config.c
 

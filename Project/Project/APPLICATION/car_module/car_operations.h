@@ -58,11 +58,7 @@ typedef enum
 
 void setDefaultRotation(void);
 void LCD_update(EN_speed en_a_speed,EN_direction en_a_direction,float64_t f64_a_distance);
-<<<<<<< HEAD
 void LCD_update_stop(void);
-
-=======
->>>>>>> 63217c544e9b093926dfac603afa83f679efc408
 void obstcaleMoreThan70(void);
 void obstcaleMoreThan30(void);
 void obstcaleMoreThan20(void);
