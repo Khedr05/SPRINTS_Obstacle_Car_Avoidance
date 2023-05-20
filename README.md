@@ -3,6 +3,10 @@
 #### Author: Team_5 
 | Members             | Tasks                                                                |
 | ----------------- | ------------------------------------------------------------------ |
+| Sherif Ashraf  | EXTI, |
+| Sherif Ashraf  | EXTI, |
+| Sherif Ashraf  | EXTI, |
+| Mahmoud Mowafey| TIMER, |
 -  Members:
   - 
     -
