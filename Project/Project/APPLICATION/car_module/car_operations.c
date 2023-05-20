@@ -19,6 +19,7 @@ float64_t obstcaleDistance = 0;
 Uchar8_t moreThan70Flag = 0;
 Uchar8_t lessThan20Flag = 0;
 Uchar8_t moreThan30Flag = 0;
+Uchar8_t u8_g_rot360Flag= 0;
 
 
 
@@ -110,10 +111,23 @@ void obstcaleMoreThan20()
 	TMR_intDelay_ms(1000);
 	while(u8_g_timeOut == 0 );
 	u8_g_timeOut = 0;
+	if(u8_g_rot360Flag < 4)
+	{
+		LCD_update(SPEED_50,DIRECTION_R,obstcaleDistance);
+		DCM_rotateDCM(rotation,50);
+		u8_g_rot360Flag++;
+	}
 	
-	//rotation
-	LCD_update(SPEED_50,DIRECTION_R,obstcaleDistance);
-	DCM_rotateDCM(rotation,50);	
+	else 
+	{
+		LCD_update(SPEED_0,DIRECTION_S,obstcaleDistance);
+		TMR_intDelay_ms(3000);
+		while(u8_g_timeOut == 0 );
+		u8_g_timeOut = 0;
+		u8_g_rot360Flag=0;
+		
+	}
+	
 }
 
 void obstcaleLessThan20()

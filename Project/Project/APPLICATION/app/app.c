@@ -14,6 +14,7 @@ extern float64_t obstcaleDistance;
 extern Uchar8_t moreThan70Flag;
 extern Uchar8_t lessThan20Flag;
 extern Uchar8_t moreThan30Flag;
+extern Uchar8_t u8_g_rot360Flag;
 EN_KEYPAD_KEYS keyState = KEY_NOTHING;
 Uchar8_t u8_g_startFlag = 0;
 Uchar8_t u8_g_stopFlag = 0;
@@ -83,6 +84,7 @@ void app_main()
 		{
 			lessThan20Flag = 0;
 			moreThan30Flag = 0;
+			u8_g_rot360Flag=0;
 			obstcaleMoreThan70();
 			state = CAR_SCANING;
 			break;
@@ -91,6 +93,7 @@ void app_main()
 		{
 			moreThan70Flag = 0;
 			lessThan20Flag = 0;
+			u8_g_rot360Flag=0;
 			obstcaleMoreThan30();
 			state = CAR_SCANING;
 			break;
