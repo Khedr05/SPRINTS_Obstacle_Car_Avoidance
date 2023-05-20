@@ -15,7 +15,6 @@
 #include "pwm_interface.h"
 
 
-Uint32_t u32_g_NumOfOVFs = 0 ;
 
 Uchar8_t  u8_g_OnTime = 0 ;
 Uchar8_t  u8_g_OffTime = 0 ;
@@ -25,78 +24,37 @@ VUchar8_t u8_g_on_off_state = 0 ;
 
 extern ST_PWM_PINS_CONFIGS st_pwm_configs[PWM_PINS_NUMBER];
 
-static void TIMER0_PWM_ExecutedFunction(void);
-/*Timer0 Initialization*/
+
+
+
+
+
+/*
+Function    : TIMER0_init
+Description : this function initializes timer0 with normal mode Also enable peripheral and Global interrupt.
+Args        : void
+return      : void
+*/
 void TIMER0_init(void)
 {
 	
-	/*Mode Select*/
-	
-	#if TIMER0_SET_MODE == TIMER0_NORMAL_MODE
+	/*Normal Mode Select*/
 	CLEAR_BIT(TCCR0,WGM00);
 	CLEAR_BIT(TCCR0,WGM01);
 	/*Timer Overflow Interrupt Enable*/
 	SET_BIT(TIMSK,TOIE0);
+	/*TGlobal Interrupt Enable*/
 	sei();
-
-	#elif TIMER0_SET_MODE == TIMER0_CTC_MODE
-	CLEAR_BIT(TCCR0,WGM00);
-	SET_BIT(TCCR0,WGM01);
-	
-	#if TIMER0_SET_CTC_INTERRUPT == TIMER0_CTC_INTERRUPT_ENABLED
-	SET_BIT(TIMSK,OCIE0);
-	#elif TIMER0_SET_CTC_INTERRUPT == TIMER0_CTC_INTERRUPT_DISABLED
-	CLEAR_BIT(TIMSK,OCIE0);
-	#endif
-	
-	#if TIMER0_SET_OC0_PIN_MODE == TIMER0_OC0_PIN_DISCONNECTED
-	CLEAR_BIT(TCCR0,COM01);
-	CLEAR_BIT(TCCR0,COM00);
-	#elif TIMER0_SET_OC0_PIN_MODE == TIMER0_OC0_PIN_TOGGLE
-	CLEAR_BIT(TCCR0,COM01);
-	SET_BIT(TCCR0,COM00);
-	#elif TIMER0_SET_OC0_PIN_MODE == TIMER0_OC0_PIN_SET
-	SET_BIT(TCCR0,COM01);
-	SET_BIT(TCCR0,COM00);
-	#elif TIMER0_SET_OC0_PIN_MODE == TIMER0_OC0_PIN_CLEAR
-	SET_BIT(TCCR0,COM01);
-	CLEAR_BIT(TCCR0,COM00);
-	
-	#endif
-	
-	#elif TIMER0_SET_MODE == TIMER0_PHASECORRECT_PWM_MODE
-	SET_BIT(TCCR0,WGM00);
-	CLEAR_BIT(TCCR0,WGM01);
-	#if TIMER0_SET_PWM_MODE == TIMER0_NON_INVERTING_PWM
-	SET_BIT(TCCR0,COM01);
-	CLEAR_BIT(TCCR0,COM00);
-	
-	#elif TIMER0_SET_PWM_MODE == TIMER0_INVERTING_PWM
-	SET_BIT(TCCR0,COM01);
-	SET_BIT(TCCR0,COM00);
-	
-	#endif
-	
-	#elif TIMER0_SET_MODE == TIMER0_FAST_PWM_MODE
-	SET_BIT(TCCR0,WGM00);
-	SET_BIT(TCCR0,WGM01);
-	#if TIMER0_SET_PWM_MODE == TIMER0_NON_INVERTING_PWM
-	SET_BIT(TCCR0,COM01);
-	CLEAR_BIT(TCCR0,COM00);
-	
-	#elif TIMER0_SET_PWM_MODE == TIMER0_INVERTING_PWM
-	SET_BIT(TCCR0,COM01);
-	SET_BIT(TCCR0,COM00);
-
-	#endif
-	
-	
-	#endif
-
 }
 
 
-/*Timer0 Start Counting (set prescaller)*/
+
+/*
+Function    : TIMER0_start
+Description : this function set three clock bits with chosen prescaller in config file (timer starts when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_start(void)
 {
 	/*Clear Three Clock Select Bits */
@@ -104,44 +62,47 @@ void TIMER0_start(void)
 	/*Set Selected Prescaller */
 	TCCR0|=TIMER_SET_PRESCALER;
 }
-/*Timer0 Stop Counting (clear prescaller)*/
+
+/*
+Function    : TIMER0_stop
+Description : this function clear three clock bits (timer stops when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_stop(void)
 {
 	/*Clear Three Clock Select Bits */
 	TCCR0 &=0xF8;
 }
 
-
-void TIMER0_setDelay(Uint32_t u32_a_delayMs)
-{
-	float32_t f32_loc_tickTime;
-	Uint32_t  u32_loc_totalTicks;
-	Uchar8_t  u8_loc_initValue;
-	
-	f32_loc_tickTime = (float32_t)TIMER_SET_PRESCALER/FCPU ;
-	u32_loc_totalTicks = (u32_a_delayMs * 1000)/f32_loc_tickTime;
-	u32_g_NumOfOVFs = u32_loc_totalTicks / 256 ;
-	
-	u8_loc_initValue = 256 - (u32_loc_totalTicks % 256);
-	
-	TCNT0 = u8_loc_initValue;
-	u32_g_NumOfOVFs++;
-	
-}
-
-
+/*
+Function    : TIMER0_initPWM
+Description : this function initializes all pwm pins as outputs and set high on them, also calls TIMER0_init ....
+Args        : void
+return      : void
+*/
 void TIMER0_initPWM(void)
 {
+	
 	Uchar8_t u8_Loc_counter = 0;
-	TIMER0_init();
+	/*Loop over all pwm pins (set direction output and set value as high) */
 	for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 	{
-		//DIO_s8SETPinDir(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
-		//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
-		DIO_Initpin(&st_pwm_configs[u8_Loc_counter].pwm_pin);
+		
+		DIO_initpinn(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
+		DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
+		
 	}
-	
+	/* call timer0 init to select normal mode of timer 0*/
+	TIMER0_init();
 }
+
+/*
+Function    : TIMER0_setPwm
+Description : this function calculates onTime and offTime , also calls TIMER0_start ....
+Args        : DutyCycle (0--->100)
+return      : void
+*/
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 {
 	
@@ -152,6 +113,13 @@ void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 	
 }
 
+
+/*
+Function    : TIMER0_PWM_ExecutedFunction
+Description : this function switches level of cycle based on global on_off_state (this function called from ISR)
+Args        : void
+return      : void
+*/
 static void TIMER0_PWM_ExecutedFunction(void)
 {
 	Uchar8_t u8_Loc_counter = 0;
@@ -161,7 +129,7 @@ static void TIMER0_PWM_ExecutedFunction(void)
 		for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 		{
 			//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,LOW);
-			DIO_WritePin(st_pwm_configs[u8_Loc_counter].pwm_pin.dio_port,st_pwm_configs[u8_Loc_counter].pwm_pin.dio_pin,DIO_LOW);
+			DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,LOW);
 		}
 		TCNT0 = REG_SIZE - u8_g_OffTime;
 		u8_g_on_off_state=1;
@@ -172,7 +140,7 @@ static void TIMER0_PWM_ExecutedFunction(void)
 		for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 		{
 			//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
-			DIO_WritePin(st_pwm_configs[u8_Loc_counter].pwm_pin.dio_port,st_pwm_configs[u8_Loc_counter].pwm_pin.dio_pin,DIO_HIGH);
+			DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
 		}
 		TCNT0 = REG_SIZE - u8_g_OnTime;
 		u8_g_on_off_state=0;

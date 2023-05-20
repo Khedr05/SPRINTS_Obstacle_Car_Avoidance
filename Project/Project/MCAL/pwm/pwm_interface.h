@@ -12,19 +12,55 @@
 
 
 
-/*Timer0 Initialization*/
+/*
+Function    : TIMER0_init
+Description : this function initializes timer0 with normal mode Also enable peripheral and Global interrupt.
+Args        : void
+return      : void 
+*/
 void TIMER0_init(void);
-/*Timer0 Start Counting (set prescaller)*/
+
+
+/*
+Function    : TIMER0_start
+Description : this function set three clock bits with chosen prescaller in config file (timer starts when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_start(void);
-/*Timer0 Stop Counting (clear prescaller)*/
+
+
+/*
+Function    : TIMER0_stop
+Description : this function clear three clock bits (timer stops when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_stop(void);
 
-void TIMER0_setDelay(Uint32_t u32_a_delayMs);
-
+/*
+Function    : TIMER0_initPWM
+Description : this function initializes all pwm pins as outputs and set high on them, also calls TIMER0_init ....
+Args        : void
+return      : void
+*/
 void TIMER0_initPWM(void);
 
+/*
+Function    : TIMER0_setPwm
+Description : this function calculates onTime and offTime , also calls TIMER0_start ....
+Args        : DutyCycle (0--->100)
+return      : void
+*/
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle);
 
 
+/*
+Function    : TIMER0_PWM_ExecutedFunction
+Description : this function switches level of cycle based on global on_off_state (this function called from ISR)
+Args        : void
+return      : void
+*/
+static void TIMER0_PWM_ExecutedFunction(void);
 
 #endif /* PWM_INTERFACE_H_ */

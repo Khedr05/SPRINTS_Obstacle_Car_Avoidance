@@ -99,7 +99,7 @@ EN_DCM_ERROR_T DCM_rotateDCM(EN_DCM_MOTORSIDE DCM_l_motorNumber, Uint16_t DCM_a_
 	{
 		DCM_changeDCMDirection(ST_g_carMotors, MOTOR_RIGHT);
 		// High delay to see it on simulation
-		TMR_intDelay_ms(4000);
+		TMR_intDelay_ms(620);
 		DCM_u8SetDutyCycleOfPWM(ROTATION_DUTY_CYCLE);
 		while(u8_g_timeOut == 0);
 		TIMER0_stop();
