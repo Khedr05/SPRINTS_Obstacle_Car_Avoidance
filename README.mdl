@@ -3,10 +3,10 @@
 #### Author: Team_5 
 | Members             | Tasks                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Sherif Ashraf  | EXTI, |
-| Sherif Ashraf  | EXTI, |
-| Sherif Ashraf  | EXTI, |
-| Mahmoud Mowafey| TIMER, |
+| Sherif  | EXTI, |
+| Sharpel | PWM, KEYPAD |
+| Moamen  | DIO, LCD |
+| Mowafey | TIMER, ICU, DCM |
 -  Members:
   - 
     -
