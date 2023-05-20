@@ -4,7 +4,7 @@
 
 ## Static Design Project
 ### Brief
-> Embedded C application controlling a robot to avoid obstacles and take a suitable actions.
+> - Embedded C application controlling a robot to avoid obstacles and take a suitable actions.
 
 #### Author: Team_5 
 
