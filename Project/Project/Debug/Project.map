@@ -1138,7 +1138,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4773
+.debug_info     0x00000000     0x4777
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x401 APPLICATION/app/app.o
@@ -1157,8 +1157,8 @@ END GROUP
  .debug_info    0x00003c8c      0x118 MCAL/icu/ICU_cfg.o
  .debug_info    0x00003da4       0x98 MCAL/mcu_cfg/MCU_Prog.o
  .debug_info    0x00003e3c      0x1a2 MCAL/pwm/pwm_config.o
- .debug_info    0x00003fde      0x377 MCAL/pwm/pwm_program.o
- .debug_info    0x00004355      0x41e MCAL/timer/timer.o
+ .debug_info    0x00003fde      0x37b MCAL/pwm/pwm_program.o
+ .debug_info    0x00004359      0x41e MCAL/timer/timer.o
 
 .debug_abbrev   0x00000000     0x17cb
  *(.debug_abbrev)
@@ -1182,7 +1182,7 @@ END GROUP
  .debug_abbrev  0x000014c8      0x155 MCAL/pwm/pwm_program.o
  .debug_abbrev  0x0000161d      0x1ae MCAL/timer/timer.o
 
-.debug_line     0x00000000     0x282e
+.debug_line     0x00000000     0x2830
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x439 APPLICATION/app/app.o
@@ -1201,8 +1201,8 @@ END GROUP
  .debug_line    0x00001fb4       0x40 MCAL/icu/ICU_cfg.o
  .debug_line    0x00001ff4       0x7a MCAL/mcu_cfg/MCU_Prog.o
  .debug_line    0x0000206e       0x71 MCAL/pwm/pwm_config.o
- .debug_line    0x000020df      0x20a MCAL/pwm/pwm_program.o
- .debug_line    0x000022e9      0x545 MCAL/timer/timer.o
+ .debug_line    0x000020df      0x20c MCAL/pwm/pwm_program.o
+ .debug_line    0x000022eb      0x545 MCAL/timer/timer.o
 
 .debug_frame    0x00000000      0x7d0
  *(.debug_frame)

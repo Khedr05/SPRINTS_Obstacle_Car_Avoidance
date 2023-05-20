@@ -24,9 +24,17 @@ VUchar8_t u8_g_on_off_state = 0 ;
 
 extern ST_PWM_PINS_CONFIGS st_pwm_configs[PWM_PINS_NUMBER];
 
-static void TIMER0_PWM_ExecutedFunction(void);
 
-/*Timer0 Initialization*/
+
+
+
+
+/*
+Function    : TIMER0_init
+Description : this function initializes timer0 with normal mode Also enable peripheral and Global interrupt.
+Args        : void
+return      : void
+*/
 void TIMER0_init(void)
 {
 	
@@ -40,7 +48,13 @@ void TIMER0_init(void)
 }
 
 
-/*Timer0 Start Counting (set prescaller)*/
+
+/*
+Function    : TIMER0_start
+Description : this function set three clock bits with chosen prescaller in config file (timer starts when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_start(void)
 {
 	/*Clear Three Clock Select Bits */
@@ -48,28 +62,47 @@ void TIMER0_start(void)
 	/*Set Selected Prescaller */
 	TCCR0|=TIMER_SET_PRESCALER;
 }
-/*Timer0 Stop Counting (clear prescaller)*/
+
+/*
+Function    : TIMER0_stop
+Description : this function clear three clock bits (timer stops when we call this function)
+Args        : void
+return      : void
+*/
 void TIMER0_stop(void)
 {
 	/*Clear Three Clock Select Bits */
 	TCCR0 &=0xF8;
 }
 
-
+/*
+Function    : TIMER0_initPWM
+Description : this function initializes all pwm pins as outputs and set high on them, also calls TIMER0_init ....
+Args        : void
+return      : void
+*/
 void TIMER0_initPWM(void)
 {
+	
 	Uchar8_t u8_Loc_counter = 0;
-	TIMER0_init();
+	/*Loop over all pwm pins (set direction output and set value as high) */
 	for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 	{
-		//DIO_s8SETPinDir(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
-		//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
+		
 		DIO_initpinn(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
 		DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
 		
 	}
-	
+	/* call timer0 init to select normal mode of timer 0*/
+	TIMER0_init();
 }
+
+/*
+Function    : TIMER0_setPwm
+Description : this function calculates onTime and offTime , also calls TIMER0_start ....
+Args        : DutyCycle (0--->100)
+return      : void
+*/
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 {
 	
@@ -80,6 +113,13 @@ void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 	
 }
 
+
+/*
+Function    : TIMER0_PWM_ExecutedFunction
+Description : this function switches level of cycle based on global on_off_state (this function called from ISR)
+Args        : void
+return      : void
+*/
 static void TIMER0_PWM_ExecutedFunction(void)
 {
 	Uchar8_t u8_Loc_counter = 0;

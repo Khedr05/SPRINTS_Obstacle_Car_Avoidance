@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000003e0  00000000  00000000  00002264  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00004773  00000000  00000000  00002644  2**0
+  6 .debug_info   00004777  00000000  00000000  00002644  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000017cb  00000000  00000000  00006db7  2**0
+  7 .debug_abbrev 000017cb  00000000  00000000  00006dbb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000282e  00000000  00000000  00008582  2**0
+  8 .debug_line   00002830  00000000  00000000  00008586  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000007d0  00000000  00000000  0000adb0  2**2
+  9 .debug_frame  000007d0  00000000  00000000  0000adb8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000014dc  00000000  00000000  0000b580  2**0
+ 10 .debug_str    000014dc  00000000  00000000  0000b588  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002134  00000000  00000000  0000ca5c  2**0
+ 11 .debug_loc    00002134  00000000  00000000  0000ca64  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000002c8  00000000  00000000  0000eb90  2**0
+ 12 .debug_ranges 000002c8  00000000  00000000  0000eb98  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3757,10 +3757,10 @@ void MCU_vEnableInterrupt(void)
     172c:	08 95       	ret
 
 0000172e <TIMER0_PWM_ExecutedFunction>:
-	TIMER0_start();
-	
-}
-
+Description : this function switches level of cycle based on global on_off_state (this function called from ISR)
+Args        : void
+return      : void
+*/
 static void TIMER0_PWM_ExecutedFunction(void)
 {
     172e:	cf 93       	push	r28
@@ -3845,7 +3845,7 @@ static void TIMER0_PWM_ExecutedFunction(void)
     178a:	08 95       	ret
 
 0000178c <TIMER0_init>:
-/*Timer0 Initialization*/
+*/
 void TIMER0_init(void)
 {
 	
@@ -3866,8 +3866,8 @@ void TIMER0_init(void)
     179a:	08 95       	ret
 
 0000179c <TIMER0_start>:
-
-/*Timer0 Start Counting (set prescaller)*/
+return      : void
+*/
 void TIMER0_start(void)
 {
 	/*Clear Three Clock Select Bits */
@@ -3881,8 +3881,8 @@ void TIMER0_start(void)
     17a4:	08 95       	ret
 
 000017a6 <TIMER0_stop>:
-}
-/*Timer0 Stop Counting (clear prescaller)*/
+return      : void
+*/
 void TIMER0_stop(void)
 {
 	/*Clear Three Clock Select Bits */
@@ -3893,51 +3893,53 @@ void TIMER0_stop(void)
     17ac:	08 95       	ret
 
 000017ae <TIMER0_initPWM>:
-}
-
-
+Description : this function initializes all pwm pins as outputs and set high on them, also calls TIMER0_init ....
+Args        : void
+return      : void
+*/
 void TIMER0_initPWM(void)
 {
     17ae:	0f 93       	push	r16
     17b0:	1f 93       	push	r17
     17b2:	cf 93       	push	r28
+	
 	Uchar8_t u8_Loc_counter = 0;
-	TIMER0_init();
-    17b4:	0e 94 c6 0b 	call	0x178c	; 0x178c <TIMER0_init>
+	/*Loop over all pwm pins (set direction output and set value as high) */
 	for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
-    17b8:	c0 e0       	ldi	r28, 0x00	; 0
-    17ba:	0f c0       	rjmp	.+30     	; 0x17da <TIMER0_initPWM+0x2c>
+    17b4:	c0 e0       	ldi	r28, 0x00	; 0
+    17b6:	0f c0       	rjmp	.+30     	; 0x17d6 <TIMER0_initPWM+0x28>
 	{
-		//DIO_s8SETPinDir(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
-		//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
+		
 		DIO_initpinn(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
-    17bc:	0c 2f       	mov	r16, r28
-    17be:	10 e0       	ldi	r17, 0x00	; 0
-    17c0:	03 50       	subi	r16, 0x03	; 3
-    17c2:	1f 4f       	sbci	r17, 0xFF	; 255
-    17c4:	60 e0       	ldi	r22, 0x00	; 0
-    17c6:	f8 01       	movw	r30, r16
-    17c8:	80 81       	ld	r24, Z
-    17ca:	0e 94 6a 08 	call	0x10d4	; 0x10d4 <DIO_initpinn>
+    17b8:	0c 2f       	mov	r16, r28
+    17ba:	10 e0       	ldi	r17, 0x00	; 0
+    17bc:	03 50       	subi	r16, 0x03	; 3
+    17be:	1f 4f       	sbci	r17, 0xFF	; 255
+    17c0:	60 e0       	ldi	r22, 0x00	; 0
+    17c2:	f8 01       	movw	r30, r16
+    17c4:	80 81       	ld	r24, Z
+    17c6:	0e 94 6a 08 	call	0x10d4	; 0x10d4 <DIO_initpinn>
 		DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
-    17ce:	61 e0       	ldi	r22, 0x01	; 1
-    17d0:	f8 01       	movw	r30, r16
-    17d2:	80 81       	ld	r24, Z
-    17d4:	0e 94 67 09 	call	0x12ce	; 0x12ce <DIO_writepinn>
-
+    17ca:	61 e0       	ldi	r22, 0x01	; 1
+    17cc:	f8 01       	movw	r30, r16
+    17ce:	80 81       	ld	r24, Z
+    17d0:	0e 94 67 09 	call	0x12ce	; 0x12ce <DIO_writepinn>
 void TIMER0_initPWM(void)
 {
+	
 	Uchar8_t u8_Loc_counter = 0;
-	TIMER0_init();
+	/*Loop over all pwm pins (set direction output and set value as high) */
 	for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
-    17d8:	cf 5f       	subi	r28, 0xFF	; 255
-    17da:	c2 30       	cpi	r28, 0x02	; 2
-    17dc:	78 f3       	brcs	.-34     	; 0x17bc <TIMER0_initPWM+0xe>
+    17d4:	cf 5f       	subi	r28, 0xFF	; 255
+    17d6:	c2 30       	cpi	r28, 0x02	; 2
+    17d8:	78 f3       	brcs	.-34     	; 0x17b8 <TIMER0_initPWM+0xa>
 		DIO_initpinn(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
 		DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
 		
 	}
-	
+	/* call timer0 init to select normal mode of timer 0*/
+	TIMER0_init();
+    17da:	0e 94 c6 0b 	call	0x178c	; 0x178c <TIMER0_init>
 }
     17de:	cf 91       	pop	r28
     17e0:	1f 91       	pop	r17
@@ -3945,6 +3947,10 @@ void TIMER0_initPWM(void)
     17e4:	08 95       	ret
 
 000017e6 <TIMER0_setPwm>:
+Description : this function calculates onTime and offTime , also calls TIMER0_start ....
+Args        : DutyCycle (0--->100)
+return      : void
+*/
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle)
 {
     17e6:	cf 93       	push	r28
