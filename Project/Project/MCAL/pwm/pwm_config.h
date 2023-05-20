@@ -43,11 +43,9 @@
 
 typedef struct ST_PWM_PINS_CONFIGS{
 	
-<<<<<<< HEAD
-	ST_DIO_ConfigType pwm_pin ;
-=======
-	DIO_Pin_type pwm_pin ;
->>>>>>> 63217c544e9b093926dfac603afa83f679efc408
+
+	EN_DIO_Pin_type en_pwm_pin ;
+
 	
 }ST_PWM_PINS_CONFIGS;
 

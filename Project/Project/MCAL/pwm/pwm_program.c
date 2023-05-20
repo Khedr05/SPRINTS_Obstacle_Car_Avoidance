@@ -24,11 +24,6 @@ VUchar8_t u8_g_on_off_state = 0 ;
 
 extern ST_PWM_PINS_CONFIGS st_pwm_configs[PWM_PINS_NUMBER];
 
-
-
-
-
-
 /*
 Function    : TIMER0_init
 Description : this function initializes timer0 with normal mode Also enable peripheral and Global interrupt.
@@ -89,8 +84,8 @@ void TIMER0_initPWM(void)
 	for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 	{
 		
-		DIO_initpinn(st_pwm_configs[u8_Loc_counter].pwm_pin,OUTPUT);
-		DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
+		DIO_initpinn(st_pwm_configs[u8_Loc_counter].en_pwm_pin,OUTPUT);
+		DIO_writepinn(st_pwm_configs[u8_Loc_counter].en_pwm_pin,HIGH);
 		
 	}
 	/* call timer0 init to select normal mode of timer 0*/
@@ -129,7 +124,7 @@ static void TIMER0_PWM_ExecutedFunction(void)
 		for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 		{
 			//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,LOW);
-			DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,LOW);
+			DIO_writepinn(st_pwm_configs[u8_Loc_counter].en_pwm_pin,LOW);
 		}
 		TCNT0 = REG_SIZE - u8_g_OffTime;
 		u8_g_on_off_state=1;
@@ -140,7 +135,7 @@ static void TIMER0_PWM_ExecutedFunction(void)
 		for(u8_Loc_counter = 0 ; u8_Loc_counter < PWM_PINS_NUMBER ; u8_Loc_counter++)
 		{
 			//DIO_s8SETPinVal(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
-			DIO_writepinn(st_pwm_configs[u8_Loc_counter].pwm_pin,HIGH);
+			DIO_writepinn(st_pwm_configs[u8_Loc_counter].en_pwm_pin,HIGH);
 		}
 		TCNT0 = REG_SIZE - u8_g_OnTime;
 		u8_g_on_off_state=0;

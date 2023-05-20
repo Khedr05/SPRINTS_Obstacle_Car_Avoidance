@@ -55,12 +55,6 @@ return      : void
 void TIMER0_setPwm(Uchar8_t u8_a_dutyCycle);
 
 
-/*
-Function    : TIMER0_PWM_ExecutedFunction
-Description : this function switches level of cycle based on global on_off_state (this function called from ISR)
-Args        : void
-return      : void
-*/
-static void TIMER0_PWM_ExecutedFunction(void);
+
 
 #endif /* PWM_INTERFACE_H_ */
