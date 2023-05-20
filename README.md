@@ -12,7 +12,7 @@
 ## Quick Links
 > - `Project Documentation`
     >     👉 [PDF]()
-    >     👉 [Google Docs](https://docs.google.com/document/d/1iAqH1cvDLpveSf_P1yZc5zlzh1Vboiwa/edit)
+    >     👉 [Google Docs]([https://docs.google.com/document/d/1iAqH1cvDLpveSf_P1yZc5zlzh1Vboiwa/edit](https://docs.google.com/document/d/1IRe-8jyH7wxBTIzXYDLSMfOx0oQpCD-H/edit))
 > - `Team Backlog` 👉 [Google Sheets]() 👉 [Excel](https://docs.google.com/spreadsheets/d/1XW7B8uJXqhWbA-ssNdg-yLGVKJ6-zs-nqy5UxN3s-8I/edit#gid=0)
 > - `Test Protocol` 👉 [Google Sheets]() 👉 [Excel ](https://docs.google.com/spreadsheets/d/1XW7B8uJXqhWbA-ssNdg-yLGVKJ6-zs-nqy5UxN3s-8I/edit#gid=742696996)
 > - ---
@@ -27,7 +27,7 @@
         1. one LCD to show the data.
         2. One 3*3 keypad to enter the desired temperature and control the curren temp.
         3. One button for stop (PB1)
-        4. One ***Ultrasonic*** sensor.
+        4. One __Ultrasonic__ sensor.
     
     2. System Requirements:
         1. 
