@@ -27,7 +27,7 @@
         1. one LCD to show the data.
         2. One 3*3 keypad to enter the desired temperature and control the curren temp.
         3. One button for stop (PB1)
-        4. temperature sensor.
+        4. One ***Ultrasonic*** sensor.
     
     2. System Requirements:
         1. 
