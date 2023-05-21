@@ -36,7 +36,7 @@
 #### System Requirement Specifications
     1. AC Components:
         1. one LCD to show the data.
-        2. One 3*3 keypad to enter the desired temperature and control the curren temp.
+        2. One 3*3 keypad to start and stop the robot.
         3. One button for stop (PB1)
         4. One Ultrasonic sensor.
     
