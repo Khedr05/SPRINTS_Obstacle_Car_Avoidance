@@ -35,15 +35,15 @@
 
 #### System Requirement Specifications
     1. AC Components:
-        1. one LCD to show the data.
-        2. One 3*3 keypad to start and stop the robot.
-        3. One button for stop (PB1)
+        1. One LCD to show the data.
+        2. One keypad has two buttons (one for starting and the other stoping the robot).
+        3. One Push button to change the direction (PB1)
         4. One Ultrasonic sensor.
     
     2. System Requirements:
         1. The car starts initially from 0 speed.
         2. The default rortation direction is to the right.
-        3. Press Keypad_2 to start or stop the robit.
+        3. Press Keypad_1 to start or Keypad_2 to stop the robot.
         4. After pressing start:
                 1.	The LCD will display a centered message in line 1 “Set Def. Rot.”
                 2.	The LCD will display the selected option in line 2 “Right”
@@ -56,8 +56,8 @@
 
         5. For No obstacles or objects is far than 70 centimeters.
                 1.	The robot will move forward with 30% speed for 5 seconds
-                2.	After 5 seconds it will move with 50% speed as long as there was no object or objects are located at more than 70 centimeters distance
-                3.	The LCD will display the speed and moving direction in line 1: “Speed:00% Dir: F/B/R/S”, F: forward, B: Backwards, R: Rotating, and S: Stopped
+                2.	After 5 seconds it will move with 50% speed as long as there was no object or objects are located at more than 70                         centimeters distance
+                3.	The LCD will display the speed and moving direction in line 1: “Speed:00% Dir: F/B/R/S”, F: forward, B:                                   Backwards, R: Rotating, and S: Stopped
                 4.	The LCD will display Object distance in line 2 “Dist.: 000 Cm”
 
         6. For Obstacles located between 30 and 70 centimeters:
@@ -74,7 +74,7 @@
         9. Obstacles surrounding the robot (Bonus)
                 1.	If the robot rotated for 360 degrees without finding any distance greater than 20 it will stop
                 2.	LCD data will be updated.
-                3.	The robot will frequently (each 3 seconds) check if any of the obstacles was removed or not and move in the direction of the furthest object.
+                3.	The robot will frequently (each 3 seconds) check if any of the obstacles was removed or not and move in the                               direction of the furthest object.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
