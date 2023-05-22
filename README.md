@@ -36,7 +36,7 @@
 #### System Requirement Specifications
     1. AC Components:
         1. One LCD to show the data.
-        2. One keypad has two buttons (one for starting and the other stoping the robot).
+        2. One keypad has two buttons (Keypad_1 for starting and Keypad_2 for stoping the robot).
         3. One Push button to change the direction (PB1)
         4. One Ultrasonic sensor.
     
