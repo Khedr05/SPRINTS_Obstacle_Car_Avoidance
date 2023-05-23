@@ -56,8 +56,8 @@
 
         5. For No obstacles or objects is far than 70 centimeters.
                 1.	The robot will move forward with 30% speed for 5 seconds
-                2.	After 5 seconds it will move with 50% speed as long as there was no object or objects are located at more than 70                         centimeters distance
-                3.	The LCD will display the speed and moving direction in line 1: “Speed:00% Dir: F/B/R/S”, F: forward, B:                                   Backwards, R: Rotating, and S: Stopped
+                2.	After 5 seconds it will move with 50% speed as long as there was no object or objects are located at more than 70 centimeters distance
+                3.	The LCD will display the speed and moving direction in line 1: “Speed:00% Dir: F/B/R/S”, F: forward, B:Backwards, R: Rotating, and S: Stopped
                 4.	The LCD will display Object distance in line 2 “Dist.: 000 Cm”
 
         6. For Obstacles located between 30 and 70 centimeters:
@@ -74,7 +74,7 @@
         9. Obstacles surrounding the robot (Bonus)
                 1.	If the robot rotated for 360 degrees without finding any distance greater than 20 it will stop
                 2.	LCD data will be updated.
-                3.	The robot will frequently (each 3 seconds) check if any of the obstacles was removed or not and move in the                               direction of the furthest object.
+                3.	The robot will frequently (each 3 seconds) check if any of the obstacles was removed or not and move in the direction of the furthest object.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
